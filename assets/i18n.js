@@ -4,6 +4,9 @@
 
 const translations = {
   en: {
+    'projects.crypto.tagline': "A live crypto dashboard with a pixel-art LED display",
+    'projects.crypto.desc': "Live Binance Spot prices, interactive charts, order book and market depth, rendered as a responsive LED matrix. Custom bitmap typography and CRT effects bring a retro display to real-time market data.",
+    'projects.crypto.cta': "Open Crypto LED Board →",
     'hero.subtitle': 'Frontend & Design Engineer',
     'hero.location': 'Toulouse, France',
     'about.label': '01 — About',
@@ -57,6 +60,9 @@ const translations = {
     'footer.credit': 'Designed & built by Ilyes Abd-Lillah',
   },
   fr: {
+    'projects.crypto.tagline': "Un dashboard crypto en direct sur une matrice LED en pixel art",
+    'projects.crypto.desc': "Cours Binance Spot en direct, graphiques interactifs, carnet d’ordres et profondeur de marché, affichés sur une matrice LED responsive. Typographie bitmap sur mesure et effets CRT donnent un style rétro aux données de marché en temps réel.",
+    'projects.crypto.cta': "Découvrir Crypto LED Board →",
     'hero.subtitle': 'Ing\u00e9nieur Frontend & Design',
     'hero.location': 'Toulouse, France',
     'about.label': '01 \u2014 \u00c0 propos',
