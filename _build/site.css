@@ -225,11 +225,13 @@ ul, ol { padding: 0; list-style: none; }
 .dev { position: absolute; display: block; }
 .dev img { display: block; width: 100%; height: auto; filter: var(--device-shadow); }
 .dev::before { content: ""; position: absolute; left: 6%; right: 6%; bottom: -1.2%; height: 5%; border-radius: 50%; background: radial-gradient(closest-side, var(--contact), transparent); filter: blur(6px); z-index: -1; }
-.screen-off { position: absolute; background: var(--screen-off); opacity: 0; pointer-events: none; }
-.dev-mbp .screen-off { left: 10.276%; top: 2.438%; width: 79.474%; height: 85.503%; border-radius: 1.4% / 2.2%; }
-.dev-mba .screen-off { left: 10.078%; top: 3.143%; width: 79.875%; height: 85.729%; border-radius: 1.4% / 2.2%; }
-.dev-display .screen-off { left: 2.221%; top: 2.868%; width: 95.576%; height: 69.988%; }
-.dev-phone .screen-off { left: 5.164%; top: 2.055%; width: 91.549%; height: 96.347%; border-radius: 13% / 6.3%; }
+/* Screen off: the overlay reaches under the bezel, and the bezel (.glass) is drawn again on top, so no pixel of the screen can show at the edges */
+.screen-off { position: absolute; background: linear-gradient(118deg, rgb(255 255 255 / 0.055), rgb(255 255 255 / 0) 34%), var(--screen-off); opacity: 0; pointer-events: none; }
+.dev img.glass { position: absolute; inset: 0; width: 100%; height: 100%; filter: none; pointer-events: none; }
+.dev-mbp .screen-off { left: 9.698%; top: 1.48%; width: 80.631%; height: 87.418%; }
+.dev-mba .screen-off { left: 9.392%; top: 2.009%; width: 81.248%; height: 87.996%; }
+.dev-display .screen-off { left: 1.811%; top: 2.333%; width: 96.397%; height: 71.057%; }
+.dev-phone .screen-off { left: 2.347%; top: 1.142%; width: 93.427%; height: 97.26%; }
 .set .dev-display { left: 25.5%; width: 49%; bottom: 10%; z-index: 1; }
 .set .dev-mbp { left: 0.5%; width: 41%; bottom: 0; z-index: 3; }
 .set .dev-mba { right: 0.5%; width: 36%; bottom: 0; z-index: 3; }
@@ -348,6 +350,10 @@ ul, ol { padding: 0; list-style: none; }
 .numbers div + div { border-left: 1px solid var(--rule); }
 .numbers b { white-space: nowrap; font-stretch: 75%; font-weight: 640; font-size: clamp(2.75rem, 1.6rem + 4vw, 5.5rem); line-height: 0.9; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .numbers span { font-size: 0.875rem; color: var(--ink-3); line-height: 1.35; max-width: 22ch; }
+.live { display: inline-flex; align-items: center; gap: 6px; margin-left: 4px; font: 500 0.6875rem/1 var(--font-mono); font-style: normal; color: var(--ink-3); white-space: nowrap; vertical-align: 1px; }
+.live[hidden] { display: none; }
+.live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 0 rgb(61 220 132 / 0.55); animation: live 2.2s ease-out infinite; }
+@keyframes live { 0% { box-shadow: 0 0 0 0 rgb(61 220 132 / 0.55); } 70%, 100% { box-shadow: 0 0 0 7px rgb(61 220 132 / 0); } }
 @media (max-width: 759px) { .numbers { grid-template-columns: 1fr 1fr; } .numbers div:nth-child(3) { border-left: 0; } .numbers div:nth-child(n+3) { border-top: 1px solid var(--rule); } }
 
 /* ---------- About ---------- */

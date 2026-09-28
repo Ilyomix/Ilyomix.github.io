@@ -4,7 +4,7 @@
 Run from the repository root:  python3 _build/build.py
 Jekyll (GitHub Pages) ignores this folder because its name starts with an underscore.
 """
-import json, datetime, re, pathlib
+import json, datetime, re, pathlib, urllib.request
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup
 
@@ -40,6 +40,47 @@ FACES = ["pura-night", "orbit-dynamic-sky", "prose-blue", "clima-teal", "departu
          "halftone-forest", "arcade-green"]
 
 PHONE = (868, 1785)
+GLASS = {"display": ("glass-studio", 1400, 1075), "mbp": ("glass-mbp14", 1200, 724),
+         "mba": ("glass-mba13", 1000, 606), "phone": ("glass-phone", 280, 576)}
+
+
+def glass(kind):
+    n, w, h = GLASS[kind]
+    return {"src": f"/assets/img/{n}.webp", "w": w, "h": h}
+
+
+# Cadran's download count. The page asks the Cadran API for the live figure;
+# the build bakes in the latest one it could read, so the page is right even without JavaScript.
+DOWNLOADS_API = "https://cadranapp.com/api/download-count"
+STATS = BUILD / "stats.json"
+
+
+def cadran_downloads():
+    saved = json.loads(STATS.read_text()) if STATS.exists() else {"cadran_downloads": 0}
+    try:
+        req = urllib.request.Request(DOWNLOADS_API, headers={"User-Agent": "ilyomix.github.io build"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            n = int(json.load(r)["downloadCount"])
+        if n >= saved["cadran_downloads"]:
+            saved = {"cadran_downloads": n, "read_on": TODAY}
+            STATS.write_text(json.dumps(saved, indent=2) + "\n")
+    except Exception as e:  # offline build: keep the last figure read
+        print("download count: kept", saved["cadran_downloads"], f"({e})")
+    return saved["cadran_downloads"]
+
+
+DOWNLOADS = cadran_downloads()
+
+
+def num(n, lang):
+    s = f"{n:,}"
+    return s.replace(",", "\u00a0") if lang == "fr" else s
+
+
+def num_floor(n, lang):
+    """A figure that stays true until the next build: 5,207 becomes 5,000+."""
+    step = 1000 if n >= 2000 else 100
+    return num(n // step * step, lang) + "+"
 
 
 def content(lang):
@@ -67,8 +108,8 @@ def content(lang):
             "description": L("Software & design engineer basé à Toulouse. Près de dix ans à concevoir et construire des interfaces produit rapides et accessibles en React et TypeScript, et des apps macOS en SwiftUI.",
                              "Software & design engineer based in Toulouse. Nearly a decade designing and building fast, accessible product interfaces in React and TypeScript, and native macOS apps in SwiftUI."),
             "og_title": "Ilyes Abd-Lillah · Software & Design Engineer",
-            "og_description": L("Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran (2 500+ téléchargements), Lift et Crypto LED Board.",
-                                "Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran (2,500+ downloads), Lift and Crypto LED Board."),
+            "og_description": L(f"Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Lift et Crypto LED Board.",
+                                f"Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Lift and Crypto LED Board."),
             "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Lift et Crypto LED Board.",
                         "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Lift and Crypto LED Board."),
         },
@@ -104,11 +145,11 @@ def content(lang):
                      "A desk with a Studio Display showing Crypto LED Board, a MacBook Pro and a MacBook Air showing Cadran, and two phones showing Lift."),
             "legend_label": L("Les projets", "The projects"),
             "devices": [
-                {"kind": "display", "cls": "", "eager": True, "img": studio("(min-width: 1400px) 670px, (min-width: 760px) 49vw, 74vw", "")},
-                {"kind": "mbp", "cls": "", "eager": True, "img": mbp("(min-width: 1400px) 560px, (min-width: 760px) 41vw, 62vw", "")},
-                {"kind": "mba", "cls": "", "eager": False, "img": img("mac-cadran-weather", [640, 1000, 1400], 1400, 848, "(min-width: 1400px) 490px, (min-width: 760px) 36vw, 54vw", "")},
-                {"kind": "phone", "cls": "p1", "eager": False, "img": ph(f"phone-lift-today-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
-                {"kind": "phone", "cls": "p2", "eager": False, "img": ph(f"phone-lift-session-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
+                {"kind": "display", "cls": "", "glass": glass("display"), "eager": True, "img": studio("(min-width: 1400px) 670px, (min-width: 760px) 49vw, 74vw", "")},
+                {"kind": "mbp", "cls": "", "glass": glass("mbp"), "eager": True, "img": mbp("(min-width: 1400px) 560px, (min-width: 760px) 41vw, 62vw", "")},
+                {"kind": "mba", "cls": "", "glass": glass("mba"), "eager": False, "img": img("mac-cadran-weather", [640, 1000, 1400], 1400, 848, "(min-width: 1400px) 490px, (min-width: 760px) 36vw, 54vw", "")},
+                {"kind": "phone", "cls": "p1", "glass": glass("phone"), "eager": False, "img": ph(f"phone-lift-today-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
+                {"kind": "phone", "cls": "p2", "glass": glass("phone"), "eager": False, "img": ph(f"phone-lift-session-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
             ],
             "legend": [
                 {"id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp"},
@@ -221,9 +262,10 @@ def content(lang):
         ],
         "numbers": {
             "label": L("En chiffres", "In numbers"),
+            "live": L("en direct", "live"),
             "stats": [
                 {"value": YEARS, "suffix": "+", "display": f"{YEARS}+", "label": L("ans d’expérience", "years of experience")},
-                {"value": 2500, "suffix": "+", "display": L("2\u00a0500+", "2,500+"), "label": L("téléchargements de Cadran, en distribution directe", "Cadran downloads, distributed directly")},
+                {"value": DOWNLOADS, "suffix": "", "display": num(DOWNLOADS, lang), "live": "downloads", "label": L("téléchargements de Cadran", "Cadran downloads")},
                 {"value": 5, "suffix": "", "display": "5", "label": L("recommandations sur LinkedIn", "recommendations on LinkedIn")},
                 {"value": 3, "suffix": "", "display": "3", "label": L("langues : français, anglais, arabe", "languages: French, English, Arabic")},
             ],
@@ -291,7 +333,6 @@ def content(lang):
                 {"when": "2019 → 2020", "role": L("Consultant frontend", "Frontend Consultant"), "org": "WE+", "href": None},
                 {"when": "2016 → 2019", "role": L("Développeur frontend", "Frontend Developer"), "org": "Maestro Corporation", "href": None},
                 {"when": "2012 → 2017", "role": "Expert en Technologies de l’Information", "org": "EPITECH", "href": "https://www.epitech.eu"},
-                {"when": "2013", "role": L("Prix So’Créativ", "So’Créativ prize"), "org": "So Toulouse · Epitech × ISEG", "href": None},
             ],
         },
         "contact": {
@@ -320,7 +361,6 @@ def jsonld(c):
         "worksFor": {"@type": "Organization", "name": "Positive Solutions", "url": "https://positive-solutions.io"},
         "alumniOf": {"@type": "CollegeOrUniversity", "name": "EPITECH", "url": "https://www.epitech.eu"},
         "knowsLanguage": ["fr", "en", "ar"],
-        "award": ["Prix So’Créativ, So Toulouse (2013)"],
         "knowsAbout": ["Software engineering", "Design engineering", "Frontend engineering", "Design systems", "User interface design", "Web accessibility",
                        "Web performance", "React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS", "Swift", "SwiftUI",
                        "Core Animation", "macOS app development", "Progressive web apps"],
@@ -424,10 +464,9 @@ def main():
 
 ## Facts
 
-- Cadran: self-distributed, more than 2,500 downloads
+- Cadran: self-distributed, {num_floor(DOWNLOADS, "en")} downloads (live count: {DOWNLOADS_API})
 - 5 recommendations on LinkedIn
 - Languages: French (native), English (full professional), Arabic (professional working)
-- Prix So'Créativ, So Toulouse (2013)
 
 ## Experience
 

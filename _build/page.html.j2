@@ -116,6 +116,7 @@
           <span class="dev dev-{{ s.kind }}{{ ' ' + s.cls if s.cls else '' }}">
             <img src="{{ s.img.src }}" srcset="{{ s.img.srcset }}" sizes="{{ s.img.sizes }}" width="{{ s.img.w }}" height="{{ s.img.h }}" alt="" decoding="async"{% if s.eager %} fetchpriority="low"{% else %} loading="lazy"{% endif %}>
             <span class="screen-off" aria-hidden="true"></span>
+            <img class="glass" src="{{ s.glass.src }}" width="{{ s.glass.w }}" height="{{ s.glass.h }}" alt="" decoding="async"{% if not s.eager %} loading="lazy"{% endif %}>
           </span>
           {% endfor %}
         </div>
@@ -215,7 +216,7 @@
   <section class="numbers-wrap" aria-label="{{ c.numbers.label }}">
     <div class="wrap">
       <div class="numbers" data-reveal>
-        {% for n in c.numbers.stats %}<div><b data-count="{{ n.value }}" data-suffix="{{ n.suffix }}">{{ n.display }}</b><span>{{ n.label }}</span></div>{% endfor %}
+        {% for n in c.numbers.stats %}<div><b data-count="{{ n.value }}" data-suffix="{{ n.suffix }}"{% if n.get('live') %} data-live="{{ n.live }}"{% endif %}>{{ n.display }}</b><span>{{ n.label }}{% if n.get('live') %} <em class="live" hidden>{{ c.numbers.live }}</em>{% endif %}</span></div>{% endfor %}
       </div>
     </div>
   </section>

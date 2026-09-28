@@ -40,6 +40,34 @@
   function onScroll() { header.classList.toggle('is-scrolled', scrollY > 8); }
   onScroll(); addEventListener('scroll', onScroll, { passive: true });
 
+  /* Numbers, formatted for the page language */
+  var nf = new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-US');
+  function fmtNum(v) { return nf.format(Math.round(v)).replace(/\u202f/g, '\u00a0'); }
+
+  /* Cadran downloads, live. The build baked in the latest figure; the Cadran API gives the current one. */
+  var live = d.querySelector('[data-live="downloads"]');
+  if (live && window.fetch) {
+    var busy = false;
+    var poll = function () {
+      if (busy || d.hidden) return;
+      busy = true;
+      fetch('https://cadranapp.com/api/download-count', { cache: 'no-store' })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (j) {
+          var n = Math.round(+j.downloadCount);
+          if (!(n > 0)) return;
+          live.setAttribute('data-count', n);
+          var tag = live.parentNode.querySelector('.live'); if (tag) tag.hidden = false;
+          if (live.__countTo) live.__countTo(n);
+          else if (!live.__waiting) live.textContent = fmtNum(n) + (live.getAttribute('data-suffix') || '');
+        })
+        .catch(function () {})
+        .then(function () { busy = false; });
+    };
+    poll(); setInterval(poll, 30000);
+    d.addEventListener('visibilitychange', poll);
+  }
+
   /* ---------- Motion ---------- */
   function noMotion() { root.classList.remove('anim'); root.classList.add('no-anim'); }
   if (!root.classList.contains('motion-ok')) { noMotion(); return; }
@@ -98,6 +126,18 @@
     }
   }
 
+  /* Screens power on one after the other: the backlight glows, then the picture comes up */
+  function screensOn() {
+    var tl = gsap.timeline({ paused: true });
+    ['.dev-display', '.dev-mbp', '.dev-mba', '.dev-phone.p1', '.dev-phone.p2'].forEach(function (sel, i) {
+      var off = d.querySelector(sel + ' .screen-off'), t = i * 0.14;
+      if (!off) return;
+      tl.to(off, { backgroundColor: '#17191f', duration: 0.14, ease: 'power1.in' }, t)
+        .to(off, { opacity: 0, duration: 0.6, ease: 'power2.out' }, t + 0.12);
+    });
+    return tl;
+  }
+
   /* Stage: the desk assembles, then the screens and the lights come on */
   var mm = gsap.matchMedia();
   mm.add({ wide: '(min-width: 900px)', narrow: '(max-width: 899px)' }, function (ctx) {
@@ -111,17 +151,16 @@
       gsap.timeline({ scrollTrigger: { trigger: '.stage', start: 'top top', end: '+=110%', scrub: 0.8, pin: '.stage-pin', anticipatePin: 1 } })
         .fromTo('.stage-lights', { opacity: 0 }, { opacity: 1, duration: 1 }, 0)
         .fromTo('.spot', { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0)
-        .to('.dev-display .screen-off', { opacity: 0, duration: 0.35 }, 0.05)
-        .to('.dev-mbp .screen-off', { opacity: 0, duration: 0.35 }, 0.25)
-        .to('.dev-mba .screen-off', { opacity: 0, duration: 0.35 }, 0.38)
-        .to('.dev-phone .screen-off', { opacity: 0, duration: 0.3, stagger: 0.1 }, 0.5)
         .from('.legend a', { y: 24, opacity: 0, stagger: 0.08, duration: 0.3 }, 0.7)
         .to({}, { duration: 0.2 });
+      /* A screen is either off or on: never a half-lit veil that the scroll position leaves behind */
+      var on = screensOn();
+      ST.create({ trigger: '.stage', start: 'top -12%', onEnter: function () { on.play(); }, onLeaveBack: function () { on.reverse(); } });
     } else {
       gsap.set('.stage-lights, .spot', { opacity: 0 });
-      gsap.timeline({ scrollTrigger: { trigger: '.set', start: 'top 70%', once: true } })
-        .to('.stage-lights, .spot', { opacity: 1, duration: 1.4, ease: 'power2.out' }, 0)
-        .to('.screen-off', { opacity: 0, duration: 0.5, stagger: 0.12 }, 0.1);
+      var onN = screensOn();
+      gsap.timeline({ scrollTrigger: { trigger: '.set', start: 'top 70%', once: true, onEnter: function () { onN.play(); } } })
+        .to('.stage-lights, .spot', { opacity: 1, duration: 1.4, ease: 'power2.out' }, 0);
     }
   });
 
@@ -160,11 +199,14 @@
 
   /* Counters */
   q('[data-count]').forEach(function (el) {
-    var end = parseFloat(el.getAttribute('data-count')) || 0, suffix = el.getAttribute('data-suffix') || '', o = { v: 0 };
-    var nf = new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-US');
-    el.textContent = '0' + suffix;
-    gsap.to(o, { v: end, duration: 1.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true },
-      onUpdate: function () { el.textContent = nf.format(Math.round(o.v)).replace(/\u202f/g, '\u00a0') + suffix; } });
+    var suffix = el.getAttribute('data-suffix') || '', o = { v: 0 };
+    var draw = function () { el.textContent = fmtNum(o.v) + suffix; };
+    el.__waiting = true; el.textContent = '0' + suffix;
+    ST.create({ trigger: el, start: 'top 90%', once: true, onEnter: function () {
+      el.__waiting = false;
+      gsap.to(o, { v: parseFloat(el.getAttribute('data-count')) || 0, duration: 1.8, ease: 'power3.out', onUpdate: draw });
+      el.__countTo = function (n) { gsap.to(o, { v: n, duration: 1.2, ease: 'power2.out', onUpdate: draw, overwrite: true }); };
+    } });
   });
 
   addEventListener('load', function () { ST.refresh(); });

@@ -17,10 +17,9 @@
 
 ## Facts
 
-- Cadran: self-distributed, more than 2,500 downloads
+- Cadran: self-distributed, 5,000+ downloads (live count: https://cadranapp.com/api/download-count)
 - 5 recommendations on LinkedIn
 - Languages: French (native), English (full professional), Arabic (professional working)
-- Prix So'Créativ, So Toulouse (2013)
 
 ## Experience
 
