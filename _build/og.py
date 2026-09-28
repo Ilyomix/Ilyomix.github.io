@@ -19,7 +19,7 @@ DL = {"en": f"{N:,}+", "fr": f"{N:,}+".replace(",", "\u00a0")}
 ICONS = {"cadran": "/assets/img/cadran-icon-112.webp", "lift": "/assets/lift-icon.svg", "led": "/assets/crypto-led-board-icon.svg"}
 VARIANTS = {
     "en": {
-        "xp": {"now": "Lead Frontend Engineer at FoodPilot", "past": "Nearly ten years of experience · before: Skilleos, Guidap and Continental"},
+        "xp": {"now": "Lead Frontend Engineer at FoodPilot", "past": "Nearly ten years of experience · Skilleos, Guidap, Continental"},
         "apps_label": "Apps I’ve built",
         "based": "Based in Toulouse, France",
         "products": [
@@ -29,7 +29,7 @@ VARIANTS = {
         ],
     },
     "fr": {
-        "xp": {"now": "Lead Frontend Engineer chez FoodPilot", "past": "Près de dix ans d’expérience · avant : Skilleos, Guidap et Continental"},
+        "xp": {"now": "Lead Frontend Engineer chez FoodPilot", "past": "Près de dix ans d’expérience · Skilleos, Guidap, Continental"},
         "apps_label": "Apps que j’ai créées",
         "based": "Basé à Toulouse, France",
         "products": [
