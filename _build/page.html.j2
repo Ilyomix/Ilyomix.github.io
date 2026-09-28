@@ -145,6 +145,9 @@
             <h3 class="display h-project" id="{{ p.id }}-name">{{ p.name }}</h3>
           </div>
           <p class="project-tag">{{ p.tagline }}</p>
+          {% if p.get('stat') %}
+          <p class="project-stat"><b data-count="{{ p.stat.value }}" data-suffix="" data-live="{{ p.stat.live }}">{{ p.stat.display }}</b><span>{{ p.stat.label }} <em class="live" hidden>{{ p.stat.live_label }}</em></span></p>
+          {% endif %}
         </div>
         <div class="project-body" data-reveal>
           {% for para in p.body %}<p>{{ para }}</p>{% endfor %}
@@ -216,7 +219,7 @@
   <section class="numbers-wrap" aria-label="{{ c.numbers.label }}">
     <div class="wrap">
       <div class="numbers" data-reveal>
-        {% for n in c.numbers.stats %}<div><b data-count="{{ n.value }}" data-suffix="{{ n.suffix }}"{% if n.get('live') %} data-live="{{ n.live }}"{% endif %}>{{ n.display }}</b><span>{{ n.label }}{% if n.get('live') %} <em class="live" hidden>{{ c.numbers.live }}</em>{% endif %}</span></div>{% endfor %}
+        {% for n in c.numbers.stats %}<div><b data-count="{{ n.value }}" data-suffix="{{ n.suffix }}">{{ n.display }}</b><span>{{ n.label }}</span></div>{% endfor %}
       </div>
     </div>
   </section>

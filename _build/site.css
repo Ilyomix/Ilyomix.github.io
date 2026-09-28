@@ -299,6 +299,10 @@ ul, ol { padding: 0; list-style: none; }
 .project-name { display: flex; align-items: center; gap: 16px; }
 .project-icon { width: 60px; height: 60px; border-radius: 14px; flex: none; box-shadow: 0 10px 30px -10px var(--glow, transparent); }
 .project-tag { margin-top: 16px; font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem); color: var(--ink-2); line-height: 1.4; max-width: 30ch; }
+.project-stat { margin-top: clamp(24px, 3vw, 40px); display: grid; gap: 8px; justify-items: start; }
+.project-stat b { font-stretch: 75%; font-weight: 640; font-size: clamp(2.75rem, 1.8rem + 3vw, 4.5rem); line-height: 0.9; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.project-stat span { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; font-size: 0.9375rem; color: var(--ink-3); }
+.project-stat .live { margin-left: 0; }
 .project-body { display: grid; gap: 28px; align-content: start; }
 .project-body > p { font-size: 1.0625rem; line-height: 1.65; color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
 .specs { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--rule); }
@@ -349,7 +353,7 @@ ul, ol { padding: 0; list-style: none; }
 .numbers div { padding: clamp(24px, 3vw, 40px) clamp(12px, 2vw, 28px); display: grid; gap: 8px; }
 .numbers div + div { border-left: 1px solid var(--rule); }
 .numbers b { white-space: nowrap; font-stretch: 75%; font-weight: 640; font-size: clamp(2.75rem, 1.6rem + 4vw, 5.5rem); line-height: 0.9; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.numbers span { font-size: 0.875rem; color: var(--ink-3); line-height: 1.35; max-width: 22ch; }
+.numbers span { font-size: 0.875rem; color: var(--ink-3); line-height: 1.35; max-width: 22ch; text-wrap: balance; }
 .live { display: inline-flex; align-items: center; gap: 6px; margin-left: 4px; font: 500 0.6875rem/1 var(--font-mono); font-style: normal; color: var(--ink-3); white-space: nowrap; vertical-align: 1px; }
 .live[hidden] { display: none; }
 .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 0 rgb(61 220 132 / 0.55); animation: live 2.2s ease-out infinite; }
