@@ -7,9 +7,9 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://ilyomix.github.io/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ilyomix.github.io/"/>
     <image:image><image:loc>https://ilyomix.github.io/assets/img/mac-cadran-desktop-2400.webp</image:loc></image:image>
-    <image:image><image:loc>https://ilyomix.github.io/assets/img/lift-home-en-780.webp</image:loc></image:image>
+    <image:image><image:loc>https://ilyomix.github.io/assets/img/phone-lift-today-en-868.webp</image:loc></image:image>
     <image:image><image:loc>https://ilyomix.github.io/assets/img/mac-led-board-2400.webp</image:loc></image:image>
-    <image:image><image:loc>https://ilyomix.github.io/assets/img/ilyes-460.webp</image:loc></image:image>
+    <image:image><image:loc>https://ilyomix.github.io/assets/img/ilyes-portrait.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://ilyomix.github.io/fr/</loc>
@@ -18,8 +18,8 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://ilyomix.github.io/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ilyomix.github.io/"/>
     <image:image><image:loc>https://ilyomix.github.io/assets/img/mac-cadran-desktop-2400.webp</image:loc></image:image>
-    <image:image><image:loc>https://ilyomix.github.io/assets/img/lift-home-fr-780.webp</image:loc></image:image>
+    <image:image><image:loc>https://ilyomix.github.io/assets/img/phone-lift-today-fr-868.webp</image:loc></image:image>
     <image:image><image:loc>https://ilyomix.github.io/assets/img/mac-led-board-2400.webp</image:loc></image:image>
-    <image:image><image:loc>https://ilyomix.github.io/assets/img/ilyes-460.webp</image:loc></image:image>
+    <image:image><image:loc>https://ilyomix.github.io/assets/img/ilyes-portrait.webp</image:loc></image:image>
   </url>
 </urlset>

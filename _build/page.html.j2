@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="en" href="{{ site }}/">
 <link rel="alternate" hreflang="fr" href="{{ site }}/fr/">
 <link rel="alternate" hreflang="x-default" href="{{ site }}/">
-<meta name="theme-color" content="#0e0f12">
+<meta name="theme-color" content="#0b0c0f">
 <meta name="color-scheme" content="dark light">
 <meta name="format-detection" content="telephone=no">
 
@@ -22,9 +22,9 @@
 <meta property="og:url" content="{{ c.url }}">
 <meta property="og:locale" content="{{ c.og_locale }}">
 <meta property="og:locale:alternate" content="{{ c.og_locale_alt }}">
-<meta property="og:image" content="{{ site }}/assets/og/og-{{ c.lang }}.png">
-<meta property="og:image:secure_url" content="{{ site }}/assets/og/og-{{ c.lang }}.png">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image" content="{{ site }}/assets/og/og-{{ c.lang }}.jpg">
+<meta property="og:image:secure_url" content="{{ site }}/assets/og/og-{{ c.lang }}.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ c.meta.og_alt }}">
@@ -34,7 +34,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ c.meta.og_title }}">
 <meta name="twitter:description" content="{{ c.meta.og_description }}">
-<meta name="twitter:image" content="{{ site }}/assets/og/og-{{ c.lang }}.png">
+<meta name="twitter:image" content="{{ site }}/assets/og/og-{{ c.lang }}.jpg">
 <meta name="twitter:image:alt" content="{{ c.meta.og_alt }}">
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -42,10 +42,12 @@
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/img/ilyes-portrait.webp" as="image" fetchpriority="high">
+<link rel="prefetch" href="/assets/js/gsap.min.js" as="script">
 <link rel="me" href="https://github.com/Ilyomix">
 <link rel="me" href="https://www.linkedin.com/in/ilyes-abd-lillah">
 <style>{{ css }}</style>
-<script>(function(d){var r=d.documentElement,t=null,lp=null;try{lp=localStorage.getItem('lang')}catch(e){}if(r.lang==='en'&&!lp&&location.pathname==='/'&&/^fr\b/i.test(navigator.language||'')&&!/Googlebot|bot|crawl|spider/i.test(navigator.userAgent)){location.replace('/fr/'+location.hash);return}r.classList.add('js');try{t=localStorage.getItem('theme')}catch(e){}if(t==='light'){r.setAttribute('data-theme','light');d.querySelector('meta[name=theme-color]').setAttribute('content','#f4f4f1')}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion-ok')}catch(e){}})(document)</script>
+<script>(function(d){var r=d.documentElement,t=null,lp=null,ok=true;r.classList.add('js');try{lp=localStorage.getItem('lang')}catch(e){}if(r.lang==='en'&&!lp&&location.pathname==='/'&&/^fr\b/i.test(navigator.language||'')&&!/bot|crawl|spider|lighthouse/i.test(navigator.userAgent)){location.replace('/fr/'+location.hash);return}try{t=localStorage.getItem('theme')}catch(e){}if(t==='light'){r.setAttribute('data-theme','light');d.querySelector('meta[name=theme-color]').setAttribute('content','#f3f2ee')}try{ok=!matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}if(ok){r.classList.add('motion-ok','anim');setTimeout(function(){if(!window.__gsapOn){r.classList.remove('anim');r.classList.add('no-anim')}},3500)}else{r.classList.add('reduce')}})(document)</script>
 <script type="application/ld+json">{{ jsonld }}</script>
 </head>
 <body>
@@ -70,123 +72,181 @@
 </header>
 
 <main id="main">
-  <section class="hero wrap" aria-labelledby="hero-title">
-    <h1 class="hero-title display" id="hero-title"><span class="name">Ilyes Abd-Lillah,</span> <span class="role">{{ c.hero.role }}</span></h1>
-    <div class="hero-foot">
-      <p class="lede" data-rise style="--i:1">{{ c.hero.lede }}</p>
-      <div class="hero-meta" data-rise style="--i:2">
-        <p class="facts mono">{{ c.hero.facts }}</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="mailto:{{ email }}">{{ icon('mail') }}{{ c.hero.cta_mail }}</a>
-          <a class="btn" href="#work">{{ c.hero.cta_work }}{{ icon('down') }}</a>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="lights hero-lights" aria-hidden="true"><i></i><i></i><i></i><i class="pl" style="--c:var(--l-cobalt);--x:50%;--y:50%;--s:38vmax;--o:.32"></i></div>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1 class="hero-title display" id="hero-title">
+          <span class="line"><span>Ilyes</span></span>
+          <span class="line"><span>Abd-Lillah,</span></span>
+          <span class="line role"><span>software &amp;</span></span>
+          <span class="line role"><span>design engineer.</span></span>
+        </h1>
+        <div class="hero-copy">
+          <p class="lede">{{ c.hero.lede }}</p>
+          <p class="facts mono">{{ c.hero.facts }}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:{{ email }}">{{ icon('mail') }}{{ c.hero.cta_mail }}</a>
+            <a class="btn" href="#work">{{ c.hero.cta_work }}{{ icon('down') }}</a>
+          </div>
         </div>
       </div>
+      <figure class="portrait">
+        <span class="portrait-halo" aria-hidden="true"></span>
+        <span class="portrait-card">
+          <img src="/assets/img/ilyes-portrait.webp" width="368" height="460" alt="{{ c.hero.portrait_alt }}" fetchpriority="high">
+          <span class="chip chip-place"><span class="live-dot" aria-hidden="true"></span>Toulouse · <span class="mono" data-time>--:--</span></span>
+          <span class="chip chip-handle">@Ilyomix</span>
+        </span>
+      </figure>
     </div>
   </section>
 
-  <div class="sheet wrap" aria-label="{{ c.sheet_label }}">
-    <div class="sheet-row">
-      {% for f in c.figures %}
-      <a class="fig {{ 'fig-phone' if f.phone else 'fig-wide' }}" href="#{{ f.target }}" data-rise style="--i:{{ loop.index + 2 }}">
-        <span class="fig-box" style="border-radius:{{ '30px' if f.phone else '4px' }}">
-          {% if f.phone %}
-          <span class="frame frame-phone">
-            <img src="{{ f.src }}" srcset="{{ f.srcset }}" sizes="{{ f.sizes }}" width="{{ f.w }}" height="{{ f.h }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+  <section class="stage" aria-labelledby="stage-title">
+    <div class="stage-pin">
+      <div class="spot" aria-hidden="true"></div>
+      <div class="lights stage-lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="wrap stage-head">
+        <h2 class="display stage-title" id="stage-title">{{ c.stage.title }}</h2>
+        <p class="lede">{{ c.stage.lede }}</p>
+      </div>
+      <div class="wrap">
+        <div class="set" role="img" aria-label="{{ c.stage.alt }}">
+          {% for s in c.stage.devices %}
+          <span class="dev dev-{{ s.kind }}{{ ' ' + s.cls if s.cls else '' }}">
+            <img src="{{ s.img.src }}" srcset="{{ s.img.srcset }}" sizes="{{ s.img.sizes }}" width="{{ s.img.w }}" height="{{ s.img.h }}" alt="" decoding="async"{% if s.eager %} fetchpriority="low"{% else %} loading="lazy"{% endif %}>
+            <span class="screen-off" aria-hidden="true"></span>
           </span>
-          {% else %}
-          <img class="device" src="{{ f.src }}" srcset="{{ f.srcset }}" sizes="{{ f.sizes }}" width="{{ f.w }}" height="{{ f.h }}" alt="{{ f.alt }}"{% if loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
-          {% endif %}
-          <span class="fig-dim mono" aria-hidden="true" data-dim></span>
-        </span>
-        <span class="fig-cap mono"><span>{{ c.fig_word }}&nbsp;{{ loop.index }}</span><b>{{ f.caption }}</b></span>
-      </a>
+          {% endfor %}
+        </div>
+      </div>
+      <nav class="wrap legend" aria-label="{{ c.stage.legend_label }}">
+        {% for l in c.stage.legend %}<a href="#{{ l.id }}"><img src="{{ l.icon }}" width="28" height="28" alt="" loading="lazy"><span><span class="fig">Fig. {{ loop.index }}</span> {{ l.name }}</span></a>{% endfor %}
+      </nav>
+    </div>
+  </section>
+
+  <section class="reel" aria-labelledby="reel-title">
+    <div class="wrap reel-head">
+      <h2 class="display" id="reel-title" data-reveal>{{ c.reel.title }}</h2>
+      <p class="facts mono" data-reveal>{{ c.reel.note }}</p>
+    </div>
+    <div class="reel-mask">
+      {% for row in c.reel.rows %}
+      <div class="reel-row" data-dir="{{ '1' if loop.first else '-1' }}">
+        {% for copy in [0, 1] %}
+        <div class="reel-track"{% if copy %} aria-hidden="true"{% endif %}>
+          {% for f in row %}
+          <figure><img src="{{ f.src }}" width="560" height="350" alt="{{ '' if copy else f.alt }}" loading="lazy" decoding="async"><figcaption>{{ f.name }}</figcaption></figure>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
       {% endfor %}
     </div>
-  </div>
+  </section>
 
-  <section class="section" id="work" aria-labelledby="work-title">
+  <section class="section section-rule" id="work" aria-labelledby="work-title">
     <div class="wrap">
       <div class="section-head">
         <h2 class="display h-section" id="work-title" data-reveal>{{ c.work.title }}</h2>
-        <p class="lede" data-reveal style="--i:1">{{ c.work.lede }}</p>
+        <p class="lede" data-reveal>{{ c.work.lede }}</p>
       </div>
+    </div>
 
-      {% for p in c.projects %}
-      <article class="project" id="{{ p.id }}" aria-labelledby="{{ p.id }}-name">
-        <div class="project-head">
-          <div data-reveal>
-            <div class="project-name">
-              <img class="project-icon" src="{{ p.icon }}" width="56" height="56" alt="" loading="lazy" decoding="async">
-              <h3 class="display h-project" id="{{ p.id }}-name">{{ p.name }}</h3>
-            </div>
-            <p class="project-tag">{{ p.tagline }}</p>
+    {% for p in c.projects %}
+    <article class="project" id="{{ p.id }}" aria-labelledby="{{ p.id }}-name">
+      <div class="lights lit-{{ p.light }}" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="wrap project-head">
+        <div data-reveal>
+          <div class="project-name">
+            <img class="project-icon" src="{{ p.icon }}" width="60" height="60" alt="" loading="lazy" decoding="async" style="--glow:{{ p.glow }}">
+            <h3 class="display h-project" id="{{ p.id }}-name">{{ p.name }}</h3>
           </div>
-          <div class="project-body" data-reveal style="--i:1">
-            {% for para in p.body %}<p>{{ para }}</p>{% endfor %}
-            <dl class="specs">
-              {% for s in p.specs %}<div><dt>{{ s[0] }}</dt><dd>{{ s[1] }}</dd></div>{% endfor %}
-            </dl>
-            {% if p.facts %}<p class="facts mono">{{ p.facts }}</p>{% endif %}
-            <div class="project-links">
-              {% for l in p.links %}<a class="link" href="{{ l.href }}" rel="noopener">{{ l.label }}{{ icon('out') }}</a>{% endfor %}
-            </div>
+          <p class="project-tag">{{ p.tagline }}</p>
+        </div>
+        <div class="project-body" data-reveal>
+          {% for para in p.body %}<p>{{ para }}</p>{% endfor %}
+          <dl class="specs">
+            {% for s in p.specs %}<div><dt>{{ s[0] }}</dt><dd>{{ s[1] }}</dd></div>{% endfor %}
+          </dl>
+          {% if p.facts %}<p class="facts mono">{{ p.facts }}</p>{% endif %}
+          <div class="project-links">
+            {% for l in p.links %}<a class="link" href="{{ l.href }}" rel="noopener">{{ l.label }}{{ icon('out') }}</a>{% endfor %}
           </div>
         </div>
-        <figure class="media media-{{ p.media.kind }}" data-reveal>
-          {% if p.media.kind == 'cadran' %}
-            {% for m in p.media.shots %}
-            <img class="device{{ ' device-main' if loop.first else '' }}" src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async">
-            {% endfor %}
-          {% elif p.media.kind == 'lift' %}
-            {% for m in p.media.shots %}
-            <span class="frame frame-phone"><img src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async"></span>
-            {% endfor %}
-          {% else %}
-            {% for m in p.media.shots %}
-            <img class="device" src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async">
-            {% endfor %}
-          {% endif %}
-          <figcaption>{{ p.media.caption }}</figcaption>
+      </div>
+
+      <div class="wrap gallery">
+      {% if p.id == 'cadran' %}
+        <figure class="shot-main" data-reveal><div data-speed="0.4"><img class="device" src="{{ p.media.main.src }}" srcset="{{ p.media.main.srcset }}" sizes="{{ p.media.main.sizes }}" width="{{ p.media.main.w }}" height="{{ p.media.main.h }}" alt="{{ p.media.main.alt }}" loading="lazy" decoding="async"></div></figure>
+        <div class="pair">
+          {% for m in p.media.pair %}
+          <figure data-reveal><img class="device" src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async"><figcaption class="cap" style="margin-top:14px"><b>{{ m.title }}</b> · {{ m.caption }}</figcaption></figure>
+          {% endfor %}
+        </div>
+        <div class="tiles">
+          {% for t in p.media.tiles %}
+          <figure class="tile" data-reveal><img src="{{ t.src }}" srcset="{{ t.srcset }}" sizes="{{ t.sizes }}" width="{{ t.w }}" height="{{ t.h }}" alt="{{ t.alt }}" loading="lazy" decoding="async"><figcaption><b>{{ t.title }}</b><br>{{ t.caption }}</figcaption></figure>
+          {% endfor %}
+        </div>
+      {% elif p.id == 'lift' %}
+        <div class="phones">
+          {% for m in p.media.phones %}
+          <figure data-reveal><div data-speed="{{ m.speed }}"><img src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async"></div><figcaption class="cap"><b>{{ m.title }}</b><br>{{ m.caption }}</figcaption></figure>
+          {% endfor %}
+        </div>
+      {% else %}
+        <figure class="led-set" data-reveal>
+          <div data-speed="0.3"><img class="device" src="{{ p.media.main.src }}" srcset="{{ p.media.main.srcset }}" sizes="{{ p.media.main.sizes }}" width="{{ p.media.main.w }}" height="{{ p.media.main.h }}" alt="{{ p.media.main.alt }}" loading="lazy" decoding="async"></div>
+          <div class="led-phone" data-speed="1.2"><img class="device" src="{{ p.media.phone.src }}" srcset="{{ p.media.phone.srcset }}" sizes="{{ p.media.phone.sizes }}" width="{{ p.media.phone.w }}" height="{{ p.media.phone.h }}" alt="{{ p.media.phone.alt }}" loading="lazy" decoding="async"></div>
         </figure>
-      </article>
-      {% endfor %}
+        <p class="cap" data-reveal>{{ p.media.caption }}</p>
+      {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+
+  <section class="numbers-wrap" aria-label="{{ c.numbers.label }}">
+    <div class="wrap">
+      <div class="numbers" data-reveal>
+        {% for n in c.numbers.stats %}<div><b class="mono-num" data-count="{{ n.value }}" data-suffix="{{ n.suffix }}">{{ n.value }}{{ n.suffix }}</b><span>{{ n.label }}</span></div>{% endfor %}
+      </div>
     </div>
   </section>
 
-  <section class="section" id="about" aria-labelledby="about-title">
+  <section class="section section-rule" id="about" aria-labelledby="about-title">
     <div class="wrap">
       <div class="section-head">
         <h2 class="display h-section" id="about-title" data-reveal>{{ c.about.title }}</h2>
       </div>
       <div class="about-grid">
-        <div class="portrait" data-reveal>
-          <img src="/assets/img/ilyes-460.webp" srcset="/assets/img/ilyes-240.webp 240w, /assets/img/ilyes-460.webp 460w" sizes="(min-width: 960px) 360px, 70vw" width="460" height="460" alt="{{ c.about.portrait_alt }}" loading="lazy" decoding="async">
-        </div>
-        <div class="about-text" data-reveal style="--i:1">
+        <div class="about-text" data-reveal>
           {% for para in c.about.body %}<p>{{ para }}</p>{% endfor %}
+        </div>
+        <div class="about-side" data-reveal>
           <div>
-            <h3 class="facts">{{ c.about.cares_title }}</h3>
+            <h3 class="side-title">{{ c.about.cares_title }}</h3>
             <ul class="cares">{% for x in c.about.cares %}<li>{{ x }}</li>{% endfor %}</ul>
           </div>
           <div class="toolbox">
-            {% for g in c.about.toolbox %}
-            <div><h3>{{ g.title }}</h3><ul>{% for t in g.list %}<li>{{ t }}</li>{% endfor %}</ul></div>
-            {% endfor %}
+            {% for g in c.about.toolbox %}<div><h3 class="side-title">{{ g.title }}</h3><ul>{% for t in g.list %}<li>{{ t }}</li>{% endfor %}</ul></div>{% endfor %}
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="experience" aria-labelledby="experience-title">
+  <section class="section section-rule" id="experience" aria-labelledby="experience-title">
     <div class="wrap">
       <div class="section-head">
         <h2 class="display h-section" id="experience-title" data-reveal>{{ c.xp.title }}</h2>
-        <p class="lede" data-reveal style="--i:1">{{ c.xp.lede }}</p>
+        <p class="lede" data-reveal>{{ c.xp.lede }}</p>
       </div>
       <ol class="xp">
         {% for x in c.xp.rows %}
-        <li data-reveal style="--i:{{ loop.index0 }}">
+        <li data-reveal>
           <span class="when mono">{{ x.when }}</span>
           <span class="role">{{ x.role }}</span>
           <span class="where">{% if x.href %}<a href="{{ x.href }}" rel="noopener">{{ x.org }}</a>{% else %}{{ x.org }}{% endif %}</span>
@@ -196,10 +256,11 @@
     </div>
   </section>
 
-  <section class="contact" id="contact" aria-labelledby="contact-title">
+  <section class="contact section-rule" id="contact" aria-labelledby="contact-title">
+    <div class="lights contact-lights" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap">
       <h2 class="display contact-title" id="contact-title" data-reveal>{{ c.contact.title }}</h2>
-      <p class="lede contact-lede" data-reveal style="--i:1">{{ c.contact.lede }}</p>
+      <p class="lede contact-lede" data-reveal>{{ c.contact.lede }}</p>
       <a class="mail" href="mailto:{{ email }}" data-reveal>{{ email }}</a>
       <div class="contact-row" data-reveal>
         <a class="link" href="https://www.linkedin.com/in/ilyes-abd-lillah" rel="me noopener">LinkedIn{{ icon('out') }}</a>
@@ -213,53 +274,15 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>© <span data-year>{{ year }}</span> Ilyes Abd-Lillah · {{ c.footer.line }}</p>
+    <p>© {{ year }} Ilyes Abd-Lillah · {{ c.footer.line }}</p>
     <nav class="foot-links" aria-label="{{ c.footer.nav_label }}">
       <a href="https://github.com/Ilyomix" rel="me noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/ilyes-abd-lillah" rel="me noopener">LinkedIn</a>
-      <a href="{{ c.alt.href }}" hreflang="{{ c.alt.lang }}" lang="{{ c.alt.lang }}">{{ c.alt.long }}</a>
+      <a href="{{ c.alt.href }}" hreflang="{{ c.alt.lang }}" lang="{{ c.alt.lang }}" data-lang="{{ c.alt.lang }}">{{ c.alt.long }}</a>
     </nav>
   </div>
 </footer>
 
-<script>
-(function () {
-  var d = document, lang = d.documentElement.lang;
-  var fmt = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });
-  function tick() { var t = fmt.format(new Date()); d.querySelectorAll('[data-time]').forEach(function (n) { n.textContent = t; }); }
-  tick(); setInterval(tick, 20000);
-  var start = new Date(2017, 8, 1), now = new Date(), y = now.getFullYear() - start.getFullYear() - (now < new Date(now.getFullYear(), 8, 1) ? 1 : 0);
-  d.querySelectorAll('[data-years]').forEach(function (n) { n.textContent = y; });
-  if ('ResizeObserver' in window) {
-    var ro = new ResizeObserver(function (es) { es.forEach(function (e) { var b = e.target.getBoundingClientRect(); var l = e.target.parentNode.querySelector('[data-dim]'); if (l) l.setAttribute('data-dim', Math.round(b.width) + ' \u00d7 ' + Math.round(b.height)); }); });
-    d.querySelectorAll('.fig-box > .frame, .fig-box > .device').forEach(function (f) { ro.observe(f); });
-  }
-  var root = d.documentElement, toggle = d.querySelector('[data-theme-toggle]'), meta = d.querySelector('meta[name=theme-color]');
-  function syncToggle() { var light = root.getAttribute('data-theme') === 'light'; var l = toggle.getAttribute(light ? 'data-label-dark' : 'data-label-light'); toggle.setAttribute('aria-label', l); toggle.setAttribute('title', l); }
-  if (toggle) {
-    syncToggle();
-    toggle.addEventListener('click', function () {
-      var light = root.getAttribute('data-theme') !== 'light';
-      if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
-      meta.setAttribute('content', light ? '#f4f4f1' : '#0e0f12');
-      try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
-      syncToggle();
-    });
-  }
-  d.querySelectorAll('[data-lang]').forEach(function (a) { a.addEventListener('click', function () { try { localStorage.setItem('lang', a.getAttribute('data-lang')); } catch (e) {} }); });
-  var header = d.querySelector('.site-header');
-  function onScroll() { header.classList.toggle('is-scrolled', scrollY > 8); }
-  onScroll(); addEventListener('scroll', onScroll, { passive: true });
-  if (d.documentElement.classList.contains('motion-ok') && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
-    d.querySelectorAll('[data-reveal]').forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < innerHeight && r.bottom > 0) el.classList.add('in'); else io.observe(el);
-    });
-  } else {
-    d.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('in'); });
-  }
-})();
-</script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>
