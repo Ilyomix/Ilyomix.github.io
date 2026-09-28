@@ -20,6 +20,7 @@
 :root {
   color-scheme: dark;
   --paper: #0b0c0f;
+  --paper-tint: rgba(11, 12, 15, 0.14);
   --paper-2: #14151a;
   --paper-3: #1d1f25;
   --ink: #efefec;
@@ -61,6 +62,7 @@
 :root[data-theme="light"] {
   color-scheme: light;
   --paper: #f3f2ee;
+  --paper-tint: rgba(243, 242, 238, 0.14);
   --paper-2: #e9e8e2;
   --paper-3: #dedcd5;
   --ink: #121316;
@@ -146,11 +148,13 @@ main, .site-header { overflow-x: clip; }
   background: color-mix(in srgb, var(--paper) 72%, transparent);
   -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
 }
-/* Mobile: Safari on iOS colours the area under the status bar from the bar stuck to the top of the page, but only
-   if that bar is opaque from the moment the page loads (as on lemonde.fr). A bar that starts transparent and turns
-   opaque on scroll is ignored, and the page shows through. So on phones the header is solid from the start. */
+/* Mobile: Safari on iOS colours the status bar area from the first plain background-color of the fixed or sticky
+   element touching the top edge. It must be there from the first paint (and at least 10% opaque): if the bar starts
+   transparent, Safari freezes a snapshot of the page instead and never looks again. Safari uses the colour at full
+   strength, so a light 14% tint at the top of the page is enough, and the bar turns opaque once the page scrolls. */
 @media (max-width: 900px) {
-  .site-header, .site-header.is-scrolled { background-color: var(--paper); border-bottom-color: var(--rule); -webkit-backdrop-filter: none; backdrop-filter: none; transition: none; }
+  .site-header { background-color: var(--paper-tint); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .site-header.is-scrolled { background-color: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 .site-header .wrap { height: var(--header-h); display: flex; align-items: center; gap: 20px; }
 .wordmark { font-stretch: 80%; font-weight: 650; font-size: 1.125rem; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; margin-right: auto; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
