@@ -17,6 +17,7 @@ YEAR = datetime.date.today().year
 YEARS = YEAR - 2017 - (1 if datetime.date.today() < datetime.date(YEAR, 9, 1) else 0)
 
 ICONS = {
+    "pointer": '<path fill="currentColor" stroke="none" d="M20.6 3.4a.9.9 0 0 0-1-.2L3.7 9.9a.9.9 0 0 0 .1 1.7l6.6 1.9 1.9 6.6a.9.9 0 0 0 1.7.1l6.8-15.9a.9.9 0 0 0-.2-1Z"/>',
     "out": '<path d="M7 7h10v10"/><path d="M7 17 17 7"/>',
     "down": '<path d="M12 5v14"/><path d="m19 12-7 7-7-7"/>',
     "mail": '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
@@ -31,6 +32,8 @@ def img(name, widths, w, h, sizes, alt):
         "srcset": ", ".join(f"/assets/img/{name}-{x}.webp {x}w" for x in widths),
         "sizes": sizes, "w": w, "h": h, "alt": alt,
     }
+
+FLAG = Markup('<svg class="flag" viewBox="0 0 3 2" width="18" height="12" aria-hidden="true"><path fill="#0055a4" d="M0 0h1v2H0z"/><path fill="#fff" d="M1 0h1v2H1z"/><path fill="#ef4135" d="M2 0h1v2H2z"/></svg>')
 
 Y = Markup(f'<span data-years>{YEARS}</span>')
 
@@ -133,7 +136,8 @@ def content(lang):
             "facts": L("Lead Frontend Engineer chez FoodPilot · près de dix ans d’expérience",
                        "Lead Frontend Engineer at FoodPilot · nearly ten years of experience"),
             "cta_mail": L("M’écrire", "Email me"),
-            "based": L("Basé à Toulouse", "Based in Toulouse"),
+            "based_lead": L("Basé à", "Based in"),
+            "based_place": "Toulouse, France",
             "cta_work": L("Voir les projets", "See the work"),
             "portrait_alt": L("Ilyes Abd-Lillah, en chemise, sur un toit à Toulouse.", "Ilyes Abd-Lillah in a shirt on a rooftop in Toulouse."),
         },
@@ -421,7 +425,7 @@ def main():
     css = Markup(minify_css((BUILD / "site.css").read_text()))
     for lang, out in (("en", ROOT / "index.html"), ("fr", ROOT / "fr" / "index.html")):
         c = content(lang)
-        html = tpl.render(c=c, css=css, jsonld=Markup(jsonld(c)), icon=icon, site=SITE, email=EMAIL, year=YEAR)
+        html = tpl.render(c=c, css=css, jsonld=Markup(jsonld(c)), icon=icon, flag=FLAG, site=SITE, email=EMAIL, year=YEAR)
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html)
         print("wrote", out.relative_to(ROOT), len(html.encode()) // 1024, "KB")

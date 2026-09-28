@@ -151,7 +151,14 @@ ul, ol { padding: 0; list-style: none; }
 .nav { display: flex; align-items: center; gap: 2px; }
 .nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 0.875rem; font-weight: 500; color: var(--ink-2); text-decoration: none; border-radius: 999px; transition: color 160ms linear, background-color 160ms linear; }
 .nav a:hover { color: var(--ink); background: var(--paper-2); }
-.header-time { font-size: 0.8125rem; color: var(--ink-3); white-space: nowrap; }
+/* Where I am and what time it is there. Hidden while a section already shows it (the portrait chip, the contact line). */
+.header-place { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8125rem; font-weight: 500; color: var(--ink-2); white-space: nowrap; transition: opacity 220ms linear, translate 320ms var(--ease-out), visibility 0s linear 0s; }
+.header-place .icon, .header-place svg:first-child { width: 13px; height: 13px; color: var(--cobalt); flex: none; }
+.header-place .mono { color: var(--ink-3); font-size: 0.75rem; }
+.place-sep { color: var(--ink-3); }
+.js .header-place:not(.is-shown) { opacity: 0; translate: 0 -4px; visibility: hidden; transition: opacity 180ms linear, translate 320ms var(--ease-out), visibility 0s linear 180ms; }
+@media (max-width: 1279px) { .place-lead { display: none; } }
+.flag { width: 18px; height: 12px; border-radius: 2.5px; flex: none; box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.25); }
 .theme-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -6px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); cursor: pointer; transition: color 160ms linear, background-color 160ms linear; }
 .js .theme-toggle { display: inline-flex; }
 .theme-toggle:hover { color: var(--ink); background: var(--paper-2); }
@@ -163,7 +170,7 @@ ul, ol { padding: 0; list-style: none; }
 .lang-switch a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 34px; padding: 0 10px; border-radius: 999px; font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.02em; color: var(--ink-3); text-decoration: none; transition: color 160ms linear, background-color 160ms linear; }
 .lang-switch a:hover { color: var(--ink); }
 .lang-switch a[aria-current="page"] { background: var(--ink); color: var(--paper); }
-@media (max-width: 900px) { .nav, .header-time { display: none; } }
+@media (max-width: 900px) { .nav, .header-place { display: none; } }
 
 /* ---------- Buttons and links ---------- */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 24px; border-radius: 999px; font: 600 0.9375rem/1 var(--font-sans); letter-spacing: -0.005em; text-decoration: none; border: 1px solid var(--rule-strong); color: var(--ink); background: transparent; transition: background-color 180ms linear, border-color 180ms linear, box-shadow 240ms linear, transform 220ms var(--ease-out); }
@@ -197,7 +204,8 @@ ul, ol { padding: 0; list-style: none; }
 .portrait-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgb(0 0 0 / 0.45)); pointer-events: none; }
 .portrait-halo { position: absolute; inset: -18% -22%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--l-coral) 55%, transparent), color-mix(in srgb, var(--l-cobalt) 30%, transparent) 55%, transparent 100%); opacity: calc(0.9 * var(--light-o)); filter: blur(10px); }
 .chip { position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: 999px; font-size: 0.8125rem; font-weight: 500; color: #fff; background: rgb(12 13 16 / 0.42); -webkit-backdrop-filter: blur(14px) saturate(1.6); backdrop-filter: blur(14px) saturate(1.6); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2); }
-.chip-place { left: 16px; bottom: 16px; }
+.chip-place { left: 16px; bottom: 16px; white-space: nowrap; }
+@media (max-width: 419px) { .chip-place { left: 12px; bottom: 12px; gap: 7px; padding: 0 12px; } .chip-place .chip-sep, .chip-place [data-time] { display: none; } }
 .chip-sep { opacity: 0.6; }
 .chip-handle { right: 16px; top: 16px; font-family: var(--font-mono); font-size: 0.75rem; }
 .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 3px rgb(61 220 132 / 0.25); }
