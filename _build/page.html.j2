@@ -122,7 +122,7 @@
         </div>
       </div>
       <nav class="wrap legend" aria-label="{{ c.stage.legend_label }}">
-        {% for l in c.stage.legend %}<a href="#{{ l.id }}"><img src="{{ l.icon }}" width="28" height="28" alt="" loading="lazy"><span class="legend-text"><span class="fig">Fig.&nbsp;{{ loop.index }}</span> <span>{{ l.name }}</span></span></a>{% endfor %}
+        {% for l in c.stage.legend %}<a href="#{{ l.id }}"><img src="{{ l.icon }}" width="28" height="28" alt="" loading="lazy"><span>{{ l.name }}</span></a>{% endfor %}
       </nav>
     </div>
   </section>
@@ -286,9 +286,11 @@
       </ol>
     </div>
   </section>
+</main>
 
+<div class="finale">
+  <div class="lights contact-lights" aria-hidden="true"><i></i><i></i></div>
   <section class="contact section-rule" id="contact" aria-labelledby="contact-title">
-    <div class="lights contact-lights" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap">
       <h2 class="display contact-title" id="contact-title" data-reveal>{{ c.contact.title }}</h2>
       <p class="lede contact-lede" data-reveal>{{ c.contact.lede }}</p>
@@ -301,7 +303,6 @@
       </div>
     </div>
   </section>
-</main>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -313,6 +314,7 @@
     </nav>
   </div>
 </footer>
+</div>
 
 <script src="/assets/js/site.js" defer></script>
 </body>

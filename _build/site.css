@@ -253,8 +253,6 @@ ul, ol { padding: 0; list-style: none; }
 .legend a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px 0 8px; border-radius: 999px; text-decoration: none; background: var(--glass); box-shadow: inset 0 0 0 1px var(--glass-rim); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4); font-size: 0.875rem; font-weight: 500; transition: transform 220ms var(--ease-out), box-shadow 200ms linear; }
 .legend a:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--rule-strong); }
 .legend img { width: 28px; height: 28px; border-radius: 7px; }
-.legend .fig { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--ink-3); }
-.legend-text { display: inline-flex; align-items: baseline; gap: 8px; }
 @media (max-width: 759px) {
   .stage-pin { min-height: 0; }
   .set { width: 150%; margin-left: -25%; }
@@ -399,7 +397,9 @@ ul, ol { padding: 0; list-style: none; }
 
 /* ---------- Contact ---------- */
 #experience { padding-bottom: clamp(40px, 5vw, 80px); }
-.contact { position: relative; isolation: isolate; padding: clamp(56px, 6vw, 96px) 0 calc(var(--section-y) * 0.8); overflow-x: clip; }
+/* The contact section and the footer share one light field, down to the last pixel of the page */
+.finale { position: relative; isolation: isolate; overflow-x: clip; }
+.contact { position: relative; padding: clamp(56px, 6vw, 96px) 0 calc(var(--section-y) * 0.8); }
 .contact-lights i:nth-child(1) { --c: var(--l-cobalt); --x: 20%; --y: 60%; --s: 70vmax; --o: 0.5; }
 .contact-lights i:nth-child(2) { --c: var(--l-coral); --x: 86%; --y: 30%; --s: 50vmax; --o: 0.28; }
 .contact-title { font-size: clamp(3.2rem, 1rem + 9vw, 10rem); max-width: 12ch; }
