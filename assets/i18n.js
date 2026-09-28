@@ -48,6 +48,11 @@ const translations = {
     'projects.subsnooze.desc':
       'Track recurring payments and get timely renewal reminders before charges hit. Smart reminder schedules, guided cancellation workflows, and multi-channel notifications so nothing slips through.',
     'projects.subsnooze.cta': 'Try SubSnooze \u2192',
+    'projects.lift.tagline': 'A research-based training program in your pocket',
+    'projects.lift.desc':
+      'Tell it where you train, on which days, and the look you want by a given date: Lift lays out the whole plan, then guides each session set by set with a rest timer, automatic load progression and progress tracking. An installable, offline PWA in French and English, with all data kept on the device.',
+    'projects.lift.cta': 'Open Lift \u2192',
+    'projects.lift.source': 'Source code',
     'stack.label': '04 \u2014 Stack',
     'stack.frontend': 'Frontend',
     'stack.native': 'Native',
@@ -104,6 +109,11 @@ const translations = {
     'projects.subsnooze.desc':
       "Suivez vos paiements r\u00e9currents et recevez des rappels avant les pr\u00e9l\u00e8vements. Rappels intelligents, workflows de r\u00e9siliation guid\u00e9s et notifications multi-canaux pour ne rien laisser passer.",
     'projects.subsnooze.cta': 'Essayer SubSnooze \u2192',
+    'projects.lift.tagline': 'Un programme de musculation fond\u00e9 sur la recherche, dans votre poche',
+    'projects.lift.desc':
+      "Indiquez o\u00f9 et quels jours vous vous entra\u00eenez, et le physique vis\u00e9 \u00e0 une date donn\u00e9e\u202f: Lift construit tout le plan, puis guide chaque s\u00e9ance s\u00e9rie par s\u00e9rie avec minuteur de repos, progression automatique des charges et suivi des progr\u00e8s. Une PWA installable, hors ligne, en fran\u00e7ais et en anglais, avec toutes les donn\u00e9es gard\u00e9es sur l\u2019appareil.",
+    'projects.lift.cta': 'Ouvrir Lift \u2192',
+    'projects.lift.source': 'Code source',
     'stack.label': '04 \u2014 Stack',
     'stack.frontend': 'Frontend',
     'stack.native': 'Natif',
