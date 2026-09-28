@@ -15,6 +15,7 @@ body { background: #0b0c0f; color: #efefec; font-family: "Instrument Sans", sans
 .card { position: absolute; right: 64px; top: 64px; width: 402px; height: 502px; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px -30px rgb(0 0 0 / .8), 0 0 0 1px rgb(255 255 255 / .14); }
 .card img { width: 100%; height: 100%; object-fit: cover; }
 .chip { position: absolute; left: 16px; bottom: 16px; display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; background: rgb(12 13 16 / .55); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .22); color: #fff; font: 500 16px/1 "Instrument Sans"; }
+.flag { width: 21px; height: 14px; border-radius: 3px; margin-left: 2px; }
 .dot { width: 9px; height: 9px; border-radius: 50%; background: #3ddc84; }
 .text { position: absolute; left: 64px; top: 56px; width: 660px; }
 .site { display: flex; align-items: center; gap: 12px; font: 500 18px/1 "JetBrains Mono", monospace; color: #b9bac0; }
@@ -36,7 +37,7 @@ h1 span { display: block; }
 </head>
 <body>
   <div class="l l1"></div><div class="l l2"></div><div class="l l3"></div>
-  <div class="card"><img src="{{ root }}/assets/img/ilyes-portrait.webp"><span class="chip"><span class="dot"></span>{{ based }}</span></div>
+  <div class="card"><img src="{{ root }}/assets/img/ilyes-portrait.webp"><span class="chip"><span class="dot"></span>{{ based }}<svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><path fill="#0055a4" d="M0 0h1v2H0z"/><path fill="#fff" d="M1 0h1v2H1z"/><path fill="#ef4135" d="M2 0h1v2H2z"/></svg></span></div>
   <div class="text">
     <div class="site"><span class="sq"></span>ilyomix.github.io</div>
     <h1><span>Ilyes</span><span>Abd-Lillah</span></h1>

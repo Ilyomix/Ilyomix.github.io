@@ -35,6 +35,22 @@
     a.addEventListener('click', function () { try { localStorage.setItem('lang', a.getAttribute('data-lang')); } catch (e) {} });
   });
 
+  /* The header shows where I am only while no section on screen already says it */
+  var place = d.querySelector('.header-place'), sayers = d.querySelectorAll('[data-place]');
+  if (place && 'IntersectionObserver' in window) {
+    var seen = [];
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var i = seen.indexOf(e.target);
+        if (e.isIntersecting && i < 0) seen.push(e.target);
+        if (!e.isIntersecting && i > -1) seen.splice(i, 1);
+      });
+      place.classList.toggle('is-shown', seen.length === 0);
+    }, { rootMargin: '-64px 0px 0px 0px' });
+    sayers.forEach(function (el) { io.observe(el); });
+    if (!sayers.length) place.classList.add('is-shown');
+  } else if (place) place.classList.add('is-shown');
+
   /* Header state */
   var header = d.querySelector('.site-header');
   function onScroll() { header.classList.toggle('is-scrolled', scrollY > 8); }

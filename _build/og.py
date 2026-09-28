@@ -21,7 +21,7 @@ VARIANTS = {
     "en": {
         "xp": {"now": "Lead Frontend Engineer at FoodPilot", "past": "Nearly ten years of experience · before: Skilleos, Guidap and Continental"},
         "apps_label": "Apps I’ve built",
-        "based": "Based in Toulouse",
+        "based": "Based in Toulouse, France",
         "products": [
             {"name": "Cadran", "what": f"a clock on your Mac wallpaper · {DL['en']} downloads", "icon": ICONS["cadran"]},
             {"name": "Lift", "what": "a research-based training app", "icon": ICONS["lift"]},
@@ -31,7 +31,7 @@ VARIANTS = {
     "fr": {
         "xp": {"now": "Lead Frontend Engineer chez FoodPilot", "past": "Près de dix ans d’expérience · avant : Skilleos, Guidap et Continental"},
         "apps_label": "Apps que j’ai créées",
-        "based": "Basé à Toulouse",
+        "based": "Basé à Toulouse, France",
         "products": [
             {"name": "Cadran", "what": f"une horloge sur le fond d’écran du Mac · {DL['fr']} téléchargements", "icon": ICONS["cadran"]},
             {"name": "Lift", "what": "une appli d’entraînement fondée sur la recherche", "icon": ICONS["lift"]},
