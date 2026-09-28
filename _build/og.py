@@ -3,13 +3,18 @@
 
 Run from the repository root after build.py:  python3 _build/og.py
 """
-import asyncio, pathlib
+import asyncio, json, pathlib
 from jinja2 import Environment, FileSystemLoader
 from playwright.async_api import async_playwright
 from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BUILD = pathlib.Path(__file__).resolve().parent
+
+# Cadran's downloads as read by the last build, floored so the image stays true: 5,207 becomes 5,000+
+N = json.loads((BUILD / "stats.json").read_text())["cadran_downloads"]
+N = N // (1000 if N >= 2000 else 100) * (1000 if N >= 2000 else 100)
+DL = {"en": f"{N:,}+", "fr": f"{N:,}+".replace(",", "\u00a0")}
 
 ICONS = {"cadran": "/assets/img/cadran-icon-112.webp", "lift": "/assets/lift-icon.svg", "led": "/assets/crypto-led-board-icon.svg"}
 VARIANTS = {
@@ -18,7 +23,7 @@ VARIANTS = {
         "apps_label": "Apps I’ve built",
         "based": "Based in Toulouse",
         "products": [
-            {"name": "Cadran", "what": "a clock on your Mac wallpaper · 2,500+ downloads", "icon": ICONS["cadran"]},
+            {"name": "Cadran", "what": f"a clock on your Mac wallpaper · {DL['en']} downloads", "icon": ICONS["cadran"]},
             {"name": "Lift", "what": "a research-based training app", "icon": ICONS["lift"]},
             {"name": "Crypto LED Board", "what": "live crypto on an LED matrix", "icon": ICONS["led"]},
         ],
@@ -28,7 +33,7 @@ VARIANTS = {
         "apps_label": "Apps que j’ai créées",
         "based": "Basé à Toulouse",
         "products": [
-            {"name": "Cadran", "what": "une horloge sur le fond d’écran du Mac · 2\u00a0500+ téléchargements", "icon": ICONS["cadran"]},
+            {"name": "Cadran", "what": f"une horloge sur le fond d’écran du Mac · {DL['fr']} téléchargements", "icon": ICONS["cadran"]},
             {"name": "Lift", "what": "une appli d’entraînement fondée sur la recherche", "icon": ICONS["lift"]},
             {"name": "Crypto LED Board", "what": "la crypto en direct sur une matrice LED", "icon": ICONS["led"]},
         ],
