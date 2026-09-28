@@ -7,32 +7,40 @@
 @font-face { font-family: "JetBrains Mono"; src: url("{{ root }}/assets/fonts/jetbrains-mono.woff2") format("woff2"); font-weight: 400 600; }
 * { box-sizing: border-box; margin: 0; }
 html, body { width: 1200px; height: 630px; overflow: hidden; }
-body { background: #0e0f12; color: #ececea; font-family: "Instrument Sans", sans-serif; position: relative; -webkit-font-smoothing: antialiased; }
-.top { position: absolute; left: 64px; right: 64px; top: 52px; display: flex; justify-content: space-between; align-items: center;
-       font: 500 19px/1 "JetBrains Mono", monospace; color: #93959c; letter-spacing: -0.01em; }
-.site { display: flex; align-items: center; gap: 12px; color: #ececea; }
-.dot { width: 12px; height: 12px; border-radius: 3px; background: #4151ff; }
-h1 { position: absolute; left: 60px; top: 104px; font-stretch: 75%; font-weight: 640; letter-spacing: -0.018em; line-height: 0.9; font-size: {{ size }}px; }
+body { background: #0b0c0f; color: #efefec; font-family: "Instrument Sans", sans-serif; position: relative; -webkit-font-smoothing: antialiased; }
+.l { position: absolute; border-radius: 50%; }
+.l1 { left: -260px; top: -300px; width: 900px; height: 900px; background: radial-gradient(closest-side, rgb(65 81 255 / .5), rgb(65 81 255 / .18) 45%, transparent); }
+.l2 { right: -160px; top: 40px; width: 760px; height: 760px; background: radial-gradient(closest-side, rgb(255 122 77 / .5), rgb(255 122 77 / .16) 45%, transparent); }
+.l3 { left: 380px; bottom: -420px; width: 760px; height: 760px; background: radial-gradient(closest-side, rgb(25 211 176 / .22), transparent); }
+.card { position: absolute; right: 64px; top: 64px; width: 402px; height: 502px; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px -30px rgb(0 0 0 / .8), 0 0 0 1px rgb(255 255 255 / .14); }
+.card img { width: 100%; height: 100%; object-fit: cover; }
+.chip { position: absolute; left: 16px; bottom: 16px; display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; background: rgb(12 13 16 / .55); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .22); color: #fff; font: 500 16px/1 "Instrument Sans"; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: #3ddc84; }
+.text { position: absolute; left: 64px; top: 60px; width: 640px; }
+.site { display: flex; align-items: center; gap: 12px; font: 500 19px/1 "JetBrains Mono", monospace; color: #b9bac0; }
+.sq { width: 12px; height: 12px; border-radius: 3px; background: #4151ff; box-shadow: 0 0 14px 3px rgb(65 81 255 / .7); }
+h1 { margin-top: 30px; font-stretch: 75%; font-weight: 640; letter-spacing: -0.018em; line-height: .88; font-size: 104px; }
 h1 span { display: block; }
-h1 .role { color: #93959c; }
-.strip { position: absolute; left: 56px; right: 56px; bottom: 28px; display: grid; grid-template-columns: 1.7fr 0.56fr 0.56fr 1.45fr; gap: 20px; align-items: end; }
-.dev { display: block; width: 100%; filter: drop-shadow(0 24px 30px rgb(0 0 0 / .5)); }
-.shot { overflow: hidden; }
-.shot img { display: block; width: 100%; }
-.phone { border-radius: 22px; padding: 4px; background: #000; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .1); margin-bottom: -150px; }
-.phone img { border-radius: 18px; }
-.fade { position: absolute; left: 0; right: 0; bottom: 0; height: 40px; background: linear-gradient(rgb(14 15 18 / 0), #0e0f12); }
+.role { margin-top: 14px; font-stretch: 75%; font-weight: 600; font-size: 50px; line-height: 1; letter-spacing: -0.012em; color: #95979e; }
+.work { position: absolute; left: 64px; bottom: 58px; width: 640px; display: grid; gap: 14px; }
+.row { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: center; }
+.row img { width: 44px; height: 44px; border-radius: 11px; }
+.row b { display: block; font-size: 21px; font-weight: 650; letter-spacing: -0.01em; line-height: 1.1; }
+.row span { display: block; margin-top: 3px; font-size: 17px; color: #b9bac0; line-height: 1.2; }
 </style>
 </head>
 <body>
-  <div class="top"><span class="site"><span class="dot"></span>ilyomix.github.io</span><span>{{ place }}</span></div>
-  <h1><span>Ilyes Abd-Lillah,</span>{% for l in role %}<span class="role">{{ l }}</span>{% endfor %}</h1>
-  <div class="strip">
-    <img class="dev" src="{{ root }}/assets/img/mac-cadran-desktop-960.webp">
-    <div class="shot phone"><img src="{{ root }}/assets/img/lift-home-{{ lang }}-390.webp"></div>
-    <div class="shot phone"><img src="{{ root }}/assets/img/lift-session-{{ lang }}-390.webp"></div>
-    <img class="dev" src="{{ root }}/assets/img/mac-led-board-960.webp">
+  <div class="l l1"></div><div class="l l2"></div><div class="l l3"></div>
+  <div class="card"><img src="{{ root }}/assets/img/ilyes-portrait.webp"><span class="chip"><span class="dot"></span>Toulouse, France</span></div>
+  <div class="text">
+    <div class="site"><span class="sq"></span>ilyomix.github.io</div>
+    <h1><span>Ilyes</span><span>Abd-Lillah</span></h1>
+    <p class="role">Software &amp; design engineer</p>
   </div>
-  <div class="fade"></div>
+  <div class="work">
+    {% for p in products %}
+    <div class="row"><img src="{{ root }}{{ p.icon }}"><div><b>{{ p.name }}</b><span>{{ p.what }}</span></div></div>
+    {% endfor %}
+  </div>
 </body>
 </html>

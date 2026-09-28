@@ -34,37 +34,51 @@ def img(name, widths, w, h, sizes, alt):
 
 Y = Markup(f'<span data-years>{YEARS}</span>')
 
+FACES = ["pura-night", "orbit-dynamic-sky", "prose-blue", "clima-teal", "departure-charcoal", "spectrum-black",
+         "sablier-graphite", "cipher-midnight", "adage-paper", "syntax-berry", "platform-indigo", "phase-purple",
+         "titan-coral", "foundry-slate", "quartz-cyan", "dessau-ocean", "metric-rose", "horizon-sunrise",
+         "halftone-forest", "arcade-green"]
+
+PHONE = (868, 1785)
+
+
 def content(lang):
     en = lang == "en"
     L = lambda f, e: e if en else f
-    shots = "en" if en else "fr"
-    cadran_desktop = lambda alt, sizes: img("mac-cadran-desktop", [640, 960, 1600, 2400], 2400, 1449, sizes, alt)
+    ph = lambda name, sizes, alt: img(name, [280, 560, 868], PHONE[0], PHONE[1], sizes, alt)
+    mbp = lambda sizes, alt: img("mac-cadran-desktop", [640, 960, 1600, 2400], 2400, 1449, sizes, alt)
+    studio = lambda sizes, alt: img("mac-led-board", [640, 960, 1600, 2400], 2400, 1844, sizes, alt)
+
+    def face(slug):
+        name = slug.split("-")[0].capitalize()
+        return {"src": f"/assets/img/face-{slug}-{lang}.webp", "name": name,
+                "alt": L(f"Le cadran {name} de Cadran sur un Mac", f"Cadran’s {name} clock face on a Mac")}
+
     return {
         "lang": lang,
         "url": f"{SITE}/" if en else f"{SITE}/fr/",
         "home": "/" if en else "/fr/",
         "og_locale": "en_US" if en else "fr_FR",
         "og_locale_alt": "fr_FR" if en else "en_US",
-        "alt": {"href": "/fr/", "lang": "fr", "short": "FR", "long": "Français", "label": "Version française"} if en
-               else {"href": "/", "lang": "en", "short": "EN", "long": "English", "label": "English version"},
+        "alt": {"href": "/fr/", "lang": "fr", "long": "Français"} if en else {"href": "/", "lang": "en", "long": "English"},
         "meta": {
             "title": L("Ilyes Abd-Lillah · Software & Design Engineer à Toulouse",
                        "Ilyes Abd-Lillah · Software & Design Engineer in Toulouse"),
             "description": L(f"Software & design engineer à Toulouse. {YEARS}+ ans à concevoir et construire des interfaces produit rapides et accessibles en React et TypeScript, des design systems et des apps macOS en SwiftUI.",
                              f"Software & design engineer in Toulouse. {YEARS}+ years designing and building fast, accessible product interfaces in React and TypeScript, design systems and native macOS apps in SwiftUI."),
-            "og_title": "Ilyes Abd-Lillah, software & design engineer",
-            "og_description": L("Interfaces produit, design systems et apps macOS natives. Cadran, Lift, Crypto LED Board. Toulouse, France.",
-                                "Product interfaces, design systems and native macOS apps. Cadran, Lift, Crypto LED Board. Toulouse, France."),
-            "og_alt": L("Ilyes Abd-Lillah, software & design engineer à Toulouse, avec Cadran sur un MacBook Pro, Lift sur téléphone et Crypto LED Board sur un Studio Display.",
-                        "Ilyes Abd-Lillah, software & design engineer in Toulouse, with Cadran on a MacBook Pro, Lift on a phone and Crypto LED Board on a Studio Display."),
+            "og_title": "Ilyes Abd-Lillah · Software & Design Engineer",
+            "og_description": L("Je conçois et développe des logiciels : Cadran, une horloge sur le fond d’écran du Mac ; Lift, une appli d’entraînement fondée sur la recherche ; Crypto LED Board, un dashboard crypto en direct. Toulouse, France.",
+                                "I design and build software: Cadran, a clock on your Mac wallpaper; Lift, a research-based training app; Crypto LED Board, a live crypto dashboard. Toulouse, France."),
+            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer à Toulouse, avec ses trois produits : Cadran, Lift et Crypto LED Board.",
+                        "Portrait of Ilyes Abd-Lillah, software & design engineer in Toulouse, with his three products: Cadran, Lift and Crypto LED Board."),
         },
         "ui": {
             "skip": L("Aller au contenu", "Skip to content"),
             "home_label": L("Ilyes Abd-Lillah, accueil", "Ilyes Abd-Lillah, home"),
-            "nav_label": L("Sections", "Sections"),
+            "nav_label": "Sections",
             "to_light": L("Passer en mode clair", "Switch to light mode"),
-            "lang_label": L("Langue", "Language"),
             "to_dark": L("Passer en mode sombre", "Switch to dark mode"),
+            "lang_label": L("Langue", "Language"),
         },
         "nav": [
             {"id": "work", "label": L("Projets", "Work")},
@@ -73,48 +87,50 @@ def content(lang):
             {"id": "contact", "label": "Contact"},
         ],
         "hero": {
-            "role": "software & design engineer.",
             "lede": L("Je transforme des idées produit complexes en interfaces rapides et accessibles, je construis les design systems qui aident les équipes à les livrer, et je fais des apps macOS natives en SwiftUI.",
                       "I turn complex product ideas into fast, accessible interfaces, build the design systems that help teams ship them, and make native macOS apps in SwiftUI."),
             "facts": Markup(L(f"{Y}+ ans · Lead Frontend chez FoodPilot · Toulouse, France",
                               f"{Y}+ years · Lead Frontend at FoodPilot · Toulouse, France")),
             "cta_mail": L("M’écrire", "Email me"),
             "cta_work": L("Voir les projets", "See the work"),
+            "portrait_alt": L("Ilyes Abd-Lillah, en chemise, sur un toit à Toulouse.", "Ilyes Abd-Lillah in a shirt on a rooftop in Toulouse."),
         },
-        "sheet_label": L("Aperçu des projets", "Work at a glance"),
-        "fig_word": "Fig.",
-        "figures": [
-            {**cadran_desktop(L("Le bureau d’un Mac avec Cadran : une horloge à palettes sur le fond d’écran, derrière les icônes.",
-                                "A Mac desktop running Cadran: a flip clock on the wallpaper, behind the icons."),
-                              "(min-width: 860px) 36vw, 82vw"),
-             "caption": L("Cadran sur macOS", "Cadran on macOS"), "target": "cadran", "phone": False},
-            {**img(f"lift-home-{shots}", [390, 780], 780, 1688, "(min-width: 860px) 14vw, 46vw",
-                   L("L’écran Aujourd’hui de Lift : progression vers la date objectif et prochaine séance.",
-                     "Lift’s Today screen: progress towards the goal date and the next session.")),
-             "caption": L("Lift, aujourd’hui", "Lift, today"), "target": "lift", "phone": True},
-            {**img(f"lift-session-{shots}", [390, 780], 780, 1688, "(min-width: 860px) 14vw, 46vw",
-                   L("Une séance guidée dans Lift : séries, charges, RIR et minuteur.",
-                     "A guided session in Lift: sets, loads, RIR and the timer.")),
-             "caption": L("Lift, en séance", "Lift, in a session"), "target": "lift", "phone": True},
-            {**img("mac-led-board", [640, 960, 1600, 2400], 2400, 1844, "(min-width: 860px) 36vw, 82vw",
-                   L("Crypto LED Board : prix, graphique, carnet d’ordres et profondeur du Bitcoin en matrice LED.",
-                     "Crypto LED Board: Bitcoin price, chart, order book and depth as an LED matrix.")),
-             "caption": "Crypto LED Board", "target": "led-board", "phone": False},
-        ],
+        "stage": {
+            "title": L("Conçu, développé, publié.", "Designed, built, shipped."),
+            "lede": L("Trois produits que j’ai faits de A à Z, sur Mac, sur iPhone et dans le navigateur.",
+                      "Three products I made end to end, on the Mac, on the iPhone and in the browser."),
+            "alt": L("Un bureau avec un Studio Display qui affiche Crypto LED Board, un MacBook Pro et un MacBook Air qui affichent Cadran, et deux téléphones qui affichent Lift.",
+                     "A desk with a Studio Display showing Crypto LED Board, a MacBook Pro and a MacBook Air showing Cadran, and two phones showing Lift."),
+            "legend_label": L("Les projets", "The projects"),
+            "devices": [
+                {"kind": "display", "cls": "", "eager": True, "img": studio("(min-width: 1400px) 670px, (min-width: 760px) 49vw, 74vw", "")},
+                {"kind": "mbp", "cls": "", "eager": True, "img": mbp("(min-width: 1400px) 560px, (min-width: 760px) 41vw, 62vw", "")},
+                {"kind": "mba", "cls": "", "eager": False, "img": img("mac-cadran-weather", [640, 1000, 1400], 1400, 848, "(min-width: 1400px) 490px, (min-width: 760px) 36vw, 54vw", "")},
+                {"kind": "phone", "cls": "p1", "eager": False, "img": ph(f"phone-lift-today-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
+                {"kind": "phone", "cls": "p2", "eager": False, "img": ph(f"phone-lift-session-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
+            ],
+            "legend": [
+                {"id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp"},
+                {"id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg"},
+                {"id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange"},
+            ],
+        },
+        "reel": {
+            "title": L("Vingt cadrans, un fond d’écran.", "Twenty faces, one wallpaper."),
+            "note": L("Cadran · 22 cadrans dans l’app", "Cadran · 22 clock faces in the app"),
+            "rows": [[face(s) for s in FACES[:10]], [face(s) for s in FACES[10:]]],
+        },
         "work": {
             "title": L("Projets.", "Selected work."),
-            "lede": L("Trois produits que j’ai conçus, développés et publiés moi-même, d’une app Mac native à une web app installable.",
-                      "Three products I designed, engineered and shipped myself, from a native Mac app to an installable web app."),
+            "lede": L("Chaque produit est conçu, développé et publié par moi, du premier croquis à la mise en ligne.",
+                      "Each product is designed, engineered and shipped by me, from the first sketch to release."),
         },
         "projects": [
             {
-                "id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp",
-                "tagline": L("Une horloge de bureau pour macOS, dessinée sur le fond d’écran.",
-                             "A desktop clock for macOS, drawn on the wallpaper."),
-                "body": [
-                    L("Cadran affiche des cadrans vivants sur la couche du fond d’écran, derrière les icônes, sur chaque Space et chaque écran. Une app SwiftUI native, un rendu Core Animation pensé pour consommer peu d’énergie, un mode économiseur d’écran et un site produit en Next.js.",
-                      "Cadran renders live clock faces on the wallpaper layer, behind the icons, on every Space and display. A native SwiftUI app, Core Animation rendering tuned for low energy use, a screen saver mode and a Next.js product site."),
-                ],
+                "id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp", "light": "cadran", "glow": "#ff7a4d",
+                "tagline": L("Une horloge de bureau pour macOS, dessinée sur le fond d’écran.", "A desktop clock for macOS, drawn on the wallpaper."),
+                "body": [L("Cadran affiche des cadrans vivants sur la couche du fond d’écran, derrière les icônes, sur chaque Space et chaque écran. Une app SwiftUI native, un rendu Core Animation pensé pour consommer peu d’énergie, un mode économiseur d’écran et un site produit en Next.js.",
+                           "Cadran renders live clock faces on the wallpaper layer, behind the icons, on every Space and display. A native SwiftUI app, Core Animation rendering tuned for low energy use, a screen saver mode and a Next.js product site.")],
                 "specs": [
                     (L("Rôle", "Role"), L("Fondateur · design et développement", "Founder · design and engineering")),
                     (L("Plateforme", "Platform"), L("macOS 14 ou plus · Apple silicon et Intel", "macOS 14 or later · Apple silicon and Intel")),
@@ -128,21 +144,33 @@ def content(lang):
                     {"label": "Product Hunt", "href": "https://www.producthunt.com/products/cadran"},
                     {"label": "Awesome Mac", "href": "https://github.com/jaywcjlove/awesome-mac#general-tools"},
                 ],
-                "media": {"kind": "cadran", "shots": [
-                    cadran_desktop(L("Cadran sur un MacBook Pro : une horloge à palettes sur le fond d’écran, avec le morceau en cours de lecture.",
-                                     "Cadran on a MacBook Pro: a flip clock on the wallpaper, with the track now playing."),
-                                   "(min-width: 1260px) 1180px, 92vw"),
-                    img("mac-cadran-weather", [640, 1000, 1400], 1400, 848, "(min-width: 640px) 46vw, 92vw",
-                        L("Cadran sur un MacBook Air : un cadran avec la météo en direct au-dessus d’un paysage de lac.", "Cadran on a MacBook Air: a clock face with live weather over a lake wallpaper.")),
-                    img("mac-cadran-settings", [640, 1000, 1400], 1400, 848, "(min-width: 640px) 46vw, 92vw",
-                        L("Cadran sur un MacBook Air : les réglages et le mode économiseur d’écran.", "Cadran on a MacBook Air: the settings and screen saver mode.")),
-                ], "caption": L("Captures de l’app sur macOS : le bureau, la météo en direct et l’économiseur d’écran.",
-                                "Screens from the app on macOS: the desktop, live weather and the screen saver.")},
+                "media": {
+                    "main": mbp("(min-width: 1300px) 1200px, 92vw", L("Cadran sur un MacBook Pro : une horloge à palettes sur le fond d’écran, avec le morceau en cours de lecture.",
+                                                                       "Cadran on a MacBook Pro: a flip clock on the wallpaper, with the track now playing.")),
+                    "pair": [
+                        {**img("mac-cadran-weather", [640, 1000, 1400], 1400, 848, "(min-width: 760px) 46vw, 92vw",
+                               L("Cadran sur un MacBook Air : un cadran avec la météo en direct au-dessus d’un paysage de lac.", "Cadran on a MacBook Air: a face with live weather over a lake wallpaper.")),
+                         "title": L("Météo et calendrier", "Weather and calendar"), "caption": L("des complications en direct, sans widget.", "live complications, no widget.")},
+                        {**img("mac-cadran-gallery", [640, 1000, 1400], 1400, 848, "(min-width: 760px) 46vw, 92vw",
+                               L("La galerie de Cadran sur un MacBook Air : tous les cadrans en aperçu.", "Cadran’s gallery on a MacBook Air: every face previewed.")),
+                         "title": L("La galerie", "The gallery"), "caption": L("tous les cadrans, en aperçu vivant.", "every face, previewed live.")},
+                    ],
+                    "tiles": [
+                        {**img(f"cadran-feat-{n}", [720, 1200], 1200, h, "(min-width: 760px) 30vw, (min-width: 480px) 46vw, 92vw", alt), "title": t, "caption": cap}
+                        for n, h, t, cap, alt in [
+                            ("editor", 776, L("L’éditeur", "The editor"), L("Chaque cadran se règle sur place, sur le bureau.", "Every face is tuned in place, on the desktop."), L("L’éditeur de Cadran : couleurs, police et réglages du cadran.", "Cadran’s editor: colours, type and face settings.")),
+                            ("per-monitor-setup", 800, L("Un cadran par écran", "A face per display"), L("Chaque écran garde son propre cadran.", "Every display keeps its own face."), L("Les réglages d’un cadran différent pour chaque écran.", "Settings for a different face on each display.")),
+                            ("per-face-colors", 799, L("Couleurs par cadran", "Colours per face"), L("Une palette pour chaque cadran.", "A palette for every face."), L("Le choix des couleurs d’un cadran.", "Choosing a face’s colours.")),
+                            ("move-resize", 776, L("Déplacer", "Move"), L("L’horloge se place où l’on veut.", "Put the clock anywhere."), L("Une horloge déplacée sur le bureau.", "A clock moved across the desktop.")),
+                            ("resize-hide-clock", 776, L("Redimensionner", "Resize"), L("Plus grand, plus petit ou caché.", "Bigger, smaller or hidden."), L("Une horloge redimensionnée sur le bureau.", "A clock resized on the desktop.")),
+                            ("screensaver", 776, L("Économiseur d’écran", "Screen saver"), L("Le même cadran quand le Mac se repose.", "The same face when the Mac rests."), L("Les réglages de l’économiseur d’écran de Cadran.", "Cadran’s screen saver settings.")),
+                        ]
+                    ],
+                },
             },
             {
-                "id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg",
-                "tagline": L("Un programme de musculation fondé sur la recherche, à installer sur son téléphone.",
-                             "A research-based training program you install on your phone."),
+                "id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg", "light": "lift", "glow": "#3d7bff",
+                "tagline": L("Un programme de musculation fondé sur la recherche, à installer sur son téléphone.", "A research-based training program you install on your phone."),
                 "body": [
                     L("Lift construit tout le plan à rebours depuis une date objectif : recomposition, sèche si besoin, puis stabilisation, en blocs séparés par des semaines de décharge. Il guide ensuite chaque séance série par série, chronomètre les repos et ajuste les charges d’après ce qu’on soulève vraiment.",
                       "Lift builds the whole plan backwards from a goal date: recomposition, a cut if needed, then stabilization, in blocks separated by deloads. It then guides each session set by set, times the rests and adjusts loads from what you actually lift."),
@@ -160,24 +188,22 @@ def content(lang):
                     {"label": L("Ouvrir Lift", "Open Lift"), "href": "https://ilyomix.github.io/lift/"},
                     {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/lift"},
                 ],
-                "media": {"kind": "lift", "shots": [
-                    img(f"lift-home-{shots}", [390, 780], 780, 1688, "(min-width: 960px) 300px, 28vw",
-                        L("L’écran Aujourd’hui : séances restantes, phases du plan et prochaine séance.", "Today: sessions to go, the plan’s phases and the next session.")),
-                    img(f"lift-session-{shots}", [390, 780], 780, 1688, "(min-width: 960px) 300px, 28vw",
-                        L("Une séance : prescription de l’exercice, séries à remplir et minuteur.", "A session: the exercise prescription, sets to log and the timer.")),
-                    img(f"lift-calendar-{shots}", [390, 780], 780, 1688, "(min-width: 960px) 300px, 28vw",
-                        L("Le calendrier : blocs, rotation des séances et phases jusqu’à la date objectif.", "The calendar: blocks, the session rotation and phases up to the goal date.")),
-                ], "caption": L("Aujourd’hui, une séance guidée et le calendrier, dans la version française.",
-                                "Today, a guided session and the calendar, in the English version.")},
+                "media": {"phones": [
+                    {**ph(f"phone-lift-{s}-{lang}", "(min-width: 1200px) 230px, (min-width: 760px) 18vw, 62vw", alt), "title": t, "caption": cap, "speed": sp}
+                    for s, t, cap, alt, sp in [
+                        ("onboarding", L("Accueil", "Welcome"), L("Le plan part de ta date.", "The plan starts from your date."), L("L’écran d’accueil de Lift.", "Lift’s welcome screen."), "0.2"),
+                        ("today", L("Aujourd’hui", "Today"), L("Où tu en es, et la prochaine séance.", "Where you stand, and the next session."), L("L’écran Aujourd’hui : séances restantes, phases du plan et prochaine séance.", "Today: sessions to go, the plan’s phases and the next session."), "0.8"),
+                        ("session", L("En séance", "In a session"), L("Séries, charges, RIR et minuteur.", "Sets, loads, RIR and the timer."), L("Une séance guidée : prescription, séries et minuteur.", "A guided session: prescription, sets and the timer."), "0.3"),
+                        ("calendar", L("Calendrier", "Calendar"), L("Blocs, décharges et phases.", "Blocks, deloads and phases."), L("Le calendrier : blocs, rotation des séances et phases.", "The calendar: blocks, the session rotation and phases."), "0.9"),
+                        ("progress", L("Progrès", "Progress"), L("1RM estimé, poids et volume.", "Estimated 1RM, weight and volume."), L("L’écran Progrès : force estimée par exercice.", "Progress: estimated strength per exercise."), "0.4"),
+                    ]
+                ]},
             },
             {
-                "id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange",
-                "tagline": L("Un dashboard crypto en direct sur une matrice LED en pixel art.",
-                             "A live crypto dashboard on a pixel-art LED matrix."),
-                "body": [
-                    L("On choisit une plateforme et une paire, puis on suit le prix, les graphiques, le carnet d’ordres et la profondeur de marché en temps réel. Tout est dessiné en matrice LED responsive, avec une typographie bitmap sur mesure et des effets CRT, alimentée par WebSocket.",
-                      "Pick an exchange and a pair, then follow price, charts, order book and market depth in real time. Everything is drawn as a responsive LED matrix with custom bitmap typography and CRT effects, fed over WebSockets."),
-                ],
+                "id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange", "light": "led", "glow": "#ff3f5c",
+                "tagline": L("Un dashboard crypto en direct sur une matrice LED en pixel art.", "A live crypto dashboard on a pixel-art LED matrix."),
+                "body": [L("On choisit une plateforme et une paire, puis on suit le prix, les graphiques, le carnet d’ordres et la profondeur de marché en temps réel. Tout est dessiné en matrice LED responsive, avec une typographie bitmap sur mesure et des effets CRT, alimentée par WebSocket.",
+                           "Pick an exchange and a pair, then follow price, charts, order book and market depth in real time. Everything is drawn as a responsive LED matrix with custom bitmap typography and CRT effects, fed over WebSockets.")],
                 "specs": [
                     (L("Rôle", "Role"), L("Design et développement", "Design and engineering")),
                     (L("Plateforme", "Platform"), L("Web · ordinateur et mobile", "Web · desktop and mobile")),
@@ -186,18 +212,27 @@ def content(lang):
                 ],
                 "facts": None,
                 "links": [{"label": L("Ouvrir Crypto LED Board", "Open Crypto LED Board"), "href": "https://crypto-led-board.vercel.app/"}],
-                "media": {"kind": "led", "shots": [
-                    img("mac-led-board", [640, 960, 1600, 2400], 2400, 1844, "(min-width: 1200px) 1120px, 92vw",
-                        L("Crypto LED Board sur un Studio Display : Bitcoin contre USDT, prix, graphique sur un jour, carnet d’ordres et profondeur.", "Crypto LED Board on a Studio Display: Bitcoin against USDT, price, one-day chart, order book and depth.")),
-                ], "caption": L("Bitcoin contre USDT : prix, graphique sur un jour, carnet d’ordres et profondeur.",
-                                "Bitcoin against USDT: price, one-day chart, order book and depth.")},
+                "media": {
+                    "main": studio("(min-width: 1300px) 1085px, 84vw", L("Crypto LED Board sur un Studio Display : Bitcoin contre USDT, prix, graphique sur un jour, carnet d’ordres et profondeur.",
+                                                                         "Crypto LED Board on a Studio Display: Bitcoin against USDT, price, one-day chart, order book and depth.")),
+                    "phone": ph("phone-led-board", "(min-width: 1300px) 200px, 17vw", L("Crypto LED Board sur téléphone.", "Crypto LED Board on a phone.")),
+                    "caption": L("La même matrice LED, du Studio Display au téléphone.", "The same LED matrix, from a Studio Display to a phone."),
+                },
             },
         ],
+        "numbers": {
+            "label": L("En chiffres", "In numbers"),
+            "stats": [
+                {"value": YEARS, "suffix": "+", "label": L("ans à concevoir et construire des interfaces", "years designing and building interfaces")},
+                {"value": 3, "suffix": "", "label": L("produits conçus et publiés en solo", "products designed and shipped solo")},
+                {"value": 22, "suffix": "", "label": L("cadrans dans Cadran", "clock faces in Cadran")},
+                {"value": 31, "suffix": "", "label": L("études derrière les règles de Lift", "studies behind Lift’s rules")},
+            ],
+        },
         "about": {
             "title": L("À propos.", "About."),
-            "portrait_alt": L("Ilyes Abd-Lillah sur un toit à Toulouse.", "Ilyes Abd-Lillah on a rooftop in Toulouse."),
             "body": [
-                Markup(L(f"Je travaille là où le design et le développement se rejoignent. Depuis plus de {Y} ans, j’aide des équipes à livrer des interfaces produit, à mettre en place des design systems et à transformer les détails d’interaction en logiciels qui semblent pensés.",
+                Markup(L(f"Je travaille là où le design et l’ingénierie se rejoignent. Depuis plus de {Y} ans, j’aide des équipes à livrer des interfaces produit, à mettre en place des design systems et à transformer les détails d’interaction en logiciels qui semblent pensés.",
                          f"I work where design and engineering meet. For more than {Y} years I’ve helped teams ship product interfaces, set up design systems and turn interaction details into software that feels intentional.")),
                 L("Aujourd’hui, je dirige le frontend de FoodPilot chez Positive Solutions et je construis mes propres produits à côté. Je suis aussi à l’aise pour affiner l’API d’un composant que la courbe d’une transition.",
                   "Today I lead frontend engineering on FoodPilot at Positive Solutions and build my own products on the side. I’m as comfortable refining a component API as a transition curve."),
@@ -206,19 +241,18 @@ def content(lang):
             "cares": [
                 L("Des interfaces produit à la hiérarchie claire, avec un mouvement qui a un sens", "Product interfaces with clear hierarchy and purposeful motion"),
                 L("Des design systems qui font gagner du temps sans rien lâcher sur la qualité", "Design systems that help teams move faster without losing quality"),
-                L("L’accessibilité, la performance et une architecture frontend solide", "Accessibility, performance and resilient frontend architecture"),
+                L("L’accessibilité, la performance et une architecture solide", "Accessibility, performance and resilient architecture"),
                 L("Des expériences macOS natives en Swift et SwiftUI", "Native macOS experiences built with Swift and SwiftUI"),
             ],
             "toolbox": [
                 {"title": L("Interfaces produit", "Product UI"), "list": ["React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS"]},
                 {"title": L("Natif et design", "Native and design"), "list": ["Swift", "SwiftUI", "Core Animation", "Figma"]},
-                {"title": L("Outils", "Tools"), "list": ["Node.js", "Vite", "Git", "Docker"]},
+                {"title": L("Outils", "Tools"), "list": ["Node.js", "Vite", "GSAP", "Git", "Docker"]},
             ],
         },
         "xp": {
             "title": L("Parcours.", "Experience."),
-            "lede": L("Des postes de lead frontend en entreprise produit, et mes propres apps.",
-                      "Frontend lead roles in product companies, and my own apps."),
+            "lede": L("Des postes de lead frontend en entreprise produit, et mes propres apps.", "Frontend lead roles in product companies, and my own apps."),
             "rows": [
                 {"when": "2026", "role": L("Fondateur", "Founder"), "org": "Cadran", "href": "https://www.cadranapp.com"},
                 {"when": L("2023 → aujourd’hui", "2023 → today"), "role": "Lead Frontend Engineer", "org": "FoodPilot · Positive Solutions", "href": "https://foodpilot.io"},
@@ -232,15 +266,11 @@ def content(lang):
         },
         "contact": {
             "title": L("Construisons-le bien.", "Let’s build it well."),
-            "lede": L("Un projet en tête, ou simplement envie de dire bonjour ? Écrivez-moi.",
-                      "Got a project in mind, or just want to say hello? Write to me."),
+            "lede": L("Un projet en tête, ou simplement envie de dire bonjour ? Écrivez-moi.", "Got a project in mind, or just want to say hello? Write to me."),
             "time_before": L("Il est ", "It’s "),
             "time_after": L(" à Toulouse.", " in Toulouse."),
         },
-        "footer": {
-            "line": L("Conçu et développé à Toulouse.", "Designed and built in Toulouse."),
-            "nav_label": L("Liens", "Links"),
-        },
+        "footer": {"line": L("Conçu et développé à Toulouse.", "Designed and built in Toulouse."), "nav_label": L("Liens", "Links")},
     }
 
 
@@ -254,7 +284,7 @@ def jsonld(c):
         "jobTitle": "Software & Design Engineer",
         "description": c["meta"]["description"],
         "url": f"{SITE}/", "email": EMAIL,
-        "image": {"@type": "ImageObject", "url": f"{SITE}/assets/img/ilyes-460.webp", "width": 460, "height": 460},
+        "image": {"@type": "ImageObject", "url": f"{SITE}/assets/img/ilyes-portrait.webp", "width": 368, "height": 460},
         "address": {"@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "addressCountry": "FR"},
         "homeLocation": {"@type": "Place", "name": "Toulouse, France"},
         "worksFor": {"@type": "Organization", "name": "Positive Solutions", "url": "https://positive-solutions.io"},
@@ -276,7 +306,7 @@ def jsonld(c):
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "WebApplication", "@id": f"{SITE}/#lift", "name": "Lift", "url": "https://ilyomix.github.io/lift/",
          "applicationCategory": "HealthApplication", "operatingSystem": "iOS, Android, Web", "browserRequirements": "Requires JavaScript",
-         "description": c["projects"][1]["tagline"], "image": f"{SITE}/assets/img/lift-home-{'en' if en else 'fr'}-780.webp",
+         "description": c["projects"][1]["tagline"], "image": f"{SITE}/assets/img/phone-lift-today-{'en' if en else 'fr'}-868.webp",
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/lift", "inLanguage": ["fr", "en"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
@@ -294,7 +324,7 @@ def jsonld(c):
         {"@type": "ProfilePage", "@id": f"{c['url']}#page", "url": c["url"], "name": c["meta"]["title"],
          "description": c["meta"]["description"], "inLanguage": lang, "isPartOf": {"@id": f"{SITE}/#website"},
          "about": {"@id": f"{SITE}/#person"}, "mainEntity": {"@id": f"{SITE}/#person"},
-         "primaryImageOfPage": {"@type": "ImageObject", "url": f"{SITE}/assets/og/og-{lang}.png", "width": 1200, "height": 630},
+         "primaryImageOfPage": {"@type": "ImageObject", "url": f"{SITE}/assets/og/og-{lang}.jpg", "width": 1200, "height": 630},
          "dateModified": TODAY,
          "hasPart": [{"@id": a["@id"]} for a in apps]},
         person, *apps,
@@ -336,9 +366,9 @@ def main():
     <xhtml:link rel="alternate" hreflang="fr" href="{SITE}/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/"/>
     <image:image><image:loc>{SITE}/assets/img/mac-cadran-desktop-2400.webp</image:loc></image:image>
-    <image:image><image:loc>{SITE}/assets/img/lift-home-{lang}-780.webp</image:loc></image:image>
+    <image:image><image:loc>{SITE}/assets/img/phone-lift-today-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/mac-led-board-2400.webp</image:loc></image:image>
-    <image:image><image:loc>{SITE}/assets/img/ilyes-460.webp</image:loc></image:image>
+    <image:image><image:loc>{SITE}/assets/img/ilyes-portrait.webp</image:loc></image:image>
   </url>
 """
     sm += "</urlset>\n"
@@ -373,7 +403,7 @@ def main():
 
     (ROOT / "site.webmanifest").write_text(json.dumps({
         "name": "Ilyes Abd-Lillah", "short_name": "Ilyes", "start_url": "/", "display": "browser",
-        "background_color": "#0e0f12", "theme_color": "#0e0f12",
+        "background_color": "#0b0c0f", "theme_color": "#0b0c0f",
         "icons": [{"src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
                   {"src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
                   {"src": "/assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml"}],
