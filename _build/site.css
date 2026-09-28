@@ -146,11 +146,12 @@ main, .site-header { overflow-x: clip; }
   background: color-mix(in srgb, var(--paper) 72%, transparent);
   -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
 }
-/* Mobile: Safari on iOS fills the area under the status bar with the colour of a *fixed* bar at the top
-   (a sticky one is ignored, and the page then shows through). So on phones the header is fixed and opaque once scrolled. */
+/* Mobile: Safari on iOS colours the area under the status bar from a fixed element that touches the top edge,
+   spans the width, is at least a few pixels high and is opaque when the page loads; without one, the page shows through.
+   The header can't be that element (it is transparent at the top of the page), so a thin strip does it. */
+.top-tint { display: none; }
 @media (max-width: 900px) {
-  body { padding-top: calc(var(--header-h) + 1px); }
-  .site-header { position: fixed; top: 0; left: 0; right: 0; }
+  .top-tint { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 6px; background-color: var(--paper); z-index: 49; pointer-events: none; }
   .site-header.is-scrolled { background-color: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 .site-header .wrap { height: var(--header-h); display: flex; align-items: center; gap: 20px; }
