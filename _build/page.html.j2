@@ -59,7 +59,7 @@
     <nav class="nav" aria-label="{{ c.ui.nav_label }}">
       {% for n in c.nav %}<a href="#{{ n.id }}">{{ n.label }}</a>{% endfor %}
     </nav>
-    <span class="header-place" aria-hidden="true">{{ icon('pointer') }}<span><span class="place-lead">{{ c.hero.based_lead }} </span>{{ c.hero.based_place }}</span>{{ flag }}<span class="place-sep">·</span><span class="mono" data-time>--:--</span></span>
+    <span class="header-place" aria-hidden="true"><span class="header-place-in">{{ icon('pointer') }}<span><span class="place-lead">{{ c.hero.based_lead }} </span>{{ c.hero.based_place }}</span>{{ flag }}<span class="place-sep">·</span><span class="mono" data-time>--:--</span></span></span>
     <button class="theme-toggle" type="button" data-theme-toggle data-label-light="{{ c.ui.to_light }}" data-label-dark="{{ c.ui.to_dark }}" aria-label="{{ c.ui.to_light }}" title="{{ c.ui.to_light }}">
       <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>

@@ -152,11 +152,15 @@ ul, ol { padding: 0; list-style: none; }
 .nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 0.875rem; font-weight: 500; color: var(--ink-2); text-decoration: none; border-radius: 999px; transition: color 160ms linear, background-color 160ms linear; }
 .nav a:hover { color: var(--ink); background: var(--paper-2); }
 /* Where I am and what time it is there. Hidden while a section already shows it (the portrait chip, the contact line). */
-.header-place { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8125rem; font-weight: 500; color: var(--ink-2); white-space: nowrap; transition: opacity 220ms linear, translate 320ms var(--ease-out), visibility 0s linear 0s; }
-.header-place .icon, .header-place svg:first-child { width: 13px; height: 13px; color: var(--cobalt); flex: none; }
+.header-place { display: grid; grid-template-columns: 1fr; font-size: 0.8125rem; font-weight: 500; color: var(--ink-2); white-space: nowrap;
+  transition: grid-template-columns 460ms var(--ease-out), margin-left 460ms var(--ease-out), opacity 260ms linear 160ms, visibility 0s linear 0s; }
+.header-place-in { display: inline-flex; align-items: center; gap: 8px; min-width: 0; overflow: hidden; }
+.header-place-in > svg:first-child { width: 13px; height: 13px; flex: none; }
 .header-place .mono { color: var(--ink-3); font-size: 0.75rem; }
 .place-sep { color: var(--ink-3); }
-.js .header-place:not(.is-shown) { opacity: 0; translate: 0 -4px; visibility: hidden; transition: opacity 180ms linear, translate 320ms var(--ease-out), visibility 0s linear 180ms; }
+/* Hidden: it folds away and the links slide over to take its room */
+.js .header-place:not(.is-shown) { grid-template-columns: 0fr; margin-left: -20px; opacity: 0; visibility: hidden;
+  transition: grid-template-columns 460ms var(--ease-out), margin-left 460ms var(--ease-out), opacity 140ms linear, visibility 0s linear 460ms; }
 @media (max-width: 1279px) { .place-lead { display: none; } }
 .flag { width: 18px; height: 12px; border-radius: 2.5px; flex: none; box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.25); }
 .theme-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -6px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); cursor: pointer; transition: color 160ms linear, background-color 160ms linear; }
