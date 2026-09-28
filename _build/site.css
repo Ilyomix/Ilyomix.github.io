@@ -235,6 +235,7 @@ ul, ol { padding: 0; list-style: none; }
 .legend a:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--rule-strong); }
 .legend img { width: 28px; height: 28px; border-radius: 7px; }
 .legend .fig { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--ink-3); }
+.legend-text { display: inline-flex; align-items: baseline; gap: 8px; }
 @media (max-width: 759px) {
   .stage-pin { min-height: 0; }
   .set { width: 150%; margin-left: -25%; }
