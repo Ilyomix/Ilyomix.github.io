@@ -166,6 +166,8 @@ def content(lang):
             {
                 "id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp", "light": "cadran", "glow": "#ff7a4d",
                 "tagline": L("Une horloge de bureau pour macOS, dessinée sur le fond d’écran.", "A desktop clock for macOS, drawn on the wallpaper."),
+                "stat": {"value": DOWNLOADS, "display": num(DOWNLOADS, lang), "live": "downloads",
+                         "label": L("téléchargements", "downloads"), "live_label": L("en direct", "live")},
                 "body": [L("Cadran dessine des cadrans vivants sur la couche du fond d’écran, derrière les icônes, sur chaque Space et chaque écran. J’ai dessiné les cadrans et construit l’app SwiftUI native, son rendu Core Animation économe en énergie, l’économiseur d’écran et le site produit.",
                            "Cadran draws live clock faces on the wallpaper layer, behind the icons, on every Space and every display. I designed the faces and built the native SwiftUI app, its low-energy Core Animation rendering, the screen saver and the product site.")],
                 "specs": [
@@ -262,10 +264,9 @@ def content(lang):
         ],
         "numbers": {
             "label": L("En chiffres", "In numbers"),
-            "live": L("en direct", "live"),
             "stats": [
                 {"value": YEARS, "suffix": "+", "display": f"{YEARS}+", "label": L("ans d’expérience", "years of experience")},
-                {"value": DOWNLOADS, "suffix": "", "display": num(DOWNLOADS, lang), "live": "downloads", "label": L("téléchargements de Cadran", "Cadran downloads")},
+                {"value": 3, "suffix": "", "display": "3", "label": L("postes de lead frontend depuis 2020", "frontend lead roles since 2020")},
                 {"value": 5, "suffix": "", "display": "5", "label": L("recommandations sur LinkedIn", "recommendations on LinkedIn")},
                 {"value": 3, "suffix": "", "display": "3", "label": L("langues : français, anglais, arabe", "languages: French, English, Arabic")},
             ],
