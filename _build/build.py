@@ -87,8 +87,8 @@ def content(lang):
             {"id": "contact", "label": "Contact"},
         ],
         "hero": {
-            "lede": L("Je conçois et je construis des produits numériques, de la première idée jusqu’à la mise en ligne.",
-                      "I design and build digital products, from the first idea all the way to release."),
+            "lede": L("Je conçois et construis des logiciels, avec autant de soin pour l’interface que pour le code qui la fait tourner.",
+                      "I design and build software, with as much care for the interface as for the code that runs it."),
             "facts": L("Lead Frontend Engineer chez FoodPilot · près de dix ans d’expérience",
                        "Lead Frontend Engineer at FoodPilot · nearly ten years of experience"),
             "cta_mail": L("M’écrire", "Email me"),
@@ -97,9 +97,9 @@ def content(lang):
             "portrait_alt": L("Ilyes Abd-Lillah, en chemise, sur un toit à Toulouse.", "Ilyes Abd-Lillah in a shirt on a rooftop in Toulouse."),
         },
         "stage": {
-            "title": L("Conçu, développé, publié.", "Designed, built, shipped."),
-            "lede": L("Trois produits que j’ai faits de A à Z, sur Mac, sur iPhone et dans le navigateur.",
-                      "Three products I made end to end, on the Mac, on the iPhone and in the browser."),
+            "title": L("Conçus, construits, publiés.", "Designed, built, shipped."),
+            "lede": L("Trois produits personnels, menés de l’idée à la mise en ligne : sur Mac, sur iPhone et sur le web.",
+                      "Three products of my own, taken from idea to release: on the Mac, the iPhone and the web."),
             "alt": L("Un bureau avec un Studio Display qui affiche Crypto LED Board, un MacBook Pro et un MacBook Air qui affichent Cadran, et deux téléphones qui affichent Lift.",
                      "A desk with a Studio Display showing Crypto LED Board, a MacBook Pro and a MacBook Air showing Cadran, and two phones showing Lift."),
             "legend_label": L("Les projets", "The projects"),
@@ -118,17 +118,17 @@ def content(lang):
         },
         "work": {
             "title": L("Projets.", "Selected work."),
-            "lede": L("Chaque produit est conçu, développé et publié par moi, du premier croquis à la mise en ligne.",
-                      "Each product is designed, engineered and shipped by me, from the first sketch to release."),
+            "lede": L("Pour chacun, le design, le code et la mise en ligne sont de moi.",
+                      "For each one, the design, the code and the release are mine."),
         },
         "projects": [
             {
                 "id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp", "light": "cadran", "glow": "#ff7a4d",
                 "tagline": L("Une horloge de bureau pour macOS, dessinée sur le fond d’écran.", "A desktop clock for macOS, drawn on the wallpaper."),
-                "body": [L("Cadran affiche des cadrans vivants sur la couche du fond d’écran, derrière les icônes, sur chaque Space et chaque écran. Une app SwiftUI native, un rendu Core Animation pensé pour consommer peu d’énergie, un mode économiseur d’écran et un site produit en Next.js.",
-                           "Cadran renders live clock faces on the wallpaper layer, behind the icons, on every Space and display. A native SwiftUI app, Core Animation rendering tuned for low energy use, a screen saver mode and a Next.js product site.")],
+                "body": [L("Cadran dessine des cadrans vivants sur la couche du fond d’écran, derrière les icônes, sur chaque Space et chaque écran. J’ai dessiné les cadrans et construit l’app SwiftUI native, son rendu Core Animation économe en énergie, l’économiseur d’écran et le site produit.",
+                           "Cadran draws live clock faces on the wallpaper layer, behind the icons, on every Space and every display. I designed the faces and built the native SwiftUI app, its low-energy Core Animation rendering, the screen saver and the product site.")],
                 "specs": [
-                    (L("Rôle", "Role"), L("Fondateur · design et développement", "Founder · design and engineering")),
+                    (L("Rôle", "Role"), L("Fondateur · design et ingénierie", "Founder · design and engineering")),
                     (L("Plateforme", "Platform"), L("macOS 14 ou plus · Apple silicon et Intel", "macOS 14 or later · Apple silicon and Intel")),
                     (L("Technologies", "Built with"), "Swift · SwiftUI · Core Animation · Next.js"),
                     (L("Modèle", "Model"), L("Gratuit, avec un Pro en achat unique", "Free, with a one-time Pro upgrade")),
@@ -159,7 +159,7 @@ def content(lang):
                         for n, h, t, cap, alt in [
                             ("editor", 776, L("L’éditeur", "The editor"), L("Chaque cadran se règle sur place, sur le bureau.", "Every face is tuned in place, on the desktop."), L("L’éditeur de Cadran : couleurs, police et réglages du cadran.", "Cadran’s editor: colours, type and face settings.")),
                             ("per-monitor-setup", 800, L("Un cadran par écran", "A face per display"), L("Chaque écran garde son propre cadran.", "Every display keeps its own face."), L("Les réglages d’un cadran différent pour chaque écran.", "Settings for a different face on each display.")),
-                            ("per-face-colors", 799, L("Couleurs par cadran", "Colours per face"), L("Une palette pour chaque cadran.", "A palette for every face."), L("Le choix des couleurs d’un cadran.", "Choosing a face’s colours.")),
+                            ("per-face-colors", 799, L("Couleurs par cadran", "Colors per face"), L("Une palette pour chaque cadran.", "A palette for every face."), L("Le choix des couleurs d’un cadran.", "Choosing a face’s colours.")),
                             ("move-resize", 776, L("Déplacer", "Move"), L("L’horloge se place où l’on veut.", "Put the clock anywhere."), L("Une horloge déplacée sur le bureau.", "A clock moved across the desktop.")),
                             ("resize-hide-clock", 776, L("Redimensionner", "Resize"), L("Plus grand, plus petit ou caché.", "Bigger, smaller or hidden."), L("Une horloge redimensionnée sur le bureau.", "A clock resized on the desktop.")),
                             ("screensaver", 776, L("Économiseur d’écran", "Screen saver"), L("Le même cadran quand le Mac se repose.", "The same face when the Mac rests."), L("Les réglages de l’économiseur d’écran de Cadran.", "Cadran’s screen saver settings.")),
@@ -169,15 +169,15 @@ def content(lang):
             },
             {
                 "id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg", "light": "lift", "glow": "#3d7bff",
-                "tagline": L("Un programme de musculation fondé sur la recherche, à installer sur son téléphone.", "A research-based training program you install on your phone."),
+                "tagline": L("Un programme de musculation fondé sur la recherche, installé comme une app sur l’iPhone.", "A research-based training program, installed like an app on the iPhone."),
                 "body": [
-                    L("Lift construit tout le plan à rebours depuis une date objectif : recomposition, sèche si besoin, puis stabilisation, en blocs séparés par des semaines de décharge. Il guide ensuite chaque séance série par série, chronomètre les repos et ajuste les charges d’après ce qu’on soulève vraiment.",
-                      "Lift builds the whole plan backwards from a goal date: recomposition, a cut if needed, then stabilization, in blocks separated by deloads. It then guides each session set by set, times the rests and adjusts loads from what you actually lift."),
-                    L("Chaque règle est rattachée à son niveau de preuve, sur 31 publications vérifiées. Il fonctionne hors ligne, en français et en anglais, sans compte : tout reste sur le téléphone.",
-                      "Every rule is tagged with its level of evidence, from 31 checked publications. It works offline, in French and English, with no account: everything stays on the phone."),
+                    L("Lift construit un plan d’entraînement complet à rebours depuis une date objectif, puis guide chaque séance série par série : il chronomètre les repos et ajuste les charges d’après ce qu’on soulève vraiment.",
+                      "Lift builds a complete training plan backwards from a goal date, then guides each session set by set: it times the rests and adjusts the loads from what you actually lift."),
+                    L("Ses règles s’appuient sur la recherche en sciences du sport. Il fonctionne hors ligne, en français et en anglais, sans compte : tout reste sur le téléphone.",
+                      "Its rules come from sports science research. It works offline, in French and English, with no account: everything stays on the phone."),
                 ],
                 "specs": [
-                    (L("Rôle", "Role"), L("Design et développement", "Design and engineering")),
+                    (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
                     (L("Plateforme", "Platform"), L("iPhone, en web app installable (PWA)", "iPhone, as an installable web app (PWA)")),
                     (L("Technologies", "Built with"), "React 19 · TypeScript · Vite · Tailwind CSS · Workbox"),
                     ("Code", L("Open source sur GitHub", "Open source on GitHub")),
@@ -190,21 +190,21 @@ def content(lang):
                 "media": {"phones": [
                     {**ph(f"phone-lift-{s}-{lang}", "(min-width: 1200px) 230px, (min-width: 760px) 18vw, 62vw", alt), "title": t, "caption": cap, "speed": sp}
                     for s, t, cap, alt, sp in [
-                        ("onboarding", L("Accueil", "Welcome"), L("Le plan part de ta date.", "The plan starts from your date."), L("L’écran d’accueil de Lift.", "Lift’s welcome screen."), "0.2"),
-                        ("today", L("Aujourd’hui", "Today"), L("Où tu en es, et la prochaine séance.", "Where you stand, and the next session."), L("L’écran Aujourd’hui : séances restantes, phases du plan et prochaine séance.", "Today: sessions to go, the plan’s phases and the next session."), "0.8"),
-                        ("session", L("En séance", "In a session"), L("Séries, charges, RIR et minuteur.", "Sets, loads, RIR and the timer."), L("Une séance guidée : prescription, séries et minuteur.", "A guided session: prescription, sets and the timer."), "0.3"),
-                        ("calendar", L("Calendrier", "Calendar"), L("Blocs, décharges et phases.", "Blocks, deloads and phases."), L("Le calendrier : blocs, rotation des séances et phases.", "The calendar: blocks, the session rotation and phases."), "0.9"),
-                        ("progress", L("Progrès", "Progress"), L("1RM estimé, poids et volume.", "Estimated 1RM, weight and volume."), L("L’écran Progrès : force estimée par exercice.", "Progress: estimated strength per exercise."), "0.4"),
+                        ("onboarding", L("Accueil", "Welcome"), L("Le plan part d’une date objectif.", "The plan starts from a goal date."), L("L’écran d’accueil de Lift.", "Lift’s welcome screen."), "0.2"),
+                        ("today", L("Aujourd’hui", "Today"), L("L’avancement et la prochaine séance.", "Progress so far and the next session."), L("L’écran Aujourd’hui : séances restantes, phases du plan et prochaine séance.", "Today: sessions to go, the plan’s phases and the next session."), "0.8"),
+                        ("session", L("En séance", "In a session"), L("Séries, charges et minuteur de repos.", "Sets, loads and the rest timer."), L("Une séance guidée : prescription, séries et minuteur.", "A guided session: prescription, sets and the timer."), "0.3"),
+                        ("calendar", L("Calendrier", "Calendar"), L("Tout le plan, semaine par semaine.", "The whole plan, week by week."), L("Le calendrier : blocs, rotation des séances et phases.", "The calendar: blocks, the session rotation and phases."), "0.9"),
+                        ("progress", L("Progrès", "Progress"), L("Force, poids et volume dans le temps.", "Strength, weight and volume over time."), L("L’écran Progrès : force estimée par exercice.", "Progress: estimated strength per exercise."), "0.4"),
                     ]
                 ]},
             },
             {
                 "id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange", "light": "led", "glow": "#ff3f5c",
-                "tagline": L("Un dashboard crypto en direct sur une matrice LED en pixel art.", "A live crypto dashboard on a pixel-art LED matrix."),
-                "body": [L("On choisit une plateforme et une paire, puis on suit le prix, les graphiques, le carnet d’ordres et la profondeur de marché en temps réel. Tout est dessiné en matrice LED responsive, avec une typographie bitmap sur mesure et des effets CRT, alimentée par WebSocket.",
-                           "Pick an exchange and a pair, then follow price, charts, order book and market depth in real time. Everything is drawn as a responsive LED matrix with custom bitmap typography and CRT effects, fed over WebSockets.")],
+                "tagline": L("Un tableau de bord crypto en direct, sur une matrice LED en pixel art.", "A live crypto dashboard on a pixel-art LED matrix."),
+                "body": [L("On choisit une plateforme et une paire, puis on suit le prix, les graphiques, le carnet d’ordres et la profondeur de marché en temps réel. Tout est dessiné sur une matrice LED responsive, avec une typographie bitmap sur mesure et des effets CRT, alimentés en direct par WebSocket.",
+                           "Pick an exchange and a pair, then follow the price, charts, order book and market depth in real time. Everything is drawn on a responsive LED matrix, with custom bitmap type and CRT effects, fed live over WebSockets.")],
                 "specs": [
-                    (L("Rôle", "Role"), L("Design et développement", "Design and engineering")),
+                    (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
                     (L("Plateforme", "Platform"), L("Web · ordinateur et mobile", "Web · desktop and mobile")),
                     (L("Technologies", "Built with"), "React · TypeScript · Vite · WebSockets · Canvas 2D / WebGL"),
                     (L("Données", "Data"), L("Flux de marché en direct", "Live market feeds")),
@@ -223,7 +223,7 @@ def content(lang):
             "label": L("En chiffres", "In numbers"),
             "stats": [
                 {"value": YEARS, "suffix": "+", "display": f"{YEARS}+", "label": L("ans d’expérience", "years of experience")},
-                {"value": 2500, "suffix": "+", "display": L("2\u00a0500+", "2,500+"), "label": L("téléchargements de Cadran, distribué en direct", "downloads of Cadran, distributed on my own")},
+                {"value": 2500, "suffix": "+", "display": L("2\u00a0500+", "2,500+"), "label": L("téléchargements de Cadran, en distribution directe", "Cadran downloads, distributed directly")},
                 {"value": 5, "suffix": "", "display": "5", "label": L("recommandations sur LinkedIn", "recommendations on LinkedIn")},
                 {"value": 3, "suffix": "", "display": "3", "label": L("langues : français, anglais, arabe", "languages: French, English, Arabic")},
             ],
@@ -233,7 +233,7 @@ def content(lang):
             "lede": L("Extraits de recommandations reçues sur LinkedIn.", "Excerpts from recommendations on LinkedIn."),
             "quotes": [
                 {"lang": "en", "text": "He is an incredibly dedicated and passionate professional who brings a high level of craftsmanship to what he builds. Ilyes has a great eye for detail, delivering pixel-perfect frontends that demonstrate his commitment to quality and UX.",
-                 "who": L("Un collègue sur FoodPilot", "A colleague on FoodPilot"), "context": "Positive Solutions"},
+                 "who": L("Un collègue de l’équipe FoodPilot", "A colleague on the FoodPilot team"), "context": "Positive Solutions"},
                 {"lang": "fr", "text": "C'est un professionnel que je recommande vivement. Il est impliqué, il est passionné et grâce à lui j'ai appris énormément.",
                  "who": "Mehdi T.", "context": L("Deux ans ensemble chez Skilleos", "Two years together at Skilleos")},
             ],
@@ -243,11 +243,11 @@ def content(lang):
             "title": L("Autres projets", "Other projects"),
             "list": [
                 {"when": "Open source", "name": "Crypto Sensor", "href": None,
-                 "what": L("Un dashboard d’analyse du marché crypto (CBBI, MVRV, RHODL, intérêt des particuliers), construit en une journée avec Next.js et TypeScript.",
-                           "A crypto market analytics dashboard (CBBI, MVRV, RHODL, retail interest), built in a day with Next.js and TypeScript.")},
+                 "what": L("Un tableau de bord d’analyse du marché crypto, construit en une journée avec Next.js et TypeScript.",
+                           "A crypto market analytics dashboard, built in a day with Next.js and TypeScript.")},
                 {"when": "2024", "name": "PeekFi", "href": "https://peekfi.netlify.app",
-                 "what": L("Un suivi des cryptomonnaies : tendances, recherche et données en direct de l’API CoinGecko, en React.",
-                           "A crypto tracker: trending coins, search and live data from the CoinGecko API, in React.")},
+                 "what": L("Un suivi des cryptomonnaies en temps réel, avec tendances et recherche, en React.",
+                           "A real-time crypto tracker with trends and search, in React.")},
                 {"when": "2018", "name": "Liberty Rider × MACIF", "href": None,
                  "what": L("Le site vitrine du partenariat entre Liberty Rider et la MACIF, et de ses avantages pour les assurés.",
                            "The showcase site for the Liberty Rider and MACIF partnership and its benefits for policyholders.")},
@@ -259,7 +259,7 @@ def content(lang):
         "about": {
             "title": L("À propos.", "About."),
             "body": [
-                Markup(L(f"Je travaille là où le design et l’ingénierie se rejoignent. Depuis près de dix ans, j’aide des équipes à livrer des interfaces produit, à mettre en place des design systems et à transformer les détails d’interaction en logiciels qui semblent pensés.",
+                Markup(L(f"Je travaille là où le design et l’ingénierie se rejoignent. Depuis près de dix ans, j’aide des équipes à livrer des interfaces produit, à mettre en place des design systems et à soigner chaque détail d’interaction, jusqu’à ce que le logiciel paraisse évident.",
                          f"I work where design and engineering meet. For nearly a decade, I’ve helped teams ship product interfaces, set up design systems and turn interaction details into software that feels intentional.")),
                 L("Aujourd’hui, je dirige le frontend de FoodPilot chez Positive Solutions et je construis mes propres produits à côté. Je suis aussi à l’aise pour affiner l’API d’un composant que la courbe d’une transition.",
                   "Today I lead frontend engineering on FoodPilot at Positive Solutions and build my own products on the side. I’m as comfortable refining a component API as a transition curve."),
@@ -268,7 +268,7 @@ def content(lang):
             "langs": [(L("Français", "French"), L("langue maternelle", "native")), (L("Anglais", "English"), L("courant", "full professional")), (L("Arabe", "Arabic"), L("professionnel", "professional working"))],
             "cares_title": L("Ce qui compte pour moi", "What I care about"),
             "cares": [
-                L("Des interfaces produit à la hiérarchie claire, avec un mouvement qui a un sens", "Product interfaces with clear hierarchy and purposeful motion"),
+                L("Des interfaces à la hiérarchie claire, où chaque animation a une raison d’être", "Interfaces with a clear hierarchy, where every animation has a reason"),
                 L("Des design systems qui font gagner du temps sans rien lâcher sur la qualité", "Design systems that help teams move faster without losing quality"),
                 L("L’accessibilité, la performance et une architecture solide", "Accessibility, performance and resilient architecture"),
                 L("Des expériences macOS natives en Swift et SwiftUI", "Native macOS experiences built with Swift and SwiftUI"),
@@ -281,7 +281,7 @@ def content(lang):
         },
         "xp": {
             "title": L("Parcours.", "Experience."),
-            "lede": L("Des postes de lead frontend en entreprise produit, et mes propres apps.", "Frontend lead roles in product companies, and my own apps."),
+            "lede": L("D’abord en équipe produit, puis lead frontend, avec mes propres apps en parallèle.", "Product teams first, then frontend lead roles, with my own apps alongside."),
             "rows": [
                 {"when": "2026", "role": L("Fondateur", "Founder"), "org": "Cadran", "href": "https://www.cadranapp.com"},
                 {"when": L("2023 → aujourd’hui", "2023 → today"), "role": "Lead Frontend Engineer", "org": "FoodPilot · Positive Solutions", "href": "https://foodpilot.io"},
@@ -295,12 +295,12 @@ def content(lang):
             ],
         },
         "contact": {
-            "title": L("Construisons-le bien.", "Let’s build it well."),
-            "lede": L("Un projet en tête, ou simplement envie de dire bonjour ? Écrivez-moi.", "Got a project in mind, or just want to say hello? Write to me."),
+            "title": L("Travaillons ensemble.", "Let’s work together."),
+            "lede": L("Un projet, un poste ou simplement un bonjour : écrivez-moi.", "A project, a role or just a hello: write to me."),
             "time_before": L("Il est ", "It’s "),
             "time_after": L(" à Toulouse.", " in Toulouse."),
         },
-        "footer": {"line": L("Conçu et développé à Toulouse.", "Designed and built in Toulouse."), "nav_label": L("Liens", "Links")},
+        "footer": {"line": L("Conçu et construit à Toulouse.", "Designed and built in Toulouse."), "nav_label": L("Liens", "Links")},
     }
 
 
