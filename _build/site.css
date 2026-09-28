@@ -146,13 +146,11 @@ main, .site-header { overflow-x: clip; }
   background: color-mix(in srgb, var(--paper) 72%, transparent);
   -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
 }
-/* Mobile: Safari on iOS colours the area under the status bar from a fixed element that touches the top edge,
-   spans the width, is at least a few pixels high and is opaque when the page loads; without one, the page shows through.
-   The header can't be that element (it is transparent at the top of the page), so a thin strip does it. */
-.top-tint { display: none; }
+/* Mobile: Safari on iOS colours the area under the status bar from the bar stuck to the top of the page, but only
+   if that bar is opaque from the moment the page loads (as on lemonde.fr). A bar that starts transparent and turns
+   opaque on scroll is ignored, and the page shows through. So on phones the header is solid from the start. */
 @media (max-width: 900px) {
-  .top-tint { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 6px; background-color: var(--paper); z-index: 49; pointer-events: none; }
-  .site-header.is-scrolled { background-color: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .site-header, .site-header.is-scrolled { background-color: var(--paper); border-bottom-color: var(--rule); -webkit-backdrop-filter: none; backdrop-filter: none; transition: none; }
 }
 .site-header .wrap { height: var(--header-h); display: flex; align-items: center; gap: 20px; }
 .wordmark { font-stretch: 80%; font-weight: 650; font-size: 1.125rem; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; margin-right: auto; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
