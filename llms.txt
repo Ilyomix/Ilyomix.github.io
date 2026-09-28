@@ -1,0 +1,25 @@
+# Ilyes Abd-Lillah
+
+> Software & design engineer based in Toulouse, France (also known as Ilyomix). 9+ years building fast, accessible product interfaces in React and TypeScript, design systems, and native macOS apps in Swift and SwiftUI. Lead Frontend Engineer on FoodPilot at Positive Solutions.
+
+- Site (English): https://ilyomix.github.io/
+- Site (French): https://ilyomix.github.io/fr/
+- GitHub: https://github.com/Ilyomix
+- LinkedIn: https://www.linkedin.com/in/ilyes-abd-lillah
+- Email: ilyes1204@gmail.com
+
+## Products
+
+- [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac.
+- [Lift](https://ilyomix.github.io/lift/): a research-based hypertrophy program as an installable web app (PWA), bilingual, offline, no account. React, TypeScript, Vite. Source: https://github.com/Ilyomix/lift
+- [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
+
+## Experience
+
+- 2026: Founder, Cadran
+- 2023 to today: Lead Frontend Engineer, FoodPilot (Positive Solutions)
+- 2021 to 2023: Technical Lead Frontend, Skilleos
+- 2020 to 2021: Technical Lead Frontend, Guidap
+- 2019 to 2020: Frontend Developer, Continental; Frontend Consultant, WE+
+- 2016 to 2019: Frontend Developer, Maestro Corporation
+- 2012 to 2017: EPITECH, Expert en Technologies de l'Information

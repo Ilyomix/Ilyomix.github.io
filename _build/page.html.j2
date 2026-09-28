@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="{{ c.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ c.meta.title }}</title>
+<meta name="description" content="{{ c.meta.description }}">
+<meta name="author" content="Ilyes Abd-Lillah">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="{{ c.url }}">
+<link rel="alternate" hreflang="en" href="{{ site }}/">
+<link rel="alternate" hreflang="fr" href="{{ site }}/fr/">
+<link rel="alternate" hreflang="x-default" href="{{ site }}/">
+<meta name="theme-color" content="#0e0f12">
+<meta name="color-scheme" content="dark light">
+<meta name="format-detection" content="telephone=no">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Ilyes Abd-Lillah">
+<meta property="og:title" content="{{ c.meta.og_title }}">
+<meta property="og:description" content="{{ c.meta.og_description }}">
+<meta property="og:url" content="{{ c.url }}">
+<meta property="og:locale" content="{{ c.og_locale }}">
+<meta property="og:locale:alternate" content="{{ c.og_locale_alt }}">
+<meta property="og:image" content="{{ site }}/assets/og/og-{{ c.lang }}.png">
+<meta property="og:image:secure_url" content="{{ site }}/assets/og/og-{{ c.lang }}.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ c.meta.og_alt }}">
+<meta property="profile:first_name" content="Ilyes">
+<meta property="profile:last_name" content="Abd-Lillah">
+<meta property="profile:username" content="Ilyomix">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ c.meta.og_title }}">
+<meta name="twitter:description" content="{{ c.meta.og_description }}">
+<meta name="twitter:image" content="{{ site }}/assets/og/og-{{ c.lang }}.png">
+<meta name="twitter:image:alt" content="{{ c.meta.og_alt }}">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="me" href="https://github.com/Ilyomix">
+<link rel="me" href="https://www.linkedin.com/in/ilyes-abd-lillah">
+<style>{{ css }}</style>
+<script>(function(d){var r=d.documentElement,t=null,lp=null;try{lp=localStorage.getItem('lang')}catch(e){}if(r.lang==='en'&&!lp&&location.pathname==='/'&&/^fr\b/i.test(navigator.language||'')&&!/Googlebot|bot|crawl|spider/i.test(navigator.userAgent)){location.replace('/fr/'+location.hash);return}r.classList.add('js');try{t=localStorage.getItem('theme')}catch(e){}if(t==='light'){r.setAttribute('data-theme','light');d.querySelector('meta[name=theme-color]').setAttribute('content','#f4f4f1')}try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion-ok')}catch(e){}})(document)</script>
+<script type="application/ld+json">{{ jsonld }}</script>
+</head>
+<body>
+<a class="skip" href="#main">{{ c.ui.skip }}</a>
+
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a class="wordmark" href="{{ c.home }}" aria-label="{{ c.ui.home_label }}"><span class="wordmark-dot" aria-hidden="true"></span>Ilyes Abd-Lillah</a>
+    <nav class="nav" aria-label="{{ c.ui.nav_label }}">
+      {% for n in c.nav %}<a href="#{{ n.id }}">{{ n.label }}</a>{% endfor %}
+    </nav>
+    <span class="header-time mono" aria-hidden="true">Toulouse <span data-time>--:--</span></span>
+    <button class="theme-toggle" type="button" data-theme-toggle data-label-light="{{ c.ui.to_light }}" data-label-dark="{{ c.ui.to_dark }}" aria-label="{{ c.ui.to_light }}" title="{{ c.ui.to_light }}">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+    <nav class="lang-switch" aria-label="{{ c.ui.lang_label }}">
+      <a href="/" hreflang="en" lang="en" data-lang="en"{% if c.lang == 'en' %} aria-current="page"{% endif %}>EN</a>
+      <a href="/fr/" hreflang="fr" lang="fr" data-lang="fr"{% if c.lang == 'fr' %} aria-current="page"{% endif %}>FR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <h1 class="hero-title display" id="hero-title"><span class="name">Ilyes Abd-Lillah,</span> <span class="role">{{ c.hero.role }}</span></h1>
+    <div class="hero-foot">
+      <p class="lede" data-rise style="--i:1">{{ c.hero.lede }}</p>
+      <div class="hero-meta" data-rise style="--i:2">
+        <p class="facts mono">{{ c.hero.facts }}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:{{ email }}">{{ icon('mail') }}{{ c.hero.cta_mail }}</a>
+          <a class="btn" href="#work">{{ c.hero.cta_work }}{{ icon('down') }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sheet wrap" aria-label="{{ c.sheet_label }}">
+    <div class="sheet-row">
+      {% for f in c.figures %}
+      <a class="fig {{ 'fig-phone' if f.phone else 'fig-wide' }}" href="#{{ f.target }}" data-rise style="--i:{{ loop.index + 2 }}">
+        <span class="fig-box" style="border-radius:{{ '30px' if f.phone else '4px' }}">
+          {% if f.phone %}
+          <span class="frame frame-phone">
+            <img src="{{ f.src }}" srcset="{{ f.srcset }}" sizes="{{ f.sizes }}" width="{{ f.w }}" height="{{ f.h }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+          </span>
+          {% else %}
+          <img class="device" src="{{ f.src }}" srcset="{{ f.srcset }}" sizes="{{ f.sizes }}" width="{{ f.w }}" height="{{ f.h }}" alt="{{ f.alt }}"{% if loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
+          {% endif %}
+          <span class="fig-dim mono" aria-hidden="true" data-dim></span>
+        </span>
+        <span class="fig-cap mono"><span>{{ c.fig_word }}&nbsp;{{ loop.index }}</span><b>{{ f.caption }}</b></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display h-section" id="work-title" data-reveal>{{ c.work.title }}</h2>
+        <p class="lede" data-reveal style="--i:1">{{ c.work.lede }}</p>
+      </div>
+
+      {% for p in c.projects %}
+      <article class="project" id="{{ p.id }}" aria-labelledby="{{ p.id }}-name">
+        <div class="project-head">
+          <div data-reveal>
+            <div class="project-name">
+              <img class="project-icon" src="{{ p.icon }}" width="56" height="56" alt="" loading="lazy" decoding="async">
+              <h3 class="display h-project" id="{{ p.id }}-name">{{ p.name }}</h3>
+            </div>
+            <p class="project-tag">{{ p.tagline }}</p>
+          </div>
+          <div class="project-body" data-reveal style="--i:1">
+            {% for para in p.body %}<p>{{ para }}</p>{% endfor %}
+            <dl class="specs">
+              {% for s in p.specs %}<div><dt>{{ s[0] }}</dt><dd>{{ s[1] }}</dd></div>{% endfor %}
+            </dl>
+            {% if p.facts %}<p class="facts mono">{{ p.facts }}</p>{% endif %}
+            <div class="project-links">
+              {% for l in p.links %}<a class="link" href="{{ l.href }}" rel="noopener">{{ l.label }}{{ icon('out') }}</a>{% endfor %}
+            </div>
+          </div>
+        </div>
+        <figure class="media media-{{ p.media.kind }}" data-reveal>
+          {% if p.media.kind == 'cadran' %}
+            {% for m in p.media.shots %}
+            <img class="device{{ ' device-main' if loop.first else '' }}" src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async">
+            {% endfor %}
+          {% elif p.media.kind == 'lift' %}
+            {% for m in p.media.shots %}
+            <span class="frame frame-phone"><img src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async"></span>
+            {% endfor %}
+          {% else %}
+            {% for m in p.media.shots %}
+            <img class="device" src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async">
+            {% endfor %}
+          {% endif %}
+          <figcaption>{{ p.media.caption }}</figcaption>
+        </figure>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display h-section" id="about-title" data-reveal>{{ c.about.title }}</h2>
+      </div>
+      <div class="about-grid">
+        <div class="portrait" data-reveal>
+          <img src="/assets/img/ilyes-460.webp" srcset="/assets/img/ilyes-240.webp 240w, /assets/img/ilyes-460.webp 460w" sizes="(min-width: 960px) 360px, 70vw" width="460" height="460" alt="{{ c.about.portrait_alt }}" loading="lazy" decoding="async">
+        </div>
+        <div class="about-text" data-reveal style="--i:1">
+          {% for para in c.about.body %}<p>{{ para }}</p>{% endfor %}
+          <div>
+            <h3 class="facts">{{ c.about.cares_title }}</h3>
+            <ul class="cares">{% for x in c.about.cares %}<li>{{ x }}</li>{% endfor %}</ul>
+          </div>
+          <div class="toolbox">
+            {% for g in c.about.toolbox %}
+            <div><h3>{{ g.title }}</h3><ul>{% for t in g.list %}<li>{{ t }}</li>{% endfor %}</ul></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display h-section" id="experience-title" data-reveal>{{ c.xp.title }}</h2>
+        <p class="lede" data-reveal style="--i:1">{{ c.xp.lede }}</p>
+      </div>
+      <ol class="xp">
+        {% for x in c.xp.rows %}
+        <li data-reveal style="--i:{{ loop.index0 }}">
+          <span class="when mono">{{ x.when }}</span>
+          <span class="role">{{ x.role }}</span>
+          <span class="where">{% if x.href %}<a href="{{ x.href }}" rel="noopener">{{ x.org }}</a>{% else %}{{ x.org }}{% endif %}</span>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 class="display contact-title" id="contact-title" data-reveal>{{ c.contact.title }}</h2>
+      <p class="lede contact-lede" data-reveal style="--i:1">{{ c.contact.lede }}</p>
+      <a class="mail" href="mailto:{{ email }}" data-reveal>{{ email }}</a>
+      <div class="contact-row" data-reveal>
+        <a class="link" href="https://www.linkedin.com/in/ilyes-abd-lillah" rel="me noopener">LinkedIn{{ icon('out') }}</a>
+        <a class="link" href="https://github.com/Ilyomix" rel="me noopener">GitHub{{ icon('out') }}</a>
+        <a class="link" href="https://www.cadranapp.com" rel="noopener">Cadran{{ icon('out') }}</a>
+        <p class="facts mono">{{ c.contact.time_before }}<span data-time>--:--</span>{{ c.contact.time_after }}</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© <span data-year>{{ year }}</span> Ilyes Abd-Lillah · {{ c.footer.line }}</p>
+    <nav class="foot-links" aria-label="{{ c.footer.nav_label }}">
+      <a href="https://github.com/Ilyomix" rel="me noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ilyes-abd-lillah" rel="me noopener">LinkedIn</a>
+      <a href="{{ c.alt.href }}" hreflang="{{ c.alt.lang }}" lang="{{ c.alt.lang }}">{{ c.alt.long }}</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var d = document, lang = d.documentElement.lang;
+  var fmt = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });
+  function tick() { var t = fmt.format(new Date()); d.querySelectorAll('[data-time]').forEach(function (n) { n.textContent = t; }); }
+  tick(); setInterval(tick, 20000);
+  var start = new Date(2017, 8, 1), now = new Date(), y = now.getFullYear() - start.getFullYear() - (now < new Date(now.getFullYear(), 8, 1) ? 1 : 0);
+  d.querySelectorAll('[data-years]').forEach(function (n) { n.textContent = y; });
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(function (es) { es.forEach(function (e) { var b = e.target.getBoundingClientRect(); var l = e.target.parentNode.querySelector('[data-dim]'); if (l) l.setAttribute('data-dim', Math.round(b.width) + ' \u00d7 ' + Math.round(b.height)); }); });
+    d.querySelectorAll('.fig-box > .frame, .fig-box > .device').forEach(function (f) { ro.observe(f); });
+  }
+  var root = d.documentElement, toggle = d.querySelector('[data-theme-toggle]'), meta = d.querySelector('meta[name=theme-color]');
+  function syncToggle() { var light = root.getAttribute('data-theme') === 'light'; var l = toggle.getAttribute(light ? 'data-label-dark' : 'data-label-light'); toggle.setAttribute('aria-label', l); toggle.setAttribute('title', l); }
+  if (toggle) {
+    syncToggle();
+    toggle.addEventListener('click', function () {
+      var light = root.getAttribute('data-theme') !== 'light';
+      if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+      meta.setAttribute('content', light ? '#f4f4f1' : '#0e0f12');
+      try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
+      syncToggle();
+    });
+  }
+  d.querySelectorAll('[data-lang]').forEach(function (a) { a.addEventListener('click', function () { try { localStorage.setItem('lang', a.getAttribute('data-lang')); } catch (e) {} }); });
+  var header = d.querySelector('.site-header');
+  function onScroll() { header.classList.toggle('is-scrolled', scrollY > 8); }
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+  if (d.documentElement.classList.contains('motion-ok') && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    d.querySelectorAll('[data-reveal]').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < innerHeight && r.bottom > 0) el.classList.add('in'); else io.observe(el);
+    });
+  } else {
+    d.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
