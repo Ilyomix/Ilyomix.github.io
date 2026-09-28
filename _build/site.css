@@ -151,7 +151,12 @@ main, .site-header { overflow-x: clip; }
 @media (max-width: 900px) { .site-header.is-scrolled { background: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 .site-header .wrap { height: var(--header-h); display: flex; align-items: center; gap: 20px; }
 .wordmark { font-stretch: 80%; font-weight: 650; font-size: 1.125rem; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; margin-right: auto; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
-.wordmark-dot { width: 9px; height: 9px; border-radius: 2px; background: var(--cobalt); box-shadow: 0 0 12px 2px color-mix(in srgb, var(--cobalt) 70%, transparent); flex: none; }
+.avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 1px var(--rule-strong); }
+/* GitHub and LinkedIn, always in reach */
+.tools { display: inline-flex; align-items: center; gap: 0; margin-right: -4px; }
+.icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; color: var(--ink-2); transition: color 160ms linear, background-color 160ms linear; }
+.icon-btn:hover { color: var(--ink); background: var(--paper-2); }
+.icon-btn svg { width: 18px; height: 18px; }
 .nav { display: flex; align-items: center; gap: 2px; }
 .nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 0.875rem; font-weight: 500; color: var(--ink-2); text-decoration: none; border-radius: 999px; transition: color 160ms linear, background-color 160ms linear; }
 .nav a:hover { color: var(--ink); background: var(--paper-2); }
@@ -167,7 +172,7 @@ main, .site-header { overflow-x: clip; }
   transition: grid-template-columns 460ms var(--ease-out), margin-left 460ms var(--ease-out), opacity 140ms linear, visibility 0s linear 460ms; }
 @media (max-width: 1279px) { .place-lead { display: none; } }
 .flag { width: 18px; height: 12px; border-radius: 2.5px; flex: none; box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.25); }
-.theme-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -6px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); cursor: pointer; transition: color 160ms linear, background-color 160ms linear; }
+.theme-toggle { display: none; align-items: center; justify-content: center; width: 40px; height: 40px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); cursor: pointer; transition: color 160ms linear, background-color 160ms linear; }
 .js .theme-toggle { display: inline-flex; }
 .theme-toggle:hover { color: var(--ink); background: var(--paper-2); }
 .theme-toggle svg { width: 18px; height: 18px; }
@@ -179,6 +184,15 @@ main, .site-header { overflow-x: clip; }
 .lang-switch a:hover { color: var(--ink); }
 .lang-switch a[aria-current="page"] { background: var(--ink); color: var(--paper); }
 @media (max-width: 900px) { .nav, .header-place { display: none; } }
+@media (max-width: 520px) {
+  .site-header .wrap { gap: 8px; }
+  .wordmark { gap: 8px; }
+  .avatar { width: 28px; height: 28px; }
+  .icon-btn, .theme-toggle { width: 36px; }
+  .lang-switch a { min-width: 34px; padding: 0 8px; }
+}
+@media (max-width: 380px) { .wordmark { font-size: 1.0625rem; } }
+@media (max-width: 350px) { .js .theme-toggle { display: none; } }
 
 /* ---------- Buttons and links ---------- */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 24px; border-radius: 999px; font: 600 0.9375rem/1 var(--font-sans); letter-spacing: -0.005em; text-decoration: none; border: 1px solid var(--rule-strong); color: var(--ink); background: transparent; transition: background-color 180ms linear, border-color 180ms linear, box-shadow 240ms linear, transform 220ms var(--ease-out); }

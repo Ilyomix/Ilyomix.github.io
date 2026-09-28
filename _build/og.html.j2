@@ -9,47 +9,44 @@
 html, body { width: 1200px; height: 630px; overflow: hidden; }
 body { background: #0b0c0f; color: #efefec; font-family: "Instrument Sans", sans-serif; position: relative; -webkit-font-smoothing: antialiased; }
 .l { position: absolute; border-radius: 50%; }
-.l1 { left: -260px; top: -300px; width: 900px; height: 900px; background: radial-gradient(closest-side, rgb(65 81 255 / .5), rgb(65 81 255 / .18) 45%, transparent); }
-.l2 { right: -160px; top: 40px; width: 760px; height: 760px; background: radial-gradient(closest-side, rgb(255 122 77 / .5), rgb(255 122 77 / .16) 45%, transparent); }
-.l3 { left: 380px; bottom: -420px; width: 760px; height: 760px; background: radial-gradient(closest-side, rgb(25 211 176 / .22), transparent); }
-.card { position: absolute; right: 64px; top: 64px; width: 402px; height: 502px; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px -30px rgb(0 0 0 / .8), 0 0 0 1px rgb(255 255 255 / .14); }
-.card img { width: 100%; height: 100%; object-fit: cover; }
-.chip { position: absolute; left: 16px; bottom: 16px; display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; background: rgb(12 13 16 / .55); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .22); color: #fff; font: 500 16px/1 "Instrument Sans"; }
-.flag { width: 21px; height: 14px; border-radius: 3px; margin-left: 2px; }
-.dot { width: 9px; height: 9px; border-radius: 50%; background: #3ddc84; }
-.text { position: absolute; left: 64px; top: 56px; width: 660px; }
-.site { display: flex; align-items: center; gap: 12px; font: 500 18px/1 "JetBrains Mono", monospace; color: #b9bac0; }
-.sq { width: 12px; height: 12px; border-radius: 3px; background: #4151ff; box-shadow: 0 0 14px 3px rgb(65 81 255 / .7); }
-h1 { margin-top: 24px; font-stretch: 75%; font-weight: 640; letter-spacing: -0.018em; line-height: .88; font-size: 86px; }
+.l1 { left: -340px; top: -380px; width: 1000px; height: 1000px; background: radial-gradient(closest-side, rgb(65 81 255 / .38), rgb(65 81 255 / .12) 50%, transparent); }
+.l2 { right: -200px; top: -40px; width: 820px; height: 820px; background: radial-gradient(closest-side, rgb(255 122 77 / .34), rgb(255 122 77 / .1) 50%, transparent); }
+
+/* Left: who, what, where. Three groups, aligned with the top and bottom of the portrait */
+.text { position: absolute; left: 80px; top: 85px; bottom: 85px; width: 620px; display: flex; flex-direction: column; }
+.where { display: flex; align-items: center; gap: 12px; font-size: 21px; font-weight: 500; line-height: 1; color: #b9bac0; }
+.flag { width: 27px; height: 18px; border-radius: 3.5px; box-shadow: 0 0 0 1px rgb(255 255 255 / .12); }
+h1 { margin-top: 24px; font-stretch: 75%; font-weight: 640; letter-spacing: -0.02em; line-height: .86; font-size: 96px; }
 h1 span { display: block; }
-.role { margin-top: 10px; font-stretch: 75%; font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: -0.012em; color: #95979e; }
-.xp { margin-top: 22px; display: grid; gap: 6px; }
-.xp p { font-size: 19px; line-height: 1.3; color: #efefec; }
-.xp p.past { color: #b9bac0; font-size: 17px; }
-.xp b { font-weight: 650; }
-.label { margin-top: 26px; font: 500 14px/1 "JetBrains Mono", monospace; letter-spacing: .02em; color: #95979e; text-transform: none; }
-.apps { margin-top: 12px; display: grid; gap: 10px; }
-.row { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: center; }
-.row img { width: 36px; height: 36px; border-radius: 9px; }
-.row p { font-size: 17px; color: #b9bac0; line-height: 1.2; }
-.row b { color: #efefec; font-weight: 650; margin-right: 8px; }
+.role { margin-top: 16px; font-stretch: 75%; font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: -0.012em; color: #95979e; }
+.xp { margin-top: 30px; font-size: 22px; line-height: 1.4; color: #efefec; }
+.xp span { display: block; color: #95979e; font-size: 19px; }
+
+/* Bottom: the apps, names only */
+.apps { margin-top: auto; }
+.label { font: 500 14px/1 "JetBrains Mono", monospace; letter-spacing: .02em; color: #7c7e85; }
+.row { margin-top: 14px; display: flex; gap: 30px; }
+.app { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 620; }
+.app img { width: 40px; height: 40px; border-radius: 10px; }
+
+/* Right: the portrait, at its own resolution */
+.card { position: absolute; right: 80px; top: 85px; width: 368px; height: 460px; border-radius: 28px; overflow: hidden;
+  box-shadow: 0 40px 80px -30px rgb(0 0 0 / .8), 0 0 0 1px rgb(255 255 255 / .14); }
+.card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 </style>
 </head>
 <body>
-  <div class="l l1"></div><div class="l l2"></div><div class="l l3"></div>
-  <div class="card"><img src="{{ root }}/assets/img/ilyes-portrait.webp"><span class="chip"><span class="dot"></span>{{ based }}<svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><path fill="#0055a4" d="M0 0h1v2H0z"/><path fill="#fff" d="M1 0h1v2H1z"/><path fill="#ef4135" d="M2 0h1v2H2z"/></svg></span></div>
+  <div class="l l1"></div><div class="l l2"></div>
   <div class="text">
-    <div class="site"><span class="sq"></span>ilyomix.github.io</div>
+    <p class="where"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><path fill="#0055a4" d="M0 0h1v2H0z"/><path fill="#fff" d="M1 0h1v2H1z"/><path fill="#ef4135" d="M2 0h1v2H2z"/></svg>{{ based }}</p>
     <h1><span>Ilyes</span><span>Abd-Lillah</span></h1>
     <p class="role">Software &amp; design engineer</p>
-    <div class="xp">
-      <p>{{ xp.now }}</p>
-      <p class="past">{{ xp.past }}</p>
-    </div>
-    <p class="label">{{ apps_label }}</p>
+    <p class="xp">{{ xp.now }}<span>{{ xp.past }}</span></p>
     <div class="apps">
-      {% for p in products %}<div class="row"><img src="{{ root }}{{ p.icon }}"><p><b>{{ p.name }}</b>{{ p.what }}</p></div>{% endfor %}
+      <p class="label">{{ apps_label }}</p>
+      <div class="row">{% for p in products %}<span class="app"><img src="{{ root }}{{ p.icon }}" alt="">{{ p.name }}</span>{% endfor %}</div>
     </div>
   </div>
+  <div class="card"><img src="{{ root }}/assets/img/ilyes-portrait.webp" alt=""></div>
 </body>
 </html>
