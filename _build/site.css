@@ -110,12 +110,13 @@ ul, ol { padding: 0; list-style: none; }
 :focus:not(:focus-visible) { outline: none; }
 
 main, .site-header { overflow-x: clip; }
+/* Skip link: fully hidden (not just moved above the page, where a pull-to-refresh would reveal it) until it has keyboard focus */
 .skip {
   position: absolute; left: var(--gutter); top: 8px; z-index: 60;
   padding: 10px 16px; background: var(--ink); color: var(--paper);
-  font-weight: 600; text-decoration: none; border-radius: 999px; transform: translateY(-160%);
+  font-weight: 600; text-decoration: none; border-radius: 999px;
 }
-.skip:focus { transform: none; }
+.skip:not(:focus) { width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .wrap { position: relative; width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
 .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
