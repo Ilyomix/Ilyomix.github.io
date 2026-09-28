@@ -118,7 +118,7 @@
         duration: gsap.utils.random(8, 15), ease: 'sine.inOut', yoyo: true, repeat: -1 }, 0);
     });
     ST.create({ trigger: group.parentElement, start: 'top bottom', end: 'bottom top', onToggle: function (s) { s.isActive ? tl.play() : tl.pause(); } });
-    if (!group.classList.contains('hero-lights') && !group.classList.contains('stage-lights')) {
+    if (!group.classList.contains('hero-lights') && !group.classList.contains('stage-lights') && !group.classList.contains('contact-lights')) {
       gsap.fromTo(group, { yPercent: -10 }, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: group.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
     }
   });
