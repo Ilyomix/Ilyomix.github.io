@@ -95,7 +95,7 @@
         <span class="portrait-halo" aria-hidden="true"></span>
         <span class="portrait-card">
           <img src="/assets/img/ilyes-portrait.webp" width="368" height="460" alt="{{ c.hero.portrait_alt }}" fetchpriority="high">
-          <span class="chip chip-place"><span class="live-dot" aria-hidden="true"></span>Toulouse · <span class="mono" data-time>--:--</span></span>
+          <span class="chip chip-place"><span class="live-dot" aria-hidden="true"></span><span>{{ c.hero.based }}</span><span class="chip-sep" aria-hidden="true">·</span><span class="mono" data-time>--:--</span></span>
           <span class="chip chip-handle">@Ilyomix</span>
         </span>
       </figure>
@@ -123,26 +123,6 @@
       <nav class="wrap legend" aria-label="{{ c.stage.legend_label }}">
         {% for l in c.stage.legend %}<a href="#{{ l.id }}"><img src="{{ l.icon }}" width="28" height="28" alt="" loading="lazy"><span class="legend-text"><span class="fig">Fig.&nbsp;{{ loop.index }}</span> <span>{{ l.name }}</span></span></a>{% endfor %}
       </nav>
-    </div>
-  </section>
-
-  <section class="reel" aria-labelledby="reel-title">
-    <div class="wrap reel-head">
-      <h2 class="display" id="reel-title" data-reveal>{{ c.reel.title }}</h2>
-      <p class="facts mono" data-reveal>{{ c.reel.note }}</p>
-    </div>
-    <div class="reel-mask">
-      {% for row in c.reel.rows %}
-      <div class="reel-row" data-dir="{{ '1' if loop.first else '-1' }}">
-        {% for copy in [0, 1] %}
-        <div class="reel-track"{% if copy %} aria-hidden="true"{% endif %}>
-          {% for f in row %}
-          <figure><img src="{{ f.src }}" width="560" height="350" alt="{{ '' if copy else f.alt }}" loading="lazy" decoding="async"><figcaption>{{ f.name }}</figcaption></figure>
-          {% endfor %}
-        </div>
-        {% endfor %}
-      </div>
-      {% endfor %}
     </div>
   </section>
 
@@ -190,6 +170,18 @@
           <figure class="tile" data-reveal><img src="{{ t.src }}" srcset="{{ t.srcset }}" sizes="{{ t.sizes }}" width="{{ t.w }}" height="{{ t.h }}" alt="{{ t.alt }}" loading="lazy" decoding="async"><figcaption><b>{{ t.title }}</b><br>{{ t.caption }}</figcaption></figure>
           {% endfor %}
         </div>
+        <div class="faces" data-reveal>
+          <p class="cap"><b>{{ p.media.faces_title }}</b> · {{ p.media.faces_note }}</p>
+          <div class="reel-mask">
+            <div class="reel-row" data-dir="1">
+              {% for copy in [0, 1] %}
+              <div class="reel-track"{% if copy %} aria-hidden="true"{% endif %}>
+                {% for f in p.media.faces %}<figure><img src="{{ f.src }}" width="560" height="350" alt="{{ '' if copy else f.alt }}" loading="lazy" decoding="async"><figcaption>{{ f.name }}</figcaption></figure>{% endfor %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
       {% elif p.id == 'lift' %}
         <div class="phones">
           {% for m in p.media.phones %}
@@ -206,13 +198,44 @@
       </div>
     </article>
     {% endfor %}
+    <div class="wrap others">
+      <h3 class="side-title" data-reveal>{{ c.others.title }}</h3>
+      <ul class="others-list">
+        {% for o in c.others.list %}
+        <li data-reveal>
+          <span class="when mono">{{ o.when }}</span>
+          <span class="o-name">{% if o.href %}<a href="{{ o.href }}" rel="noopener">{{ o.name }}</a>{% else %}{{ o.name }}{% endif %}</span>
+          <span class="o-what">{{ o.what }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </section>
 
   <section class="numbers-wrap" aria-label="{{ c.numbers.label }}">
     <div class="wrap">
       <div class="numbers" data-reveal>
-        {% for n in c.numbers.stats %}<div><b class="mono-num" data-count="{{ n.value }}" data-suffix="{{ n.suffix }}">{{ n.value }}{{ n.suffix }}</b><span>{{ n.label }}</span></div>{% endfor %}
+        {% for n in c.numbers.stats %}<div><b data-count="{{ n.value }}" data-suffix="{{ n.suffix }}">{{ n.display }}</b><span>{{ n.label }}</span></div>{% endfor %}
       </div>
+    </div>
+  </section>
+
+  <section class="section section-rule" id="recommendations" aria-labelledby="reco-title">
+    <div class="lights lit-reco" aria-hidden="true"><i></i><i></i></div>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display h-section" id="reco-title" data-reveal>{{ c.reco.title }}</h2>
+        <p class="lede" data-reveal>{{ c.reco.lede }}</p>
+      </div>
+      <div class="quotes">
+        {% for q in c.reco.quotes %}
+        <figure class="quote" data-reveal>
+          <blockquote lang="{{ q.lang }}"><p>“{{ q.text }}”</p></blockquote>
+          <figcaption><b>{{ q.who }}</b><span>{{ q.context }}</span></figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+      <p class="reco-more" data-reveal><a class="link" href="https://www.linkedin.com/in/ilyes-abd-lillah" rel="me noopener">{{ c.reco.more }}{{ icon('out') }}</a></p>
     </div>
   </section>
 
@@ -229,6 +252,10 @@
           <div>
             <h3 class="side-title">{{ c.about.cares_title }}</h3>
             <ul class="cares">{% for x in c.about.cares %}<li>{{ x }}</li>{% endfor %}</ul>
+          </div>
+          <div>
+            <h3 class="side-title">{{ c.about.lang_title }}</h3>
+            <ul class="cares langs">{% for x in c.about.langs %}<li><span>{{ x[0] }}</span><span class="muted">{{ x[1] }}</span></li>{% endfor %}</ul>
           </div>
           <div class="toolbox">
             {% for g in c.about.toolbox %}<div><h3 class="side-title">{{ g.title }}</h3><ul>{% for t in g.list %}<li>{{ t }}</li>{% endfor %}</ul></div>{% endfor %}

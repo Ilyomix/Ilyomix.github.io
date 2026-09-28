@@ -13,16 +13,26 @@ BUILD = pathlib.Path(__file__).resolve().parent
 
 ICONS = {"cadran": "/assets/img/cadran-icon-112.webp", "lift": "/assets/lift-icon.svg", "led": "/assets/crypto-led-board-icon.svg"}
 VARIANTS = {
-    "en": [
-        {"name": "Cadran", "what": "A clock app that draws on your Mac wallpaper", "icon": ICONS["cadran"]},
-        {"name": "Lift", "what": "A research-based training app for the iPhone", "icon": ICONS["lift"]},
-        {"name": "Crypto LED Board", "what": "Live crypto markets on a pixel-art LED matrix", "icon": ICONS["led"]},
-    ],
-    "fr": [
-        {"name": "Cadran", "what": "Une horloge dessinée sur le fond d’écran du Mac", "icon": ICONS["cadran"]},
-        {"name": "Lift", "what": "Une appli d’entraînement fondée sur la recherche", "icon": ICONS["lift"]},
-        {"name": "Crypto LED Board", "what": "Les marchés crypto en direct sur une matrice LED", "icon": ICONS["led"]},
-    ],
+    "en": {
+        "xp": {"now": "Lead Frontend Engineer at FoodPilot", "past": "Nearly ten years of experience · before: Skilleos, Guidap and Continental"},
+        "apps_label": "Apps I’ve built",
+        "based": "Based in Toulouse",
+        "products": [
+            {"name": "Cadran", "what": "a clock on your Mac wallpaper · 2,500+ downloads", "icon": ICONS["cadran"]},
+            {"name": "Lift", "what": "a research-based training app", "icon": ICONS["lift"]},
+            {"name": "Crypto LED Board", "what": "live crypto on an LED matrix", "icon": ICONS["led"]},
+        ],
+    },
+    "fr": {
+        "xp": {"now": "Lead Frontend Engineer chez FoodPilot", "past": "Près de dix ans d’expérience · avant : Skilleos, Guidap et Continental"},
+        "apps_label": "Apps que j’ai créées",
+        "based": "Basé à Toulouse",
+        "products": [
+            {"name": "Cadran", "what": "une horloge sur le fond d’écran du Mac · 2\u00a0500+ téléchargements", "icon": ICONS["cadran"]},
+            {"name": "Lift", "what": "une appli d’entraînement fondée sur la recherche", "icon": ICONS["lift"]},
+            {"name": "Crypto LED Board", "what": "la crypto en direct sur une matrice LED", "icon": ICONS["led"]},
+        ],
+    },
 }
 
 
@@ -33,8 +43,8 @@ async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page(viewport={"width": 1200, "height": 630}, device_scale_factor=1)
-        for lang, products in VARIANTS.items():
-            html = tpl.render(lang=lang, root=ROOT.as_uri(), products=products)
+        for lang, v in VARIANTS.items():
+            html = tpl.render(lang=lang, root=ROOT.as_uri(), **v)
             tmp = BUILD / f".og-{lang}.html"
             tmp.write_text(html)
             await page.goto(tmp.as_uri(), wait_until="networkidle")

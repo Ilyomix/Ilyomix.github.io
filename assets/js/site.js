@@ -128,12 +128,12 @@
   /* Reel: endless rows that speed up with the scroll */
   var reels = q('.reel-row').map(function (row) {
     var dir = row.getAttribute('data-dir') === '-1' ? -1 : 1;
-    var tl = gsap.fromTo(row, { xPercent: dir === 1 ? 0 : -50 }, { xPercent: dir === 1 ? -50 : 0, ease: 'none', duration: 70, repeat: -1, paused: true });
+    var tl = gsap.fromTo(row, { xPercent: dir === 1 ? 0 : -50 }, { xPercent: dir === 1 ? -50 : 0, ease: 'none', duration: 60, repeat: -1, paused: true });
     return tl;
   });
   if (reels.length) {
     ST.create({
-      trigger: '.reel', start: 'top bottom', end: 'bottom top',
+      trigger: '.faces', start: 'top bottom', end: 'bottom top',
       onToggle: function (s) { reels.forEach(function (t) { s.isActive ? t.play() : t.pause(); }); },
       onUpdate: function (s) {
         var v = Math.min(Math.abs(s.getVelocity()) / 250, 6);
@@ -161,9 +161,10 @@
   /* Counters */
   q('[data-count]').forEach(function (el) {
     var end = parseFloat(el.getAttribute('data-count')) || 0, suffix = el.getAttribute('data-suffix') || '', o = { v: 0 };
+    var nf = new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-US');
     el.textContent = '0' + suffix;
     gsap.to(o, { v: end, duration: 1.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true },
-      onUpdate: function () { el.textContent = Math.round(o.v) + suffix; } });
+      onUpdate: function () { el.textContent = nf.format(Math.round(o.v)).replace(/\u202f/g, '\u00a0') + suffix; } });
   });
 
   addEventListener('load', function () { ST.refresh(); });

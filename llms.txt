@@ -13,6 +13,14 @@
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac.
 - [Lift](https://ilyomix.github.io/lift/): a research-based hypertrophy program as an installable web app (PWA), bilingual, offline, no account. React, TypeScript, Vite. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
+- Other projects: Crypto Sensor (open source crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
+
+## Facts
+
+- Cadran: self-distributed, more than 2,500 downloads
+- 5 recommendations on LinkedIn
+- Languages: French (native), English (full professional), Arabic (professional working)
+- Prix So'Créativ, So Toulouse (2013)
 
 ## Experience
 

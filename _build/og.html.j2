@@ -16,31 +16,39 @@ body { background: #0b0c0f; color: #efefec; font-family: "Instrument Sans", sans
 .card img { width: 100%; height: 100%; object-fit: cover; }
 .chip { position: absolute; left: 16px; bottom: 16px; display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border-radius: 999px; background: rgb(12 13 16 / .55); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .22); color: #fff; font: 500 16px/1 "Instrument Sans"; }
 .dot { width: 9px; height: 9px; border-radius: 50%; background: #3ddc84; }
-.text { position: absolute; left: 64px; top: 60px; width: 640px; }
-.site { display: flex; align-items: center; gap: 12px; font: 500 19px/1 "JetBrains Mono", monospace; color: #b9bac0; }
+.text { position: absolute; left: 64px; top: 56px; width: 660px; }
+.site { display: flex; align-items: center; gap: 12px; font: 500 18px/1 "JetBrains Mono", monospace; color: #b9bac0; }
 .sq { width: 12px; height: 12px; border-radius: 3px; background: #4151ff; box-shadow: 0 0 14px 3px rgb(65 81 255 / .7); }
-h1 { margin-top: 30px; font-stretch: 75%; font-weight: 640; letter-spacing: -0.018em; line-height: .88; font-size: 104px; }
+h1 { margin-top: 24px; font-stretch: 75%; font-weight: 640; letter-spacing: -0.018em; line-height: .88; font-size: 86px; }
 h1 span { display: block; }
-.role { margin-top: 14px; font-stretch: 75%; font-weight: 600; font-size: 50px; line-height: 1; letter-spacing: -0.012em; color: #95979e; }
-.work { position: absolute; left: 64px; bottom: 58px; width: 640px; display: grid; gap: 14px; }
-.row { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: center; }
-.row img { width: 44px; height: 44px; border-radius: 11px; }
-.row b { display: block; font-size: 21px; font-weight: 650; letter-spacing: -0.01em; line-height: 1.1; }
-.row span { display: block; margin-top: 3px; font-size: 17px; color: #b9bac0; line-height: 1.2; }
+.role { margin-top: 10px; font-stretch: 75%; font-weight: 600; font-size: 40px; line-height: 1; letter-spacing: -0.012em; color: #95979e; }
+.xp { margin-top: 22px; display: grid; gap: 6px; }
+.xp p { font-size: 19px; line-height: 1.3; color: #efefec; }
+.xp p.past { color: #b9bac0; font-size: 17px; }
+.xp b { font-weight: 650; }
+.label { margin-top: 26px; font: 500 14px/1 "JetBrains Mono", monospace; letter-spacing: .02em; color: #95979e; text-transform: none; }
+.apps { margin-top: 12px; display: grid; gap: 10px; }
+.row { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: center; }
+.row img { width: 36px; height: 36px; border-radius: 9px; }
+.row p { font-size: 17px; color: #b9bac0; line-height: 1.2; }
+.row b { color: #efefec; font-weight: 650; margin-right: 8px; }
 </style>
 </head>
 <body>
   <div class="l l1"></div><div class="l l2"></div><div class="l l3"></div>
-  <div class="card"><img src="{{ root }}/assets/img/ilyes-portrait.webp"><span class="chip"><span class="dot"></span>Toulouse, France</span></div>
+  <div class="card"><img src="{{ root }}/assets/img/ilyes-portrait.webp"><span class="chip"><span class="dot"></span>{{ based }}</span></div>
   <div class="text">
     <div class="site"><span class="sq"></span>ilyomix.github.io</div>
     <h1><span>Ilyes</span><span>Abd-Lillah</span></h1>
     <p class="role">Software &amp; design engineer</p>
-  </div>
-  <div class="work">
-    {% for p in products %}
-    <div class="row"><img src="{{ root }}{{ p.icon }}"><div><b>{{ p.name }}</b><span>{{ p.what }}</span></div></div>
-    {% endfor %}
+    <div class="xp">
+      <p>{{ xp.now }}</p>
+      <p class="past">{{ xp.past }}</p>
+    </div>
+    <p class="label">{{ apps_label }}</p>
+    <div class="apps">
+      {% for p in products %}<div class="row"><img src="{{ root }}{{ p.icon }}"><p><b>{{ p.name }}</b>{{ p.what }}</p></div>{% endfor %}
+    </div>
   </div>
 </body>
 </html>

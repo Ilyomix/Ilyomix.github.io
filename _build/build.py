@@ -64,13 +64,13 @@ def content(lang):
         "meta": {
             "title": L("Ilyes Abd-Lillah · Software & Design Engineer à Toulouse",
                        "Ilyes Abd-Lillah · Software & Design Engineer in Toulouse"),
-            "description": L(f"Software & design engineer à Toulouse. {YEARS}+ ans à concevoir et construire des interfaces produit rapides et accessibles en React et TypeScript, des design systems et des apps macOS en SwiftUI.",
-                             f"Software & design engineer in Toulouse. {YEARS}+ years designing and building fast, accessible product interfaces in React and TypeScript, design systems and native macOS apps in SwiftUI."),
+            "description": L("Software & design engineer basé à Toulouse. Près de dix ans à concevoir et construire des interfaces produit rapides et accessibles en React et TypeScript, et des apps macOS en SwiftUI.",
+                             "Software & design engineer based in Toulouse. Nearly a decade designing and building fast, accessible product interfaces in React and TypeScript, and native macOS apps in SwiftUI."),
             "og_title": "Ilyes Abd-Lillah · Software & Design Engineer",
-            "og_description": L("Je conçois et développe des logiciels : Cadran, une horloge sur le fond d’écran du Mac ; Lift, une appli d’entraînement fondée sur la recherche ; Crypto LED Board, un dashboard crypto en direct. Toulouse, France.",
-                                "I design and build software: Cadran, a clock on your Mac wallpaper; Lift, a research-based training app; Crypto LED Board, a live crypto dashboard. Toulouse, France."),
-            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer à Toulouse, avec ses trois produits : Cadran, Lift et Crypto LED Board.",
-                        "Portrait of Ilyes Abd-Lillah, software & design engineer in Toulouse, with his three products: Cadran, Lift and Crypto LED Board."),
+            "og_description": L("Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran (2 500+ téléchargements), Lift et Crypto LED Board.",
+                                "Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran (2,500+ downloads), Lift and Crypto LED Board."),
+            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Lift et Crypto LED Board.",
+                        "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Lift and Crypto LED Board."),
         },
         "ui": {
             "skip": L("Aller au contenu", "Skip to content"),
@@ -87,11 +87,12 @@ def content(lang):
             {"id": "contact", "label": "Contact"},
         ],
         "hero": {
-            "lede": L("Je transforme des idées produit complexes en interfaces rapides et accessibles, je construis les design systems qui aident les équipes à les livrer, et je fais des apps macOS natives en SwiftUI.",
-                      "I turn complex product ideas into fast, accessible interfaces, build the design systems that help teams ship them, and make native macOS apps in SwiftUI."),
-            "facts": Markup(L(f"{Y}+ ans · Lead Frontend chez FoodPilot · Toulouse, France",
-                              f"{Y}+ years · Lead Frontend at FoodPilot · Toulouse, France")),
+            "lede": L("Je conçois et je construis des produits numériques, de la première idée jusqu’à la mise en ligne.",
+                      "I design and build digital products, from the first idea all the way to release."),
+            "facts": L("Lead Frontend Engineer chez FoodPilot · près de dix ans d’expérience",
+                       "Lead Frontend Engineer at FoodPilot · nearly ten years of experience"),
             "cta_mail": L("M’écrire", "Email me"),
+            "based": L("Basé à Toulouse", "Based in Toulouse"),
             "cta_work": L("Voir les projets", "See the work"),
             "portrait_alt": L("Ilyes Abd-Lillah, en chemise, sur un toit à Toulouse.", "Ilyes Abd-Lillah in a shirt on a rooftop in Toulouse."),
         },
@@ -114,11 +115,6 @@ def content(lang):
                 {"id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg"},
                 {"id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange"},
             ],
-        },
-        "reel": {
-            "title": L("Vingt cadrans, un fond d’écran.", "Twenty faces, one wallpaper."),
-            "note": L("Cadran · 22 cadrans dans l’app", "Cadran · 22 clock faces in the app"),
-            "rows": [[face(s) for s in FACES[:10]], [face(s) for s in FACES[10:]]],
         },
         "work": {
             "title": L("Projets.", "Selected work."),
@@ -155,6 +151,9 @@ def content(lang):
                                L("La galerie de Cadran sur un MacBook Air : tous les cadrans en aperçu.", "Cadran’s gallery on a MacBook Air: every face previewed.")),
                          "title": L("La galerie", "The gallery"), "caption": L("tous les cadrans, en aperçu vivant.", "every face, previewed live.")},
                     ],
+                    "faces_title": L("Les cadrans", "The faces"),
+                    "faces_note": L("chacun dessiné pour le fond d’écran du Mac.", "each one drawn for the Mac wallpaper."),
+                    "faces": [face(sl) for sl in FACES],
                     "tiles": [
                         {**img(f"cadran-feat-{n}", [720, 1200], 1200, h, "(min-width: 760px) 30vw, (min-width: 480px) 46vw, 92vw", alt), "title": t, "caption": cap}
                         for n, h, t, cap, alt in [
@@ -223,20 +222,50 @@ def content(lang):
         "numbers": {
             "label": L("En chiffres", "In numbers"),
             "stats": [
-                {"value": YEARS, "suffix": "+", "label": L("ans à concevoir et construire des interfaces", "years designing and building interfaces")},
-                {"value": 3, "suffix": "", "label": L("produits conçus et publiés en solo", "products designed and shipped solo")},
-                {"value": 22, "suffix": "", "label": L("cadrans dans Cadran", "clock faces in Cadran")},
-                {"value": 31, "suffix": "", "label": L("études derrière les règles de Lift", "studies behind Lift’s rules")},
+                {"value": YEARS, "suffix": "+", "display": f"{YEARS}+", "label": L("ans d’expérience", "years of experience")},
+                {"value": 2500, "suffix": "+", "display": L("2\u00a0500+", "2,500+"), "label": L("téléchargements de Cadran, distribué en direct", "downloads of Cadran, distributed on my own")},
+                {"value": 5, "suffix": "", "display": "5", "label": L("recommandations sur LinkedIn", "recommendations on LinkedIn")},
+                {"value": 3, "suffix": "", "display": "3", "label": L("langues : français, anglais, arabe", "languages: French, English, Arabic")},
+            ],
+        },
+        "reco": {
+            "title": L("Ce qu’ils en disent.", "In their words."),
+            "lede": L("Extraits de recommandations reçues sur LinkedIn.", "Excerpts from recommendations on LinkedIn."),
+            "quotes": [
+                {"lang": "en", "text": "He is an incredibly dedicated and passionate professional who brings a high level of craftsmanship to what he builds. Ilyes has a great eye for detail, delivering pixel-perfect frontends that demonstrate his commitment to quality and UX.",
+                 "who": L("Un collègue sur FoodPilot", "A colleague on FoodPilot"), "context": "Positive Solutions"},
+                {"lang": "fr", "text": "C'est un professionnel que je recommande vivement. Il est impliqué, il est passionné et grâce à lui j'ai appris énormément.",
+                 "who": "Mehdi T.", "context": L("Deux ans ensemble chez Skilleos", "Two years together at Skilleos")},
+            ],
+            "more": L("Lire les cinq sur LinkedIn", "Read all five on LinkedIn"),
+        },
+        "others": {
+            "title": L("Autres projets", "Other projects"),
+            "list": [
+                {"when": "Open source", "name": "Crypto Sensor", "href": None,
+                 "what": L("Un dashboard d’analyse du marché crypto (CBBI, MVRV, RHODL, intérêt des particuliers), construit en une journée avec Next.js et TypeScript.",
+                           "A crypto market analytics dashboard (CBBI, MVRV, RHODL, retail interest), built in a day with Next.js and TypeScript.")},
+                {"when": "2024", "name": "PeekFi", "href": "https://peekfi.netlify.app",
+                 "what": L("Un suivi des cryptomonnaies : tendances, recherche et données en direct de l’API CoinGecko, en React.",
+                           "A crypto tracker: trending coins, search and live data from the CoinGecko API, in React.")},
+                {"when": "2018", "name": "Liberty Rider × MACIF", "href": None,
+                 "what": L("Le site vitrine du partenariat entre Liberty Rider et la MACIF, et de ses avantages pour les assurés.",
+                           "The showcase site for the Liberty Rider and MACIF partnership and its benefits for policyholders.")},
+                {"when": L("2014 → 2017", "2014 → 2017"), "name": "Envio", "href": None,
+                 "what": L("Une solution domotique intelligente, conçue en équipe pendant Epitech.",
+                           "A smart home system, built as a team during Epitech.")},
             ],
         },
         "about": {
             "title": L("À propos.", "About."),
             "body": [
-                Markup(L(f"Je travaille là où le design et l’ingénierie se rejoignent. Depuis plus de {Y} ans, j’aide des équipes à livrer des interfaces produit, à mettre en place des design systems et à transformer les détails d’interaction en logiciels qui semblent pensés.",
-                         f"I work where design and engineering meet. For more than {Y} years I’ve helped teams ship product interfaces, set up design systems and turn interaction details into software that feels intentional.")),
+                Markup(L(f"Je travaille là où le design et l’ingénierie se rejoignent. Depuis près de dix ans, j’aide des équipes à livrer des interfaces produit, à mettre en place des design systems et à transformer les détails d’interaction en logiciels qui semblent pensés.",
+                         f"I work where design and engineering meet. For nearly a decade, I’ve helped teams ship product interfaces, set up design systems and turn interaction details into software that feels intentional.")),
                 L("Aujourd’hui, je dirige le frontend de FoodPilot chez Positive Solutions et je construis mes propres produits à côté. Je suis aussi à l’aise pour affiner l’API d’un composant que la courbe d’une transition.",
                   "Today I lead frontend engineering on FoodPilot at Positive Solutions and build my own products on the side. I’m as comfortable refining a component API as a transition curve."),
             ],
+            "lang_title": L("Langues", "Languages"),
+            "langs": [(L("Français", "French"), L("langue maternelle", "native")), (L("Anglais", "English"), L("courant", "full professional")), (L("Arabe", "Arabic"), L("professionnel", "professional working"))],
             "cares_title": L("Ce qui compte pour moi", "What I care about"),
             "cares": [
                 L("Des interfaces produit à la hiérarchie claire, avec un mouvement qui a un sens", "Product interfaces with clear hierarchy and purposeful motion"),
@@ -262,6 +291,7 @@ def content(lang):
                 {"when": "2019 → 2020", "role": L("Consultant frontend", "Frontend Consultant"), "org": "WE+", "href": None},
                 {"when": "2016 → 2019", "role": L("Développeur frontend", "Frontend Developer"), "org": "Maestro Corporation", "href": None},
                 {"when": "2012 → 2017", "role": "Expert en Technologies de l’Information", "org": "EPITECH", "href": "https://www.epitech.eu"},
+                {"when": "2013", "role": L("Prix So’Créativ", "So’Créativ prize"), "org": "So Toulouse · Epitech × ISEG", "href": None},
             ],
         },
         "contact": {
@@ -289,7 +319,8 @@ def jsonld(c):
         "homeLocation": {"@type": "Place", "name": "Toulouse, France"},
         "worksFor": {"@type": "Organization", "name": "Positive Solutions", "url": "https://positive-solutions.io"},
         "alumniOf": {"@type": "CollegeOrUniversity", "name": "EPITECH", "url": "https://www.epitech.eu"},
-        "knowsLanguage": ["fr", "en"],
+        "knowsLanguage": ["fr", "en", "ar"],
+        "award": ["Prix So’Créativ, So Toulouse (2013)"],
         "knowsAbout": ["Software engineering", "Design engineering", "Frontend engineering", "Design systems", "User interface design", "Web accessibility",
                        "Web performance", "React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS", "Swift", "SwiftUI",
                        "Core Animation", "macOS app development", "Progressive web apps"],
@@ -389,6 +420,14 @@ def main():
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac.
 - [Lift](https://ilyomix.github.io/lift/): a research-based hypertrophy program as an installable web app (PWA), bilingual, offline, no account. React, TypeScript, Vite. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
+- Other projects: Crypto Sensor (open source crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
+
+## Facts
+
+- Cadran: self-distributed, more than 2,500 downloads
+- 5 recommendations on LinkedIn
+- Languages: French (native), English (full professional), Arabic (professional working)
+- Prix So'Créativ, So Toulouse (2013)
 
 ## Experience
 
