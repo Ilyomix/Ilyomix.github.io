@@ -80,7 +80,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); overflow-x: clip; }
 body {
   margin: 0;
   background: var(--paper);
@@ -107,6 +107,7 @@ ul, ol { padding: 0; list-style: none; }
 :focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; border-radius: 4px; }
 :focus:not(:focus-visible) { outline: none; }
 
+main, .site-header { overflow-x: clip; }
 .skip {
   position: absolute; left: var(--gutter); top: 8px; z-index: 60;
   padding: 10px 16px; background: var(--ink); color: var(--paper);
@@ -145,6 +146,9 @@ ul, ol { padding: 0; list-style: none; }
   background: color-mix(in srgb, var(--paper) 72%, transparent);
   -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
 }
+/* Above the header: Safari on iOS draws the page under the status bar once it scrolls; this keeps that strip plain */
+.site-header.is-scrolled::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 160px; background: var(--paper); pointer-events: none; }
+@media (max-width: 900px) { .site-header.is-scrolled { background: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 .site-header .wrap { height: var(--header-h); display: flex; align-items: center; gap: 20px; }
 .wordmark { font-stretch: 80%; font-weight: 650; font-size: 1.125rem; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; margin-right: auto; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
 .wordmark-dot { width: 9px; height: 9px; border-radius: 2px; background: var(--cobalt); box-shadow: 0 0 12px 2px color-mix(in srgb, var(--cobalt) 70%, transparent); flex: none; }
