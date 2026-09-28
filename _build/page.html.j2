@@ -121,7 +121,7 @@
         </div>
       </div>
       <nav class="wrap legend" aria-label="{{ c.stage.legend_label }}">
-        {% for l in c.stage.legend %}<a href="#{{ l.id }}"><img src="{{ l.icon }}" width="28" height="28" alt="" loading="lazy"><span><span class="fig">Fig. {{ loop.index }}</span> {{ l.name }}</span></a>{% endfor %}
+        {% for l in c.stage.legend %}<a href="#{{ l.id }}"><img src="{{ l.icon }}" width="28" height="28" alt="" loading="lazy"><span class="legend-text"><span class="fig">Fig.&nbsp;{{ loop.index }}</span> <span>{{ l.name }}</span></span></a>{% endfor %}
       </nav>
     </div>
   </section>
