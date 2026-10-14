@@ -216,22 +216,24 @@ def content(lang):
             },
             {
                 "id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg", "light": "lift", "glow": "#3d7bff",
-                "tagline": L("Un programme de musculation fondé sur la recherche, installé comme une app sur l’iPhone.", "A research-based training program, installed like an app on the iPhone."),
+                "tagline": L("Un programme de musculation fondé sur la recherche, pour iPhone et iPad, gratuit sur l’App Store.", "A research-based training program for iPhone and iPad, free on the App Store."),
                 "body": [
                     L("Lift construit un plan d’entraînement complet à rebours depuis une date objectif, puis guide chaque séance série par série : il chronomètre les repos et ajuste les charges d’après ce qu’on soulève vraiment.",
                       "Lift builds a complete training plan backwards from a goal date, then guides each session set by set: it times the rests and adjusts the loads from what you actually lift."),
-                    L("Ses règles s’appuient sur la recherche en sciences du sport. Il fonctionne hors ligne, en français et en anglais, sans compte : tout reste sur le téléphone.",
-                      "Its rules come from sports science research. It works offline, in French and English, with no account: everything stays on the phone."),
+                    L("Ses règles s’appuient sur la recherche en sciences du sport. Il fonctionne hors ligne, en français et en anglais, sans compte : tout reste sur le téléphone. Sur iOS, la séance et le minuteur de repos restent sur l’écran verrouillé et dans la Dynamic Island.",
+                      "Its rules come from sports science research. It works offline, in French and English, with no account: everything stays on the phone. On iOS, the session and the rest timer stay on the lock screen and in the Dynamic Island."),
                 ],
                 "specs": [
                     (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
-                    (L("Plateforme", "Platform"), L("iPhone, en web app installable (PWA)", "iPhone, as an installable web app (PWA)")),
-                    (L("Technologies", "Built with"), "React 19 · TypeScript · Vite · Tailwind CSS · Workbox"),
+                    (L("Plateforme", "Platform"), L("iPhone et iPad (iOS 16.2 ou plus) · web app installable (PWA)", "iPhone and iPad (iOS 16.2 or later) · installable web app (PWA)")),
+                    (L("Technologies", "Built with"), "React 19 · TypeScript · Vite · Capacitor · Swift · Workbox"),
                     ("Code", L("Open source sur GitHub", "Open source on GitHub")),
                 ],
-                "facts": None,
+                "facts": L("Sur l’App Store depuis le 14 octobre 2026 · Gratuit, sans pub ni achat intégré",
+                           "On the App Store since 14 October 2026 · Free, no ads, no in-app purchases"),
                 "links": [
-                    {"label": L("Ouvrir Lift", "Open Lift"), "href": "https://ilyomix.github.io/lift/"},
+                    {"label": "App Store", "href": "https://apps.apple.com/app/id6818697874"},
+                    {"label": L("Ouvrir la web app", "Open the web app"), "href": "https://ilyomix.github.io/lift/"},
                     {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/lift"},
                 ],
                 "media": {"phones": [
@@ -380,8 +382,9 @@ def jsonld(c):
          "description": c["projects"][0]["tagline"], "image": f"{SITE}/assets/img/mac-cadran-desktop-1600.webp",
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
-        {"@type": "WebApplication", "@id": f"{SITE}/#lift", "name": "Lift", "url": "https://ilyomix.github.io/lift/",
-         "applicationCategory": "HealthApplication", "operatingSystem": "iOS, Android, Web", "browserRequirements": "Requires JavaScript",
+        {"@type": "SoftwareApplication", "@id": f"{SITE}/#lift", "name": "Lift", "url": "https://apps.apple.com/app/id6818697874",
+         "installUrl": "https://apps.apple.com/app/id6818697874", "sameAs": ["https://ilyomix.github.io/lift/"],
+         "applicationCategory": "HealthApplication", "operatingSystem": "iOS 16.2 or later, Web",
          "description": c["projects"][1]["tagline"], "image": f"{SITE}/assets/img/phone-lift-today-{'en' if en else 'fr'}-868.webp",
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/lift", "inLanguage": ["fr", "en"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
@@ -463,7 +466,7 @@ def main():
 ## Products
 
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac.
-- [Lift](https://ilyomix.github.io/lift/): a research-based hypertrophy program as an installable web app (PWA), bilingual, offline, no account. React, TypeScript, Vite. Source: https://github.com/Ilyomix/lift
+- [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
 - Other projects: Crypto Sensor (open source crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
 
