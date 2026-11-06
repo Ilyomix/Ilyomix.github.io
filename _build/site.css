@@ -352,6 +352,9 @@ main, .site-header { overflow-x: clip; }
 .lit-cadran i:nth-child(1) { --c: var(--l-coral); --x: 30%; --y: 58%; --s: 64vmax; --o: 0.34; }
 .lit-cadran i:nth-child(2) { --c: var(--l-peach); --x: 78%; --y: 30%; --s: 44vmax; --o: 0.18; }
 .lit-cadran i:nth-child(3) { --c: var(--l-cobalt); --x: 70%; --y: 86%; --s: 40vmax; --o: 0.22; }
+.lit-retrotape i:nth-child(1) { --c: var(--l-red); --x: 34%; --y: 62%; --s: 60vmax; --o: 0.32; }
+.lit-retrotape i:nth-child(2) { --c: var(--l-coral); --x: 80%; --y: 30%; --s: 42vmax; --o: 0.2; }
+.lit-retrotape i:nth-child(3) { --c: var(--l-teal); --x: 66%; --y: 86%; --s: 36vmax; --o: 0.16; }
 .lit-lift i:nth-child(1) { --c: var(--l-blue); --x: 50%; --y: 70%; --s: 64vmax; --o: 0.42; }
 .lit-lift i:nth-child(2) { --c: var(--l-sky); --x: 16%; --y: 30%; --s: 38vmax; --o: 0.18; }
 .lit-lift i:nth-child(3) { --c: var(--l-cobalt); --x: 86%; --y: 40%; --s: 40vmax; --o: 0.24; }
