@@ -323,7 +323,7 @@ def content(lang):
         "others": {
             "title": L("Autres projets", "Other projects"),
             "list": [
-                {"when": "Open source", "name": "Crypto Sensor", "href": None,
+                {"when": "2024", "name": "Crypto Sensor", "href": None,
                  "what": L("Un tableau de bord d’analyse du marché crypto, construit en une journée avec Next.js et TypeScript.",
                            "A crypto market analytics dashboard, built in a day with Next.js and TypeScript.")},
                 {"when": "2024", "name": "PeekFi", "href": "https://peekfi.netlify.app",
@@ -509,7 +509,7 @@ def main():
 - [Retrotape](https://apps.apple.com/app/id6829425065): a 90s camcorder for iPhone, on the App Store since 6 November 2026: 20 vintage filters applied live in the viewfinder, each with its own camera interface. Free, with a Pro subscription or one-time upgrade. Bilingual, no account, no ads, no tracking. Kotlin, Compose Multiplatform, Swift, Metal.
 - [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
-- Other projects: Crypto Sensor (open source crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
+- Other projects: Crypto Sensor (crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
 
 ## Facts
 
