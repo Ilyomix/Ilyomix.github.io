@@ -190,7 +190,7 @@
             </div>
           </div>
         </div>
-      {% elif p.id == 'lift' %}
+      {% elif p.id in ('lift', 'retrotape') %}
         <div class="phones">
           {% for m in p.media.phones %}
           <figure data-reveal><div data-speed="{{ m.speed }}"><img src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async"></div><figcaption class="cap"><b>{{ m.title }}</b><br>{{ m.caption }}</figcaption></figure>

@@ -16,7 +16,7 @@ N = json.loads((BUILD / "stats.json").read_text())["cadran_downloads"]
 N = N // (1000 if N >= 2000 else 100) * (1000 if N >= 2000 else 100)
 DL = {"en": f"{N:,}+", "fr": f"{N:,}+".replace(",", "\u00a0")}
 
-ICONS = {"cadran": "/assets/img/cadran-icon-112.webp", "lift": "/assets/lift-icon.svg", "led": "/assets/crypto-led-board-icon.svg"}
+ICONS = {"cadran": "/assets/img/cadran-icon-112.webp", "retrotape": "/assets/img/retrotape-icon-112.webp", "lift": "/assets/lift-icon.svg", "led": "/assets/crypto-led-board-icon.svg"}
 VARIANTS = {
     "en": {
         "xp": {"now": "Lead Frontend Engineer at FoodPilot", "past": "Nearly ten years of experience · Skilleos, Guidap, Continental"},
@@ -24,6 +24,7 @@ VARIANTS = {
         "based": "Based in Toulouse, France",
         "products": [
             {"name": "Cadran", "what": f"a clock on your Mac wallpaper · {DL['en']} downloads", "icon": ICONS["cadran"]},
+            {"name": "Retrotape", "what": "a 90s camcorder for iPhone", "icon": ICONS["retrotape"]},
             {"name": "Lift", "what": "a research-based training app", "icon": ICONS["lift"]},
             {"name": "Crypto LED Board", "what": "live crypto on an LED matrix", "icon": ICONS["led"]},
         ],
@@ -34,6 +35,7 @@ VARIANTS = {
         "based": "Basé à Toulouse, France",
         "products": [
             {"name": "Cadran", "what": f"une horloge sur le fond d’écran du Mac · {DL['fr']} téléchargements", "icon": ICONS["cadran"]},
+            {"name": "Retrotape", "what": "un caméscope des années 90 pour iPhone", "icon": ICONS["retrotape"]},
             {"name": "Lift", "what": "une appli d’entraînement fondée sur la recherche", "icon": ICONS["lift"]},
             {"name": "Crypto LED Board", "what": "la crypto en direct sur une matrice LED", "icon": ICONS["led"]},
         ],

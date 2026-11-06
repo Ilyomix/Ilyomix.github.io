@@ -111,10 +111,10 @@ def content(lang):
             "description": L("Software & design engineer basé à Toulouse. Près de dix ans à concevoir et construire des interfaces produit rapides et accessibles en React et TypeScript, et des apps macOS en SwiftUI.",
                              "Software & design engineer based in Toulouse. Nearly a decade designing and building fast, accessible product interfaces in React and TypeScript, and native macOS apps in SwiftUI."),
             "og_title": "Ilyes Abd-Lillah · Software & Design Engineer",
-            "og_description": L(f"Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Lift et Crypto LED Board.",
-                                f"Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Lift and Crypto LED Board."),
-            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Lift et Crypto LED Board.",
-                        "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Lift and Crypto LED Board."),
+            "og_description": L(f"Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Lift et Crypto LED Board.",
+                                f"Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Lift and Crypto LED Board."),
+            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Lift et Crypto LED Board.",
+                        "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Lift and Crypto LED Board."),
         },
         "ui": {
             "skip": L("Aller au contenu", "Skip to content"),
@@ -143,20 +143,21 @@ def content(lang):
         },
         "stage": {
             "title": L("Conçus, construits, publiés.", "Designed, built, shipped."),
-            "lede": L("Trois produits personnels, menés de l’idée à la mise en ligne : sur Mac, sur iPhone et sur le web.",
-                      "Three products of my own, taken from idea to release: on the Mac, the iPhone and the web."),
-            "alt": L("Un bureau avec un Studio Display qui affiche Crypto LED Board, un MacBook Pro et un MacBook Air qui affichent Cadran, et deux téléphones qui affichent Lift.",
-                     "A desk with a Studio Display showing Crypto LED Board, a MacBook Pro and a MacBook Air showing Cadran, and two phones showing Lift."),
+            "lede": L("Quatre produits personnels, menés de l’idée à la mise en ligne : sur Mac, sur iPhone et sur le web.",
+                      "Four products of my own, taken from idea to release: on the Mac, the iPhone and the web."),
+            "alt": L("Un bureau avec un Studio Display qui affiche Crypto LED Board, un MacBook Pro et un MacBook Air qui affichent Cadran, un téléphone qui affiche Lift et un autre qui affiche Retrotape.",
+                     "A desk with a Studio Display showing Crypto LED Board, a MacBook Pro and a MacBook Air showing Cadran, a phone showing Lift and another showing Retrotape."),
             "legend_label": L("Les projets", "The projects"),
             "devices": [
                 {"kind": "display", "cls": "", "glass": glass("display"), "eager": True, "img": studio("(min-width: 1400px) 670px, (min-width: 760px) 49vw, 74vw", "")},
                 {"kind": "mbp", "cls": "", "glass": glass("mbp"), "eager": True, "img": mbp("(min-width: 1400px) 560px, (min-width: 760px) 41vw, 62vw", "")},
                 {"kind": "mba", "cls": "", "glass": glass("mba"), "eager": False, "img": img("mac-cadran-weather", [640, 1000, 1400], 1400, 848, "(min-width: 1400px) 490px, (min-width: 760px) 36vw, 54vw", "")},
                 {"kind": "phone", "cls": "p1", "glass": glass("phone"), "eager": False, "img": ph(f"phone-lift-today-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
-                {"kind": "phone", "cls": "p2", "glass": glass("phone"), "eager": False, "img": ph(f"phone-lift-session-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
+                {"kind": "phone", "cls": "p2", "glass": glass("phone"), "eager": False, "img": ph(f"phone-retrotape-camcorder98-{lang}", "(min-width: 1400px) 126px, (min-width: 760px) 9.2vw, 14vw", "")},
             ],
             "legend": [
                 {"id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp"},
+                {"id": "retrotape", "name": "Retrotape", "icon": "/assets/img/retrotape-icon-112.webp"},
                 {"id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg"},
                 {"id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange"},
             ],
@@ -173,7 +174,9 @@ def content(lang):
                 "stat": {"value": DOWNLOADS, "display": num(DOWNLOADS, lang), "live": "downloads",
                          "label": L("téléchargements", "downloads"), "live_label": L("en direct", "live")},
                 "body": [L("Cadran dessine des cadrans vivants sur la couche du fond d’écran, derrière les icônes, sur chaque Space et chaque écran. J’ai dessiné les cadrans et construit l’app SwiftUI native, son rendu Core Animation économe en énergie, l’économiseur d’écran et le site produit.",
-                           "Cadran draws live clock faces on the wallpaper layer, behind the icons, on every Space and every display. I designed the faces and built the native SwiftUI app, its low-energy Core Animation rendering, the screen saver and the product site.")],
+                           "Cadran draws live clock faces on the wallpaper layer, behind the icons, on every Space and every display. I designed the faces and built the native SwiftUI app, its low-energy Core Animation rendering, the screen saver and the product site."),
+                         L("La version 2.0 est sortie le 30 octobre 2026, avec 25 cadrans, un message personnel sur le bureau, une horloge en Liquid Glass sur macOS 27, et Cadran en chinois et en arabe.",
+                           "Version 2.0 came out on 30 October 2026, with 25 faces, a personal message on the desktop, a Liquid Glass clock on macOS 27, and Cadran in Chinese and Arabic.")],
                 "specs": [
                     (L("Rôle", "Role"), L("Fondateur · design et ingénierie", "Founder · design and engineering")),
                     (L("Plateforme", "Platform"), L("macOS 14 ou plus · Apple silicon et Intel", "macOS 14 or later · Apple silicon and Intel")),
@@ -213,6 +216,35 @@ def content(lang):
                         ]
                     ],
                 },
+            },
+            {
+                "id": "retrotape", "name": "Retrotape", "icon": "/assets/img/retrotape-icon-112.webp", "light": "retrotape", "glow": "#ff3b2f",
+                "tagline": L("Un caméscope des années 90 pour iPhone, sur l’App Store.", "A 90s camcorder for iPhone, on the App Store."),
+                "body": [
+                    L("Retrotape filme à travers un filtre vintage, en direct dans le viseur : couleurs qui bavent, grain, lignes de défilement, REC qui clignote et date incrustée dans l’image. Chacun de ses 20 filtres a sa caméra, et toute l’interface change avec lui : la marque, les couleurs, les boutons et l’écran.",
+                      "Retrotape films through a vintage filter, live in the viewfinder: bleeding colors, grain, tracking lines, REC blinking in the corner and the date on the picture. Each of its 20 filters has its own camera, and the whole interface changes with it: the brand, the colors, the buttons and the display."),
+                    L("J’ai dessiné l’app et construit son moteur vidéo, des shaders GLSL compilés pour Metal sur iPhone. Les écrans sont écrits une seule fois, en Kotlin avec Compose Multiplatform, pour que la version Android suive. Pas de compte, pas de pub, pas de pistage : rien ne quitte le téléphone, sauf ce qu’on partage.",
+                      "I designed the app and built its video engine, GLSL shaders compiled to Metal on the iPhone. The screens are written once, in Kotlin with Compose Multiplatform, so the Android version can follow. No account, no ads, no tracking: nothing leaves the phone unless you share it."),
+                ],
+                "specs": [
+                    (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
+                    (L("Plateforme", "Platform"), L("iPhone (iOS 17 ou plus) · Android à venir", "iPhone (iOS 17 or later) · Android to come")),
+                    (L("Technologies", "Built with"), "Kotlin · Compose Multiplatform · Swift · Metal · AVFoundation · StoreKit 2"),
+                    (L("Modèle", "Model"), L("Gratuit, avec un Pro en abonnement ou en achat unique", "Free, with a Pro subscription or one-time upgrade")),
+                ],
+                "facts": L("Sur l’App Store depuis le 6 novembre 2026 · En français et en anglais · 20 filtres, de 1969 à 2007",
+                           "On the App Store since 6 November 2026 · In English and French · 20 filters, from 1969 to 2007"),
+                "links": [{"label": "App Store", "href": "https://apps.apple.com/app/id6829425065"}],
+                "media": {"phones": [
+                    {**ph(f"phone-retrotape-{s}-{lang}", "(min-width: 1200px) 230px, (min-width: 760px) 18vw, 62vw", alt), "title": t, "caption": cap, "speed": sp}
+                    for s, t, cap, alt, sp in [
+                        ("camcorder98", L("Caméscope 98", "Camcorder ’98"), L("REC, la durée qui défile et la date, dans l’image.", "REC, the running time and the date, on the picture."), L("Le filtre Caméscope 98 : un coucher de soleil filmé, avec REC et la date à l’écran.", "The Camcorder ’98 filter: a sunset being filmed, with REC and the date on screen."), "0.2"),
+                        ("minidv2004", "Mini DV 2004", L("Chaque filtre transforme toute la caméra.", "Each filter changes the whole camera."), L("Le filtre Mini DV 2004 : un boîtier argenté autour d’un skateur au crépuscule.", "The Mini DV 2004 filter: a silver body around a skater at dusk."), "0.8"),
+                        ("summer89", L("Été 89", "Summer ’89"), L("Un filtre parmi 20, de 1969 à 2007.", "One of 20 filters, from 1969 to 2007."), L("Le filtre Été 89 : un boîtier jaune autour de deux personnes sur une plage.", "The Summer ’89 filter: a yellow body around two people on a beach."), "0.3"),
+                        ("xmas96", L("Noël 96", "Christmas ’96"), L("Sa marque, ses couleurs, ses boutons, son écran.", "Its brand, its colors, its buttons, its display."), L("Le filtre Noël 96 : un boîtier rouge autour d’un sapin illuminé.", "The Christmas ’96 filter: a red body around a lit Christmas tree."), "0.9"),
+                        ("neon85", L("Néon 85", "Neon ’85"), L("À partager sur TikTok, Instagram et ailleurs.", "Ready to share on TikTok, Instagram and more."), L("Le filtre Néon 85 : un boîtier sombre autour d’une rue aux enseignes de néon.", "The Neon ’85 filter: a dark body around a street of neon signs."), "0.4"),
+                    ]
+                ]},
             },
             {
                 "id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg", "light": "lift", "glow": "#3d7bff",
@@ -324,7 +356,7 @@ def content(lang):
             ],
             "toolbox": [
                 {"title": L("Interfaces produit", "Product UI"), "list": ["React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS"]},
-                {"title": L("Natif et design", "Native and design"), "list": ["Swift", "SwiftUI", "Core Animation", "Figma"]},
+                {"title": L("Natif et design", "Native and design"), "list": ["Swift", "SwiftUI", "Kotlin Multiplatform", "Core Animation", "Metal", "Figma"]},
                 {"title": L("Outils", "Tools"), "list": ["Node.js", "Vite", "GSAP", "Git", "Docker"]},
             ],
         },
@@ -382,16 +414,23 @@ def jsonld(c):
          "description": c["projects"][0]["tagline"], "image": f"{SITE}/assets/img/mac-cadran-desktop-1600.webp",
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
+        {"@type": "SoftwareApplication", "@id": f"{SITE}/#retrotape", "name": "Retrotape", "url": "https://apps.apple.com/app/id6829425065",
+         "installUrl": "https://apps.apple.com/app/id6829425065",
+         "applicationCategory": "MultimediaApplication", "operatingSystem": "iOS 17 or later",
+         "description": c["projects"][1]["tagline"], "image": f"{SITE}/assets/img/phone-retrotape-camcorder98-{'en' if en else 'fr'}-868.webp",
+         "inLanguage": ["fr", "en"],
+         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+         "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "SoftwareApplication", "@id": f"{SITE}/#lift", "name": "Lift", "url": "https://apps.apple.com/app/id6818697874",
          "installUrl": "https://apps.apple.com/app/id6818697874", "sameAs": ["https://ilyomix.github.io/lift/"],
          "applicationCategory": "HealthApplication", "operatingSystem": "iOS 16.2 or later, Web",
-         "description": c["projects"][1]["tagline"], "image": f"{SITE}/assets/img/phone-lift-today-{'en' if en else 'fr'}-868.webp",
+         "description": c["projects"][2]["tagline"], "image": f"{SITE}/assets/img/phone-lift-today-{'en' if en else 'fr'}-868.webp",
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/lift", "inLanguage": ["fr", "en"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "WebApplication", "@id": f"{SITE}/#led-board", "name": "Crypto LED Board", "url": "https://crypto-led-board.vercel.app/",
          "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "browserRequirements": "Requires JavaScript",
-         "description": c["projects"][2]["tagline"], "image": f"{SITE}/assets/img/mac-led-board-1600.webp",
+         "description": c["projects"][3]["tagline"], "image": f"{SITE}/assets/img/mac-led-board-1600.webp",
          "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
@@ -445,6 +484,7 @@ def main():
     <xhtml:link rel="alternate" hreflang="fr" href="{SITE}/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/"/>
     <image:image><image:loc>{SITE}/assets/img/mac-cadran-desktop-2400.webp</image:loc></image:image>
+    <image:image><image:loc>{SITE}/assets/img/phone-retrotape-camcorder98-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/phone-lift-today-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/mac-led-board-2400.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/ilyes-portrait.webp</image:loc></image:image>
@@ -465,7 +505,8 @@ def main():
 
 ## Products
 
-- [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac.
+- [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac. Version 2.0 since 30 October 2026.
+- [Retrotape](https://apps.apple.com/app/id6829425065): a 90s camcorder for iPhone, on the App Store since 6 November 2026: 20 vintage filters applied live in the viewfinder, each with its own camera interface. Free, with a Pro subscription or one-time upgrade. Bilingual, no account, no ads, no tracking. Kotlin, Compose Multiplatform, Swift, Metal.
 - [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
 - Other projects: Crypto Sensor (open source crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
