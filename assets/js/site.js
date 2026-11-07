@@ -183,7 +183,7 @@
   /* Reel: endless rows that speed up with the scroll */
   var reels = q('.reel-row').map(function (row) {
     var dir = row.getAttribute('data-dir') === '-1' ? -1 : 1;
-    var tl = gsap.fromTo(row, { xPercent: dir === 1 ? 0 : -50 }, { xPercent: dir === 1 ? -50 : 0, ease: 'none', duration: 60, repeat: -1, paused: true });
+    var tl = gsap.fromTo(row, { xPercent: dir === 1 ? 0 : -50 }, { xPercent: dir === 1 ? -50 : 0, ease: 'none', duration: 75, repeat: -1, paused: true });
     return tl;
   });
   if (reels.length) {
