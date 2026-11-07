@@ -40,7 +40,10 @@ Y = Markup(f'<span data-years>{YEARS}</span>')
 FACES = ["pura-night", "orbit-dynamic-sky", "prose-blue", "clima-teal", "departure-charcoal", "spectrum-black",
          "sablier-graphite", "cipher-midnight", "adage-paper", "syntax-berry", "platform-indigo", "phase-purple",
          "titan-coral", "foundry-slate", "quartz-cyan", "dessau-ocean", "metric-rose", "horizon-sunrise",
-         "halftone-forest", "arcade-green"]
+         "halftone-forest", "arcade-green", "regulator-paper", "folio-paper", "meridian-charcoal", "sector-paper",
+         "aperture-midnight"]
+# A slug's first word gives the face's name, except these, which the app keeps in French in every language.
+FACE_NAMES = {"regulator": "Régulateur", "meridian": "Méridien", "sector": "Secteur"}
 
 PHONE = (868, 1785)
 GLASS = {"display": ("glass-studio", 1400, 1075), "mbp": ("glass-mbp14", 1200, 724),
@@ -94,7 +97,8 @@ def content(lang):
     studio = lambda sizes, alt: img("mac-led-board", [640, 960, 1600, 2400], 2400, 1844, sizes, alt)
 
     def face(slug):
-        name = slug.split("-")[0].capitalize()
+        base = slug.split("-")[0]
+        name = FACE_NAMES.get(base, base.capitalize())
         return {"src": f"/assets/img/face-{slug}-{lang}.webp", "name": name,
                 "alt": L(f"Le cadran {name} de Cadran sur un Mac", f"Cadran’s {name} clock face on a Mac")}
 
