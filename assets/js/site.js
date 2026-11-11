@@ -164,11 +164,11 @@
         .from('.set .dev-mbp', { xPercent: -28, yPercent: 14, opacity: 0 }, 0.08)
         .from('.set .dev-mba', { xPercent: 28, yPercent: 14, opacity: 0 }, 0.08)
         .from('.set .dev-phone', { yPercent: 50, opacity: 0, stagger: 0.07 }, 0.2);
-      gsap.timeline({ scrollTrigger: { trigger: '.stage', start: 'top top', end: '+=110%', scrub: 0.8, pin: '.stage-pin', anticipatePin: 1 } })
+      /* No pin: the page never stops scrolling. The lights play once the desk is in place. */
+      gsap.timeline({ scrollTrigger: { trigger: '.stage', start: 'top top', toggleActions: 'play none none reverse' } })
         .fromTo('.stage-lights', { opacity: 0 }, { opacity: 1, duration: 1 }, 0)
         .fromTo('.spot', { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0)
-        .from('.legend a', { y: 24, opacity: 0, stagger: 0.08, duration: 0.3 }, 0.7)
-        .to({}, { duration: 0.2 });
+        .from('.legend a', { y: 24, opacity: 0, stagger: 0.08, duration: 0.3 }, 0.7);
       /* A screen is either off or on: never a half-lit veil that the scroll position leaves behind */
       var on = screensOn();
       ST.create({ trigger: '.stage', start: 'top -12%', onEnter: function () { on.play(); }, onLeaveBack: function () { on.reverse(); } });
