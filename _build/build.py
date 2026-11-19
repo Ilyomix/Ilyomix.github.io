@@ -300,11 +300,13 @@ def content(lang):
                       "Glowback captures the screen thirty times per second and gives each LED on the back of the monitor the colour of the edge of the picture right in front of it: a sunset on the left of the screen turns the wall on the left orange. It works with every Windows Dynamic Lighting and OpenRGB device, with no LED strip or camera."),
                     L("J’ai écrit la capture GPU (DXGI, HDR compris), le pilote HID LampArray qui lit la position de chaque LED dans l’appareil, et une vraie app Windows : installateur, panneau de réglages dans la zone de notification, mises à jour vérifiées dans l’app, six langues. Le tout tient dans un seul fichier Python, sans dépendance.",
                       "I wrote the GPU capture (DXGI, HDR included), the HID LampArray driver that reads the position of every LED from the device, and a real Windows app: an installer, a settings panel in the notification area, verified in-app updates, six languages. All of it fits in a single Python file with zero dependencies."),
+                    L("Glowback apparaît aussi dans Home Assistant comme une lumière, par MQTT : allumage, luminosité et mode, synchronisés dans les deux sens avec son panneau. De là, Google Assistant et Alexa le pilotent à la voix ; Siri et l’app Maison d’Apple s’y ajoutent avec HomeKit Bridge, pour l’allumage et la luminosité.",
+                      "Glowback also shows up in Home Assistant as a light, over MQTT: on and off, brightness and mode, kept in step with its panel both ways. From there, Google Assistant and Alexa control it by voice; Siri and Apple’s Home app join in through HomeKit Bridge, for on, off and brightness."),
                 ],
                 "specs": [
                     (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
                     (L("Plateforme", "Platform"), L("Windows 10 et 11 · Éclairage dynamique et OpenRGB", "Windows 10 and 11 · Dynamic Lighting and OpenRGB")),
-                    (L("Technologies", "Built with"), "Python · Win32 · DXGI · HID LampArray · Inno Setup"),
+                    (L("Technologies", "Built with"), "Python · Win32 · DXGI · HID LampArray · MQTT · Inno Setup"),
                     ("Code", L("Open source sur GitHub, licence MIT", "Open source on GitHub, MIT license")),
                 ],
                 "facts": L("Gratuit · Six langues · Environ 0,5 ms de CPU par image",
@@ -313,6 +315,9 @@ def content(lang):
                     {"label": L("Télécharger pour Windows", "Download for Windows"), "href": "https://github.com/Ilyomix/glowback/releases/latest/download/GlowbackSetup.exe"},
                     {"label": L("Le site", "Website"), "href": "https://ilyomix.github.io/glowback/" + ("" if en else "fr/")},
                     {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/glowback"},
+                    {"label": L("Guide Home Assistant", "Home Assistant guide"),
+                     "href": L("https://github.com/Ilyomix/glowback/blob/main/README.fr.md#-home-assistant-et-google-assistant",
+                               "https://github.com/Ilyomix/glowback#-home-assistant--google-assistant")},
                 ],
                 "media": {
                     "main": img(f"glowback-hero-{lang}", [640, 960, 1280, 1920], 1920, 960, "(min-width: 1300px) 1180px, 92vw",
@@ -596,7 +601,7 @@ def main():
 
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac. Version 2.0 since 30 October 2026.
 - [Retrotape](https://apps.apple.com/app/id6829425065): a 90s camcorder for iPhone, on the App Store since 6 November 2026: 20 vintage filters applied live in the viewfinder, each with its own camera interface. Free, with a Pro subscription or one-time upgrade. Bilingual, no account, no ads, no tracking. Kotlin, Compose Multiplatform, Swift, Metal.
-- [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows: every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices. Python, Win32, DXGI, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
+- [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows: every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices, and shows up in Home Assistant as a light (MQTT), so Google Assistant, Alexa and Siri can switch it. Python, Win32, DXGI, MQTT, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
 - [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
 - Other projects: Crypto Sensor (crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
