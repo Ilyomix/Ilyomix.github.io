@@ -26,6 +26,45 @@ ICONS = {
 def icon(name):
     return Markup(f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[name]}</svg>')
 
+
+# "On this page": a line icon for each section that has no logo of its own (Lucide, ISC licence)
+TOC_ICONS = {
+    "desk": '<path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/><path d="M10 19v-3.96 3.15"/><path d="M7 19h5"/><rect width="6" height="10" x="16" y="12" rx="2"/>',
+    "work": '<rect width="7" height="7" x="3" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="3" rx="1.5"/><rect width="7" height="7" x="14" y="14" rx="1.5"/><rect width="7" height="7" x="3" y="14" rx="1.5"/>',
+    "numbers": '<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+    "quote": '<path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/>',
+    "person": '<circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/>',
+    "briefcase": '<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+    "mail": ICONS["mail"],
+}
+
+
+def toc_icon(name):
+    return Markup(f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{TOC_ICONS[name]}</svg>')
+
+
+def toc(c):
+    """The page's sections in order, for "On this page": the projects with their app icons and colours, the rest with
+    a line icon and the site's cobalt."""
+    en = c["lang"] == "en"
+    L = lambda f, e: e if en else f
+    item = lambda id_, label, href=None, **kw: {"id": id_, "href": href or f"#{id_}", "label": label, "img": None,
+                                                "round": False, "icon": None, "accent": "var(--cobalt)", **kw}
+    return {
+        "label": L("Sur cette page", "On this page"),
+        "items": [
+            item("hero", L("Accueil", "Intro"), "#top", img="/assets/img/ilyes-avatar.webp", round=True),
+            item("stage", L("Le bureau", "The desk"), icon="desk"),
+            item("work", L("Projets", "Work"), icon="work"),
+            *(item(p["id"], p["name"], img=p["icon"], accent=p["glow"]) for p in c["projects"]),
+            item("numbers", L("En chiffres", "In numbers"), icon="numbers"),
+            item("recommendations", L("Recommandations", "Recommendations"), icon="quote"),
+            item("about", L("À propos", "About"), icon="person"),
+            item("experience", L("Parcours", "Experience"), icon="briefcase"),
+            item("contact", "Contact", icon="mail"),
+        ],
+    }
+
 def img(name, widths, w, h, sizes, alt):
     return {
         "src": f"/assets/img/{name}-{widths[-1]}.webp",
@@ -115,10 +154,10 @@ def content(lang):
             "description": L("Software & design engineer basé à Toulouse. Près de dix ans à concevoir et construire des interfaces produit rapides et accessibles en React et TypeScript, et des apps macOS en SwiftUI.",
                              "Software & design engineer based in Toulouse. Nearly a decade designing and building fast, accessible product interfaces in React and TypeScript, and native macOS apps in SwiftUI."),
             "og_title": "Ilyes Abd-Lillah · Software & Design Engineer",
-            "og_description": L(f"Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Lift, Glowback et Crypto LED Board.",
-                                f"Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Lift, Glowback and Crypto LED Board."),
-            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Lift, Glowback et Crypto LED Board.",
-                        "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Lift, Glowback and Crypto LED Board."),
+            "og_description": L(f"Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Glowback, Lift et Crypto LED Board.",
+                                f"Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Glowback, Lift and Crypto LED Board."),
+            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Glowback, Lift et Crypto LED Board.",
+                        "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Glowback, Lift and Crypto LED Board."),
         },
         "ui": {
             "skip": L("Aller au contenu", "Skip to content"),
@@ -162,8 +201,8 @@ def content(lang):
             "legend": [
                 {"id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp"},
                 {"id": "retrotape", "name": "Retrotape", "icon": "/assets/img/retrotape-icon-112.webp"},
-                {"id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg"},
                 {"id": "glowback", "name": "Glowback", "icon": "/assets/img/glowback-icon-240.webp"},
+                {"id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg"},
                 {"id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange"},
             ],
         },
@@ -252,39 +291,6 @@ def content(lang):
                 ]},
             },
             {
-                "id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg", "light": "lift", "glow": "#3d7bff",
-                "tagline": L("Un programme de musculation fondé sur la recherche, pour iPhone et iPad, gratuit sur l’App Store.", "A research-based training program for iPhone and iPad, free on the App Store."),
-                "body": [
-                    L("Lift construit un plan d’entraînement complet à rebours depuis une date objectif, puis guide chaque séance série par série : il chronomètre les repos et ajuste les charges d’après ce qu’on soulève vraiment.",
-                      "Lift builds a complete training plan backwards from a goal date, then guides each session set by set: it times the rests and adjusts the loads from what you actually lift."),
-                    L("Ses règles s’appuient sur la recherche en sciences du sport. Il fonctionne hors ligne, en français et en anglais, sans compte : tout reste sur le téléphone. Sur iOS, la séance et le minuteur de repos restent sur l’écran verrouillé et dans la Dynamic Island.",
-                      "Its rules come from sports science research. It works offline, in French and English, with no account: everything stays on the phone. On iOS, the session and the rest timer stay on the lock screen and in the Dynamic Island."),
-                ],
-                "specs": [
-                    (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
-                    (L("Plateforme", "Platform"), L("iPhone et iPad (iOS 16.2 ou plus) · web app installable (PWA)", "iPhone and iPad (iOS 16.2 or later) · installable web app (PWA)")),
-                    (L("Technologies", "Built with"), "React 19 · TypeScript · Vite · Capacitor · Swift · Workbox"),
-                    ("Code", L("Open source sur GitHub", "Open source on GitHub")),
-                ],
-                "facts": L("Sur l’App Store depuis le 14 octobre 2026 · Gratuit, sans pub ni achat intégré",
-                           "On the App Store since 14 October 2026 · Free, no ads, no in-app purchases"),
-                "links": [
-                    {"label": "App Store", "href": "https://apps.apple.com/app/id6818697874"},
-                    {"label": L("Ouvrir la web app", "Open the web app"), "href": "https://ilyomix.github.io/lift/"},
-                    {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/lift"},
-                ],
-                "media": {"phones": [
-                    {**ph(f"phone-lift-{s}-{lang}", "(min-width: 1200px) 230px, (min-width: 760px) 18vw, 62vw", alt), "title": t, "caption": cap, "speed": sp}
-                    for s, t, cap, alt, sp in [
-                        ("onboarding", L("Accueil", "Welcome"), L("Le plan part d’une date objectif.", "The plan starts from a goal date."), L("L’écran d’accueil de Lift.", "Lift’s welcome screen."), "0.2"),
-                        ("today", L("Aujourd’hui", "Today"), L("L’avancement et la prochaine séance.", "Progress so far and the next session."), L("L’écran Aujourd’hui : séances restantes, phases du plan et prochaine séance.", "Today: sessions to go, the plan’s phases and the next session."), "0.8"),
-                        ("session", L("En séance", "In a session"), L("Séries, charges et minuteur de repos.", "Sets, loads and the rest timer."), L("Une séance guidée : prescription, séries et minuteur.", "A guided session: prescription, sets and the timer."), "0.3"),
-                        ("calendar", L("Calendrier", "Calendar"), L("Tout le plan, semaine par semaine.", "The whole plan, week by week."), L("Le calendrier : blocs, rotation des séances et phases.", "The calendar: blocks, the session rotation and phases."), "0.9"),
-                        ("progress", L("Progrès", "Progress"), L("Force, poids et volume dans le temps.", "Strength, weight and volume over time."), L("L’écran Progrès : force estimée par exercice.", "Progress: estimated strength per exercise."), "0.4"),
-                    ]
-                ]},
-            },
-            {
                 "id": "glowback", "name": "Glowback", "icon": "/assets/img/glowback-icon-240.webp", "light": "glowback", "glow": "#9b7bff",
                 "tagline": L("Une lumière d’ambiance pour les LED RGB au dos des écrans, sur Windows. Gratuit et open source.",
                              "Ambient light for the RGB LEDs on the back of a monitor, on Windows. Free and open source."),
@@ -317,6 +323,39 @@ def content(lang):
                     "caption": L("Le panneau de réglages vit dans la zone de notification, à côté de l’horloge.",
                                  "The settings panel lives in the notification area, next to the clock."),
                 },
+            },
+            {
+                "id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg", "light": "lift", "glow": "#3d7bff",
+                "tagline": L("Un programme de musculation fondé sur la recherche, pour iPhone et iPad, gratuit sur l’App Store.", "A research-based training program for iPhone and iPad, free on the App Store."),
+                "body": [
+                    L("Lift construit un plan d’entraînement complet à rebours depuis une date objectif, puis guide chaque séance série par série : il chronomètre les repos et ajuste les charges d’après ce qu’on soulève vraiment.",
+                      "Lift builds a complete training plan backwards from a goal date, then guides each session set by set: it times the rests and adjusts the loads from what you actually lift."),
+                    L("Ses règles s’appuient sur la recherche en sciences du sport. Il fonctionne hors ligne, en français et en anglais, sans compte : tout reste sur le téléphone. Sur iOS, la séance et le minuteur de repos restent sur l’écran verrouillé et dans la Dynamic Island.",
+                      "Its rules come from sports science research. It works offline, in French and English, with no account: everything stays on the phone. On iOS, the session and the rest timer stay on the lock screen and in the Dynamic Island."),
+                ],
+                "specs": [
+                    (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
+                    (L("Plateforme", "Platform"), L("iPhone et iPad (iOS 16.2 ou plus) · web app installable (PWA)", "iPhone and iPad (iOS 16.2 or later) · installable web app (PWA)")),
+                    (L("Technologies", "Built with"), "React 19 · TypeScript · Vite · Capacitor · Swift · Workbox"),
+                    ("Code", L("Open source sur GitHub", "Open source on GitHub")),
+                ],
+                "facts": L("Sur l’App Store depuis le 14 octobre 2026 · Gratuit, sans pub ni achat intégré",
+                           "On the App Store since 14 October 2026 · Free, no ads, no in-app purchases"),
+                "links": [
+                    {"label": "App Store", "href": "https://apps.apple.com/app/id6818697874"},
+                    {"label": L("Ouvrir la web app", "Open the web app"), "href": "https://ilyomix.github.io/lift/"},
+                    {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/lift"},
+                ],
+                "media": {"phones": [
+                    {**ph(f"phone-lift-{s}-{lang}", "(min-width: 1200px) 230px, (min-width: 760px) 18vw, 62vw", alt), "title": t, "caption": cap, "speed": sp}
+                    for s, t, cap, alt, sp in [
+                        ("onboarding", L("Accueil", "Welcome"), L("Le plan part d’une date objectif.", "The plan starts from a goal date."), L("L’écran d’accueil de Lift.", "Lift’s welcome screen."), "0.2"),
+                        ("today", L("Aujourd’hui", "Today"), L("L’avancement et la prochaine séance.", "Progress so far and the next session."), L("L’écran Aujourd’hui : séances restantes, phases du plan et prochaine séance.", "Today: sessions to go, the plan’s phases and the next session."), "0.8"),
+                        ("session", L("En séance", "In a session"), L("Séries, charges et minuteur de repos.", "Sets, loads and the rest timer."), L("Une séance guidée : prescription, séries et minuteur.", "A guided session: prescription, sets and the timer."), "0.3"),
+                        ("calendar", L("Calendrier", "Calendar"), L("Tout le plan, semaine par semaine.", "The whole plan, week by week."), L("Le calendrier : blocs, rotation des séances et phases.", "The calendar: blocks, the session rotation and phases."), "0.9"),
+                        ("progress", L("Progrès", "Progress"), L("Force, poids et volume dans le temps.", "Strength, weight and volume over time."), L("L’écran Progrès : force estimée par exercice.", "Progress: estimated strength per exercise."), "0.4"),
+                    ]
+                ]},
             },
             {
                 "id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange", "light": "led", "glow": "#ff3f5c",
@@ -460,18 +499,18 @@ def jsonld(c):
          "inLanguage": ["fr", "en"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
-        {"@type": "SoftwareApplication", "@id": f"{SITE}/#lift", "name": "Lift", "url": "https://apps.apple.com/app/id6818697874",
-         "installUrl": "https://apps.apple.com/app/id6818697874", "sameAs": ["https://ilyomix.github.io/lift/"],
-         "applicationCategory": "HealthApplication", "operatingSystem": "iOS 16.2 or later, Web",
-         "description": c["projects"][2]["tagline"], "image": f"{SITE}/assets/img/phone-lift-today-{'en' if en else 'fr'}-868.webp",
-         "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/lift", "inLanguage": ["fr", "en"],
-         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
-         "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "SoftwareApplication", "@id": f"{SITE}/#glowback", "name": "Glowback", "url": "https://ilyomix.github.io/glowback/",
          "downloadUrl": "https://github.com/Ilyomix/glowback/releases/latest/download/GlowbackSetup.exe",
          "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows 10, Windows 11",
-         "description": c["projects"][3]["tagline"], "image": f"{SITE}/assets/img/glowback-hero-{'en' if en else 'fr'}-1280.webp",
+         "description": c["projects"][2]["tagline"], "image": f"{SITE}/assets/img/glowback-hero-{'en' if en else 'fr'}-1280.webp",
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/glowback", "inLanguage": ["en", "fr", "es", "de", "it", "pt"],
+         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+         "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
+        {"@type": "SoftwareApplication", "@id": f"{SITE}/#lift", "name": "Lift", "url": "https://apps.apple.com/app/id6818697874",
+         "installUrl": "https://apps.apple.com/app/id6818697874", "sameAs": ["https://ilyomix.github.io/lift/"],
+         "applicationCategory": "HealthApplication", "operatingSystem": "iOS 16.2 or later, Web",
+         "description": c["projects"][3]["tagline"], "image": f"{SITE}/assets/img/phone-lift-today-{'en' if en else 'fr'}-868.webp",
+         "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/lift", "inLanguage": ["fr", "en"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "WebApplication", "@id": f"{SITE}/#led-board", "name": "Crypto LED Board", "url": "https://crypto-led-board.vercel.app/",
@@ -513,7 +552,7 @@ def main():
     css = Markup(minify_css((BUILD / "site.css").read_text()))
     for lang, out in (("en", ROOT / "index.html"), ("fr", ROOT / "fr" / "index.html")):
         c = content(lang)
-        html = tpl.render(c=c, css=css, jsonld=Markup(jsonld(c)), icon=icon, flag=FLAG, site=SITE, email=EMAIL, year=YEAR)
+        html = tpl.render(c=c, toc=toc(c), css=css, jsonld=Markup(jsonld(c)), icon=icon, toc_icon=toc_icon, flag=FLAG, site=SITE, email=EMAIL, year=YEAR)
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html)
         print("wrote", out.relative_to(ROOT), len(html.encode()) // 1024, "KB")
@@ -531,8 +570,8 @@ def main():
     <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/"/>
     <image:image><image:loc>{SITE}/assets/img/mac-cadran-desktop-2400.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/phone-retrotape-camcorder98-{lang}-868.webp</image:loc></image:image>
-    <image:image><image:loc>{SITE}/assets/img/phone-lift-today-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/glowback-hero-{lang}-1280.webp</image:loc></image:image>
+    <image:image><image:loc>{SITE}/assets/img/phone-lift-today-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/mac-led-board-2400.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/ilyes-portrait.webp</image:loc></image:image>
   </url>
@@ -554,8 +593,8 @@ def main():
 
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac. Version 2.0 since 30 October 2026.
 - [Retrotape](https://apps.apple.com/app/id6829425065): a 90s camcorder for iPhone, on the App Store since 6 November 2026: 20 vintage filters applied live in the viewfinder, each with its own camera interface. Free, with a Pro subscription or one-time upgrade. Bilingual, no account, no ads, no tracking. Kotlin, Compose Multiplatform, Swift, Metal.
-- [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows: every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices. Python, Win32, DXGI, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
+- [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
 - Other projects: Crypto Sensor (crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
 

@@ -75,8 +75,27 @@
   </div>
 </header>
 
+<nav class="toc" aria-label="{{ toc.label }}" data-toc>
+  <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="toc-panel">
+    <span class="toc-now" data-toc-now><span class="toc-ico" aria-hidden="true"></span><span class="toc-label"></span></span>
+    <span class="toc-title mono">{{ toc.label }}</span>
+    <svg class="toc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+  <div class="toc-panel" id="toc-panel">
+    <p class="toc-head mono" aria-hidden="true">{{ toc.label }}</p>
+    <div class="toc-list">
+    <ol>
+      {% for t in toc["items"] %}
+      <li><a href="{{ t.href }}" data-toc-target="{{ t.id }}" style="--accent:{{ t.accent }}"><span class="toc-ico" aria-hidden="true">{% if t.img %}<img src="{{ t.img }}" width="22" height="22" alt="" loading="lazy" decoding="async"{% if t.round %} class="round"{% endif %}>{% else %}{{ toc_icon(t.icon) }}{% endif %}</span><span class="toc-label">{{ t.label }}</span></a></li>
+      {% endfor %}
+    </ol>
+    <span class="toc-dot" aria-hidden="true"></span>
+    </div>
+  </div>
+</nav>
+
 <main id="main">
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="hero" id="hero" aria-labelledby="hero-title">
     <div class="lights hero-lights" aria-hidden="true"><i></i><i></i><i></i><i class="pl" style="--c:var(--l-cobalt);--x:50%;--y:50%;--s:38vmax;--o:.32"></i></div>
     <div class="wrap hero-grid">
       <div class="hero-text">
@@ -106,7 +125,7 @@
     </div>
   </section>
 
-  <section class="stage" aria-labelledby="stage-title">
+  <section class="stage" id="stage" aria-labelledby="stage-title">
     <div class="stage-pin">
       <div class="spot" aria-hidden="true"></div>
       <div class="lights stage-lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
@@ -220,7 +239,7 @@
     </div>
   </section>
 
-  <section class="numbers-wrap" aria-label="{{ c.numbers.label }}">
+  <section class="numbers-wrap" id="numbers" aria-label="{{ c.numbers.label }}">
     <div class="wrap">
       <div class="numbers" data-reveal>
         {% for n in c.numbers.stats %}<div><b data-count="{{ n.value }}" data-suffix="{{ n.suffix }}">{{ n.display }}</b><span>{{ n.label }}</span></div>{% endfor %}

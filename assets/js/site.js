@@ -51,6 +51,52 @@
     if (!sayers.length) place.classList.add('is-shown');
   } else if (place) place.classList.add('is-shown');
 
+  /* On this page: the section the page is at, lit in the list (a rail on the right, a bar under the header on
+     phones). It is the last section whose top has passed a line a third of the way down the window. */
+  var toc = d.querySelector('[data-toc]');
+  if (toc) {
+    var tocLinks = [].slice.call(toc.querySelectorAll('[data-toc-target]'));
+    var tocTargets = tocLinks.map(function (a) { return d.getElementById(a.getAttribute('data-toc-target')); });
+    var tocToggle = toc.querySelector('.toc-toggle'), tocNow = toc.querySelector('[data-toc-now]'), tocDot = toc.querySelector('.toc-dot');
+    var tocAt = -1;
+    var placeDot = function () {
+      var a = tocLinks[tocAt];
+      if (!a || !a.offsetParent) return;  // the list is closed (phones)
+      tocDot.style.setProperty('--dot-y', (a.offsetTop + a.offsetHeight / 2 - 3) + 'px');
+    };
+    var setAt = function (i) {
+      if (i === tocAt) return;
+      if (tocAt > -1) tocLinks[tocAt].removeAttribute('aria-current');
+      tocAt = i;
+      var a = tocLinks[i];
+      a.setAttribute('aria-current', 'location');
+      toc.style.setProperty('--toc-accent', a.style.getPropertyValue('--accent'));
+      tocNow.querySelector('.toc-ico').innerHTML = a.querySelector('.toc-ico').innerHTML;
+      tocNow.querySelector('.toc-label').textContent = a.querySelector('.toc-label').textContent;
+      toc.classList.toggle('is-past', i > 0);
+      placeDot();
+    };
+    var spy = function () {  // a dozen boxes read per scroll event, which browsers already send once a frame at most
+      var line = innerHeight / 3, i = 0;
+      for (var k = 0; k < tocTargets.length; k++) if (tocTargets[k] && tocTargets[k].getBoundingClientRect().top <= line) i = k;
+      if (innerHeight + scrollY >= root.scrollHeight - 4) i = tocTargets.length - 1;  // the page's end: the last one, however short
+      setAt(i);
+    };
+    addEventListener('scroll', spy, { passive: true });
+    addEventListener('resize', function () { spy(); placeDot(); });
+    spy();
+    setTimeout(function () { placeDot(); toc.classList.add('is-ready'); }, 50);  // the dot shows once it sits on its row
+    var setOpen = function (open) {
+      toc.classList.toggle('is-open', open);
+      tocToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) placeDot();
+    };
+    tocToggle.addEventListener('click', function () { setOpen(tocToggle.getAttribute('aria-expanded') !== 'true'); });
+    tocLinks.forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && toc.classList.contains('is-open')) { setOpen(false); tocToggle.focus(); } });
+    d.addEventListener('click', function (e) { if (!toc.contains(e.target)) setOpen(false); });
+  }
+
   /* Header state */
   var header = d.querySelector('.site-header');
   function onScroll() { header.classList.toggle('is-scrolled', scrollY > 8); }
