@@ -215,6 +215,14 @@
           <figure data-reveal><div data-speed="{{ m.speed }}"><img src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async"></div><figcaption class="cap"><b>{{ m.title }}</b><br>{{ m.caption }}</figcaption></figure>
           {% endfor %}
         </div>
+      {% elif p.id == 'glowback' %}
+        <figure class="gb-set" data-reveal>
+          <div class="gb-frame" data-speed="0.3">
+            <img class="gb-shot" src="{{ p.media.main.src }}" srcset="{{ p.media.main.srcset }}" sizes="{{ p.media.main.sizes }}" width="{{ p.media.main.w }}" height="{{ p.media.main.h }}" alt="{{ p.media.main.alt }}" loading="lazy" decoding="async">
+            <img class="gb-panel" src="{{ p.media.panel.src }}" srcset="{{ p.media.panel.srcset }}" sizes="{{ p.media.panel.sizes }}" width="{{ p.media.panel.w }}" height="{{ p.media.panel.h }}" alt="{{ p.media.panel.alt }}" loading="lazy" decoding="async">
+          </div>
+        </figure>
+        <p class="cap" data-reveal>{{ p.media.caption }}</p>
       {% else %}
         <figure class="led-set" data-reveal>
           <div data-speed="0.3"><img class="device" src="{{ p.media.main.src }}" srcset="{{ p.media.main.srcset }}" sizes="{{ p.media.main.sizes }}" width="{{ p.media.main.w }}" height="{{ p.media.main.h }}" alt="{{ p.media.main.alt }}" loading="lazy" decoding="async"></div>

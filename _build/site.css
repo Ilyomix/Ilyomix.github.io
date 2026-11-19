@@ -205,8 +205,9 @@ main, .site-header { overflow-x: clip; }
 /* ---------- On this page ----------
    Wide screens: a glass rail of icons on the right, the projects' own icons among them, that opens into the list with
    names under the pointer or the keyboard (and stays open where the margin has room). A dot in the section's colour
-   marks where the page is. Phones: a bar under the header that names the section and opens the list. */
-.toc { --row: 32px; --toc-accent: var(--cobalt); position: fixed; z-index: 45; right: 8px; top: 50%; translate: 0 -50%; }
+   marks where the page is. Below 1100 px the margin is too narrow for the rail: a bar under the header names the
+   section and opens the list. */
+.toc { --row: 32px; --toc-accent: var(--cobalt); position: fixed; z-index: 45; right: 4px; top: 50%; translate: 0 -50%; }
 .toc-toggle { display: none; }
 .toc-panel { position: relative; display: grid; padding: 4px; border-radius: 20px; background: var(--glass); box-shadow: inset 0 0 0 1px var(--glass-rim), 0 18px 40px -20px rgb(0 0 0 / 0.6); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); }
 .toc-head { max-width: 0; max-height: 0; overflow: hidden; padding: 0; font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; opacity: 0; transition: max-width 360ms var(--ease-out), max-height 360ms var(--ease-out), padding 360ms var(--ease-out), opacity 200ms linear; }
@@ -221,10 +222,13 @@ main, .site-header { overflow-x: clip; }
 .toc-ico svg { width: 18px; height: 18px; }
 .toc a:hover img, .toc a[aria-current] img, .toc-now img { opacity: 1; }
 .toc-label { max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0; transition: max-width 360ms var(--ease-out), margin 360ms var(--ease-out), opacity 200ms linear; }
-.toc-dot { position: absolute; left: -15px; top: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--toc-accent); box-shadow: 0 0 10px 1px color-mix(in srgb, var(--toc-accent) 70%, transparent); opacity: 0; translate: 0 var(--dot-y, 0px); transition: translate 420ms var(--ease-out), background-color 300ms linear, box-shadow 300ms linear, opacity 200ms linear; pointer-events: none; }
+.toc-dot { position: absolute; left: -3px; top: 0; width: 3px; height: 14px; border-radius: 2px; background: var(--toc-accent); box-shadow: 0 0 10px 1px color-mix(in srgb, var(--toc-accent) 70%, transparent); opacity: 0; translate: 0 var(--dot-y, 0px); transition: translate 420ms var(--ease-out), background-color 300ms linear, box-shadow 300ms linear, opacity 200ms linear; pointer-events: none; }
 .toc.is-ready .toc-dot { opacity: 1; }
-@media (min-width: 1456px) { .toc { right: calc((100vw - var(--max)) / 4 - 20px); } }  /* the middle of the margin */
-@media (min-width: 900px) {
+@media (min-width: 1456px) {  /* the middle of the margin, where the dot has room beside the rail */
+  .toc { right: calc((100vw - var(--max)) / 4 - 20px); }
+  .toc-dot { left: -15px; width: 6px; height: 6px; border-radius: 50%; }
+}
+@media (min-width: 1100px) {
   .toc:hover .toc-label, .toc:focus-within .toc-label { max-width: 12rem; margin: 0 8px 0 10px; opacity: 1; }
   .toc:hover .toc-head, .toc:focus-within .toc-head { max-width: 14rem; max-height: 28px; padding: 9px 10px 7px; opacity: 1; }
 }
@@ -234,9 +238,9 @@ main, .site-header { overflow-x: clip; }
   .toc .toc-label { max-width: 12rem; margin: 0 8px 0 10px; opacity: 1; }
   .toc .toc-head { max-width: 14rem; max-height: 28px; padding: 9px 10px 7px; opacity: 1; }
 }
-@media (min-width: 900px) and (max-height: 560px) { .toc { --row: 26px; } .toc-ico img { width: 18px; height: 18px; } .toc-ico svg { width: 15px; height: 15px; } }
-@media (min-width: 900px) and (max-height: 450px) { .toc { display: none; } }
-@media (max-width: 899px) {
+@media (min-width: 1100px) and (max-height: 560px) { .toc { --row: 26px; } .toc-ico img { width: 18px; height: 18px; } .toc-ico svg { width: 15px; height: 15px; } }
+@media (min-width: 1100px) and (max-height: 450px) { .toc { display: none; } }
+@media (max-width: 1099px) {
   html.js { scroll-padding-top: calc(var(--header-h) + 64px); }
   .toc { --row: 44px; left: 0; right: 0; top: var(--header-h); translate: 0 -100%; visibility: hidden; transition: translate 380ms var(--ease-out), visibility 0s linear 380ms; }
   html:not(.js) .toc { display: none; }
@@ -254,7 +258,10 @@ main, .site-header { overflow-x: clip; }
   .toc ol { gap: 2px; }
   .toc a { padding: 0 12px 0 22px; border-radius: 12px; font-size: 0.9375rem; color: var(--ink-2); }
   .toc ol .toc-label { max-width: none; margin-left: 12px; opacity: 1; }
-  .toc-dot { left: 8px; }
+  .toc-dot { left: 8px; width: 6px; height: 6px; border-radius: 50%; }
+}
+@media (min-width: 900px) and (max-width: 1099px) {
+  .toc-toggle { background: color-mix(in srgb, var(--paper) 72%, transparent); -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5); }
 }
 
 /* ---------- Buttons and links ---------- */
@@ -434,6 +441,16 @@ main, .site-header { overflow-x: clip; }
 .phones figure:nth-child(even) { margin-top: clamp(24px, 6vw, 96px); }
 .phones img { width: 100%; filter: var(--device-shadow); }
 .led-set { position: relative; width: min(100%, 1180px); margin: 0 auto; padding-right: 8%; }
+/* Glowback: the banner as a card, and the app's panel open in its bottom-right corner, where Windows opens it. The
+   panel moves with the card and never leaves it; it has its own transparent round corners and border, so only a
+   shadow is added. On phones it would be too small to read there: it comes out of the card's bottom-right corner. */
+.gb-set { width: min(100%, 1180px); margin: 0 auto; }
+.gb-frame { position: relative; }
+.gb-shot { display: block; width: 100%; height: auto; border-radius: clamp(14px, 1.9vw, 26px); box-shadow: 0 0 0 1px var(--glass-rim), 0 40px 70px -36px rgb(0 0 0 / 0.75); }
+.gb-panel { position: absolute; right: 2.4%; bottom: 4.6%; width: 16.5%; height: auto; filter: drop-shadow(0 16px 26px rgb(0 0 0 / 0.5)) drop-shadow(0 2px 5px rgb(0 0 0 / 0.35)); }
+@media (max-width: 759px) {
+  .gb-panel { position: relative; right: auto; bottom: auto; display: block; width: min(58%, 250px); margin: -12% 3% 0 auto; }
+}
 .led-set .led-phone { position: absolute; right: 0; bottom: -2%; width: 17%; z-index: 2; }
 @media (max-width: 759px) {
   .pair, .tiles { grid-template-columns: 1fr 1fr; }
