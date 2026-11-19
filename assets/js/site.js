@@ -145,6 +145,9 @@
   gsap.registerPlugin(ST);
   var q = function (s, c) { return gsap.utils.toArray(s, c); };
   var fine = matchMedia('(pointer: fine)').matches;
+  /* True while a jump lands (see land, at the end): the entrances it brings on screen are skipped. A page opened
+     halfway down (an address with a #, a reload) lands the same way. */
+  var landing = scrollY > 0;
 
   /* Hero intro */
   var intro = gsap.timeline({ defaults: { ease: 'expo.out' } });
@@ -247,11 +250,19 @@
     });
   }
 
-  /* Reveals */
-  ST.batch('[data-reveal]', {
-    start: 'top 88%', once: true,
-    onEnter: function (batch) { gsap.fromTo(batch, { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 1.15, ease: 'expo.out', stagger: 0.08, overwrite: true }); }
-  });
+  /* Reveals, once each: they rise in as the scroll brings them, and are simply there when a jump lands on them.
+     The ones a fast scroll (the End key, the scrollbar) has already carried past the top are put in place at once:
+     in the stagger they would hold up the ones on screen by seconds. */
+  var reveals = q('[data-reveal]');
+  function reveal(els, now) {
+    els = els.filter(function (el) { return !el.__in; });
+    els.forEach(function (el) { el.__in = true; });
+    var rise = now ? [] : els.filter(function (el) { return el.getBoundingClientRect().bottom > 0; });
+    var put = els.filter(function (el) { return rise.indexOf(el) < 0; });
+    if (put.length) gsap.set(put, { opacity: 1, y: 0, overwrite: true });
+    if (rise.length) gsap.fromTo(rise, { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 1.15, ease: 'expo.out', stagger: 0.08, overwrite: true });
+  }
+  ST.batch(reveals, { start: 'top 88%', once: true, onEnter: function (batch) { reveal(batch, landing); } });
 
   /* Parallax on product media */
   q('[data-speed]').forEach(function (el) {
@@ -266,10 +277,32 @@
     el.__waiting = true; el.textContent = '0' + suffix;
     ST.create({ trigger: el, start: 'top 90%', once: true, onEnter: function () {
       el.__waiting = false;
-      gsap.to(o, { v: parseFloat(el.getAttribute('data-count')) || 0, duration: 1.8, ease: 'power3.out', onUpdate: draw });
+      var n = parseFloat(el.getAttribute('data-count')) || 0;
+      if (landing) { o.v = n; draw(); }  // a jump shows the figure, without counting up to it
+      else gsap.to(o, { v: n, duration: 1.8, ease: 'power3.out', onUpdate: draw });
       el.__countTo = function (n) { gsap.to(o, { v: n, duration: 1.2, ease: 'power2.out', onUpdate: draw, overwrite: true }); };
     } });
   });
+
+  /* A jump (a link to a section, the back button) lands on a page already in place: what it brings on screen shows
+     as it is instead of playing its entrance once there. Scrolling on from there plays the next ones as usual. */
+  function land() {
+    landing = true;
+    ST.update();  // the triggers the jump went past fire now, and skip their entrance
+    reveal(reveals.filter(function (el) { return el.getBoundingClientRect().top < innerHeight * 0.88; }), true);  // without the batch's wait
+    ST.getAll().forEach(function (s) {
+      var t = s.getTween(), a = s.animation;
+      if (t) t.progress(1);  // a scrubbed scene is already where the scroll puts it
+      else if (a && !a.paused() && !a.reversed() && a.progress() < 1) a.progress(1);  // one the jump set off has played
+    });
+    landing = false;
+  }
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (a && a.hash.length > 1) { landing = true; requestAnimationFrame(land); }  // after the browser has jumped
+  });
+  addEventListener('hashchange', function () { landing = true; requestAnimationFrame(land); });
+  if (landing) land();
 
   addEventListener('load', function () { ST.refresh(); });
   if (d.readyState === 'complete') ST.refresh();
