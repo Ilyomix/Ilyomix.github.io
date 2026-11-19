@@ -150,13 +150,14 @@ def content(lang):
         "og_locale_alt": "fr_FR" if en else "en_US",
         "alt": {"href": "/fr/", "lang": "fr", "long": "Français"} if en else {"href": "/", "lang": "en", "long": "English"},
         "meta": {
-            "title": L("Ilyes Abd-Lillah · Software & Design Engineer à Toulouse",
-                       "Ilyes Abd-Lillah · Software & Design Engineer in Toulouse"),
-            "description": L("Software & design engineer basé à Toulouse. Près de dix ans à concevoir et construire des interfaces produit rapides et accessibles en React et TypeScript, et des apps macOS en SwiftUI.",
-                             "Software & design engineer based in Toulouse. Nearly a decade designing and building fast, accessible product interfaces in React and TypeScript, and native macOS apps in SwiftUI."),
-            "og_title": "Ilyes Abd-Lillah · Software & Design Engineer",
-            "og_description": L(f"Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Glowback, Lift et Crypto LED Board.",
-                                f"Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Glowback, Lift and Crypto LED Board."),
+            # In the words companies search with: the role, the stack and the city
+            "title": L("Ilyes Abd-Lillah · Lead développeur front-end React à Toulouse",
+                       "Ilyes Abd-Lillah · Lead Frontend & Design Engineer in Toulouse"),
+            "description": L("Lead développeur front-end et design engineer à Toulouse : près de dix ans d’interfaces produit en React et TypeScript, et des apps macOS en SwiftUI.",
+                             "Lead frontend & design engineer in Toulouse: nearly a decade of product interfaces in React and TypeScript, and native macOS apps in SwiftUI."),
+            "og_title": L("Ilyes Abd-Lillah · Développeur front-end & design engineer", "Ilyes Abd-Lillah · Frontend & Design Engineer"),
+            "og_description": L(f"Développeur front-end et design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Glowback, Lift et Crypto LED Board.",
+                                f"Frontend & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Glowback, Lift and Crypto LED Board."),
             "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Glowback, Lift et Crypto LED Board.",
                         "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Glowback, Lift and Crypto LED Board."),
         },
@@ -484,11 +485,12 @@ def content(lang):
 def jsonld(c):
     lang = c["lang"]
     en = lang == "en"
+    L = lambda f, e: e if en else f
     person = {
         "@type": "Person", "@id": f"{SITE}/#person",
         "name": "Ilyes Abd-Lillah", "givenName": "Ilyes", "familyName": "Abd-Lillah",
         "alternateName": ["Ilyomix"],
-        "jobTitle": "Software & Design Engineer",
+        "jobTitle": L("Développeur front-end et design engineer", "Frontend & Design Engineer"),
         "description": c["meta"]["description"],
         "url": f"{SITE}/", "email": EMAIL,
         "image": {"@type": "ImageObject", "url": f"{SITE}/assets/img/ilyes-portrait.webp", "width": 368, "height": 460},
