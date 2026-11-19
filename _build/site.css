@@ -448,16 +448,13 @@ main, .site-header { overflow-x: clip; }
 .phones figure:nth-child(even) { margin-top: clamp(24px, 6vw, 96px); }
 .phones img { width: 100%; filter: var(--device-shadow); }
 .led-set { position: relative; width: min(100%, 1180px); margin: 0 auto; padding-right: 8%; }
-/* Glowback: the banner as a card, and the app's panel open in its bottom-right corner, where Windows opens it. The
-   panel moves with the card and never leaves it; it has its own transparent round corners and border, so only a
-   shadow is added. On phones it would be too small to read there: it comes out of the card's bottom-right corner. */
+/* Glowback: the banner as a card, then its app window below it */
 .gb-set { width: min(100%, 1180px); margin: 0 auto; }
 .gb-frame { position: relative; }
 .gb-shot { display: block; width: 100%; height: auto; border-radius: clamp(14px, 1.9vw, 26px); box-shadow: 0 0 0 1px var(--glass-rim), 0 40px 70px -36px rgb(0 0 0 / 0.75); }
-.gb-panel { position: absolute; right: 2.4%; bottom: 4.6%; width: 16.5%; height: auto; filter: drop-shadow(0 16px 26px rgb(0 0 0 / 0.5)) drop-shadow(0 2px 5px rgb(0 0 0 / 0.35)); }
-@media (max-width: 759px) {
-  .gb-panel { position: relative; right: auto; bottom: auto; display: block; width: min(58%, 250px); margin: -12% 3% 0 auto; }
-}
+/* Glowback's window, two of its pages side by side: transparent round their corners, so only a shadow is added */
+.gb-app { width: min(100%, 1180px); margin: 0 auto; align-items: start; }
+.gb-app + .cap { width: min(100%, 1180px); margin-inline: auto; }  /* level with the window shots */
 .led-set .led-phone { position: absolute; right: 0; bottom: -2%; width: 17%; z-index: 2; }
 @media (max-width: 759px) {
   .pair, .tiles { grid-template-columns: 1fr 1fr; }

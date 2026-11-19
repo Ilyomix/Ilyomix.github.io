@@ -219,9 +219,13 @@
         <figure class="gb-set" data-reveal>
           <div class="gb-frame" data-speed="0.3">
             <img class="gb-shot" src="{{ p.media.main.src }}" srcset="{{ p.media.main.srcset }}" sizes="{{ p.media.main.sizes }}" width="{{ p.media.main.w }}" height="{{ p.media.main.h }}" alt="{{ p.media.main.alt }}" loading="lazy" decoding="async">
-            <img class="gb-panel" src="{{ p.media.panel.src }}" srcset="{{ p.media.panel.srcset }}" sizes="{{ p.media.panel.sizes }}" width="{{ p.media.panel.w }}" height="{{ p.media.panel.h }}" alt="{{ p.media.panel.alt }}" loading="lazy" decoding="async">
           </div>
         </figure>
+        <div class="pair gb-app">
+          {% for m in p.media.pair %}
+          <figure data-reveal><img class="device" src="{{ m.src }}" srcset="{{ m.srcset }}" sizes="{{ m.sizes }}" width="{{ m.w }}" height="{{ m.h }}" alt="{{ m.alt }}" loading="lazy" decoding="async"><figcaption class="cap" style="margin-top:14px"><b>{{ m.title }}</b> · {{ m.caption }}</figcaption></figure>
+          {% endfor %}
+        </div>
         <p class="cap" data-reveal>{{ p.media.caption }}</p>
       {% else %}
         <figure class="led-set" data-reveal>
