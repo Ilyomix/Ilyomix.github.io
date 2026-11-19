@@ -115,10 +115,10 @@ def content(lang):
             "description": L("Software & design engineer basé à Toulouse. Près de dix ans à concevoir et construire des interfaces produit rapides et accessibles en React et TypeScript, et des apps macOS en SwiftUI.",
                              "Software & design engineer based in Toulouse. Nearly a decade designing and building fast, accessible product interfaces in React and TypeScript, and native macOS apps in SwiftUI."),
             "og_title": "Ilyes Abd-Lillah · Software & Design Engineer",
-            "og_description": L(f"Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Lift et Crypto LED Board.",
-                                f"Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Lift and Crypto LED Board."),
-            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Lift et Crypto LED Board.",
-                        "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Lift and Crypto LED Board."),
+            "og_description": L(f"Software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Lift, Glowback et Crypto LED Board.",
+                                f"Software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Lift, Glowback and Crypto LED Board."),
+            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Lift, Glowback et Crypto LED Board.",
+                        "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Lift, Glowback and Crypto LED Board."),
         },
         "ui": {
             "skip": L("Aller au contenu", "Skip to content"),
@@ -147,8 +147,8 @@ def content(lang):
         },
         "stage": {
             "title": L("Conçus, construits, publiés.", "Designed, built, shipped."),
-            "lede": L("Quatre produits personnels, menés de l’idée à la mise en ligne : sur Mac, sur iPhone et sur le web.",
-                      "Four products of my own, taken from idea to release: on the Mac, the iPhone and the web."),
+            "lede": L("Cinq produits personnels, menés de l’idée à la mise en ligne : sur Mac, sur iPhone, sur Windows et sur le web.",
+                      "Five products of my own, taken from idea to release: on the Mac, the iPhone, Windows and the web."),
             "alt": L("Un bureau avec un Studio Display qui affiche Crypto LED Board, un MacBook Pro et un MacBook Air qui affichent Cadran, un téléphone qui affiche Lift et un autre qui affiche Retrotape.",
                      "A desk with a Studio Display showing Crypto LED Board, a MacBook Pro and a MacBook Air showing Cadran, a phone showing Lift and another showing Retrotape."),
             "legend_label": L("Les projets", "The projects"),
@@ -163,6 +163,7 @@ def content(lang):
                 {"id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp"},
                 {"id": "retrotape", "name": "Retrotape", "icon": "/assets/img/retrotape-icon-112.webp"},
                 {"id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg"},
+                {"id": "glowback", "name": "Glowback", "icon": "/assets/glowback-icon.svg"},
                 {"id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange"},
             ],
         },
@@ -282,6 +283,40 @@ def content(lang):
                         ("progress", L("Progrès", "Progress"), L("Force, poids et volume dans le temps.", "Strength, weight and volume over time."), L("L’écran Progrès : force estimée par exercice.", "Progress: estimated strength per exercise."), "0.4"),
                     ]
                 ]},
+            },
+            {
+                "id": "glowback", "name": "Glowback", "icon": "/assets/glowback-icon.svg", "light": "glowback", "glow": "#9b7bff",
+                "tagline": L("Une lumière d’ambiance pour les LED RGB au dos des écrans, sur Windows. Gratuit et open source.",
+                             "Ambient light for the RGB LEDs on the back of a monitor, on Windows. Free and open source."),
+                "body": [
+                    L("Glowback capture l’écran trente fois par seconde et donne à chaque LED au dos du moniteur la couleur du bord de l’image juste devant elle : un coucher de soleil à gauche de l’écran, et le mur de gauche devient orange. Il fonctionne avec tous les appareils Éclairage dynamique de Windows et OpenRGB, sans ruban LED ni caméra.",
+                      "Glowback captures the screen thirty times per second and gives each LED on the back of the monitor the colour of the edge of the picture right in front of it: a sunset on the left of the screen turns the wall on the left orange. It works with every Windows Dynamic Lighting and OpenRGB device, with no LED strip or camera."),
+                    L("J’ai écrit la capture GPU (DXGI, HDR compris), le pilote HID LampArray qui lit la position de chaque LED dans l’appareil, et une vraie app Windows : installateur, panneau de réglages dans la zone de notification, mises à jour vérifiées dans l’app, six langues. Le tout tient dans un seul fichier Python, sans dépendance.",
+                      "I wrote the GPU capture (DXGI, HDR included), the HID LampArray driver that reads the position of every LED from the device, and a real Windows app: an installer, a settings panel in the notification area, verified in-app updates, six languages. All of it fits in a single Python file with zero dependencies."),
+                ],
+                "specs": [
+                    (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
+                    (L("Plateforme", "Platform"), L("Windows 10 et 11 · Éclairage dynamique et OpenRGB", "Windows 10 and 11 · Dynamic Lighting and OpenRGB")),
+                    (L("Technologies", "Built with"), "Python · Win32 · DXGI · HID LampArray · Inno Setup"),
+                    ("Code", L("Open source sur GitHub, licence MIT", "Open source on GitHub, MIT license")),
+                ],
+                "facts": L("Gratuit · Six langues · Environ 0,5 ms de CPU par image",
+                           "Free · Six languages · About 0.5 ms of CPU per frame"),
+                "links": [
+                    {"label": L("Télécharger pour Windows", "Download for Windows"), "href": "https://github.com/Ilyomix/glowback/releases/latest/download/GlowbackSetup.exe"},
+                    {"label": L("Le site", "Website"), "href": "https://ilyomix.github.io/glowback/" + ("" if en else "fr/")},
+                    {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/glowback"},
+                ],
+                "media": {
+                    "main": img(f"glowback-hero-{lang}", [640, 960, 1280], 1280, 640, "(min-width: 1300px) 1085px, 84vw",
+                                L("Un écran dont les LED arrière éclairent le mur avec les couleurs des bords de l’image.",
+                                  "A monitor whose rear LEDs light the wall with the colours of the picture’s edges.")),
+                    "phone": img(f"glowback-panel-{lang}", [280, 560, 698], 698, 1056, "(min-width: 1300px) 200px, 17vw",
+                                 L("Le panneau de Glowback dans la zone de notification : état, réglages et liens.",
+                                   "Glowback’s panel in the notification area: status, settings and links.")),
+                    "caption": L("Le panneau de réglages vit dans la zone de notification, à côté de l’horloge.",
+                                 "The settings panel lives in the notification area, next to the clock."),
+                },
             },
             {
                 "id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange", "light": "led", "glow": "#ff3f5c",
@@ -432,9 +467,16 @@ def jsonld(c):
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/lift", "inLanguage": ["fr", "en"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
+        {"@type": "SoftwareApplication", "@id": f"{SITE}/#glowback", "name": "Glowback", "url": "https://ilyomix.github.io/glowback/",
+         "downloadUrl": "https://github.com/Ilyomix/glowback/releases/latest/download/GlowbackSetup.exe",
+         "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows 10, Windows 11",
+         "description": c["projects"][3]["tagline"], "image": f"{SITE}/assets/img/glowback-hero-{'en' if en else 'fr'}-1280.webp",
+         "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/glowback", "inLanguage": ["en", "fr", "es", "de", "it", "pt"],
+         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+         "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "WebApplication", "@id": f"{SITE}/#led-board", "name": "Crypto LED Board", "url": "https://crypto-led-board.vercel.app/",
          "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "browserRequirements": "Requires JavaScript",
-         "description": c["projects"][3]["tagline"], "image": f"{SITE}/assets/img/mac-led-board-1600.webp",
+         "description": c["projects"][4]["tagline"], "image": f"{SITE}/assets/img/mac-led-board-1600.webp",
          "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
@@ -490,6 +532,7 @@ def main():
     <image:image><image:loc>{SITE}/assets/img/mac-cadran-desktop-2400.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/phone-retrotape-camcorder98-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/phone-lift-today-{lang}-868.webp</image:loc></image:image>
+    <image:image><image:loc>{SITE}/assets/img/glowback-hero-{lang}-1280.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/mac-led-board-2400.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/ilyes-portrait.webp</image:loc></image:image>
   </url>
@@ -512,6 +555,7 @@ def main():
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac. Version 2.0 since 30 October 2026.
 - [Retrotape](https://apps.apple.com/app/id6829425065): a 90s camcorder for iPhone, on the App Store since 6 November 2026: 20 vintage filters applied live in the viewfinder, each with its own camera interface. Free, with a Pro subscription or one-time upgrade. Bilingual, no account, no ads, no tracking. Kotlin, Compose Multiplatform, Swift, Metal.
 - [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
+- [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows: every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices. Python, Win32, DXGI, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
 - Other projects: Crypto Sensor (crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
 
