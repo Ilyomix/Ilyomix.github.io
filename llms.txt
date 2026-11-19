@@ -1,6 +1,6 @@
 # Ilyes Abd-Lillah
 
-> Software & design engineer based in Toulouse, France (also known as Ilyomix). 9+ years building fast, accessible product interfaces in React and TypeScript, design systems, and native macOS apps in Swift and SwiftUI. Lead Frontend Engineer on FoodPilot at Positive Solutions.
+> Product engineer based in Toulouse, France (also known as Ilyomix). 9+ years designing, building and shipping products: fast, accessible web apps in React and TypeScript, design systems, and native apps for the Mac and iPhone in Swift and SwiftUI. Lead Frontend Engineer on FoodPilot at Positive Solutions.
 
 - Site (English): https://ilyomix.github.io/
 - Site (French): https://ilyomix.github.io/fr/

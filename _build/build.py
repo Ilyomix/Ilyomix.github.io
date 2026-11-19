@@ -150,16 +150,16 @@ def content(lang):
         "og_locale_alt": "fr_FR" if en else "en_US",
         "alt": {"href": "/fr/", "lang": "fr", "long": "Français"} if en else {"href": "/", "lang": "en", "long": "English"},
         "meta": {
-            # In the words companies search with: the role, the stack and the city
-            "title": L("Ilyes Abd-Lillah · Lead développeur front-end React à Toulouse",
-                       "Ilyes Abd-Lillah · Lead Frontend & Design Engineer in Toulouse"),
-            "description": L("Lead développeur front-end et design engineer à Toulouse : près de dix ans d’interfaces produit en React et TypeScript, et des apps macOS en SwiftUI.",
-                             "Lead frontend & design engineer in Toulouse: nearly a decade of product interfaces in React and TypeScript, and native macOS apps in SwiftUI."),
-            "og_title": L("Ilyes Abd-Lillah · Développeur front-end & design engineer", "Ilyes Abd-Lillah · Frontend & Design Engineer"),
-            "og_description": L(f"Développeur front-end et design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot après près de dix ans à construire des interfaces produit. Apps créées : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Glowback, Lift et Crypto LED Board.",
-                                f"Frontend & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot after nearly a decade building product interfaces. Apps I’ve built: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Glowback, Lift and Crypto LED Board."),
-            "og_alt": L("Portrait d’Ilyes Abd-Lillah, software & design engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Glowback, Lift et Crypto LED Board.",
-                        "Portrait of Ilyes Abd-Lillah, software & design engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Glowback, Lift and Crypto LED Board."),
+            # In the words companies search with: the role and the city in the title, the stack in the description
+            "title": L("Ilyes Abd-Lillah · Product Engineer à Toulouse",
+                       "Ilyes Abd-Lillah · Product Engineer in Toulouse"),
+            "description": L("Product engineer à Toulouse : près de dix ans à concevoir et livrer des produits, du web en React et TypeScript aux apps Mac et iPhone en Swift.",
+                             "Product engineer in Toulouse: nearly a decade designing and shipping products, from React and TypeScript on the web to Mac and iPhone apps in Swift."),
+            "og_title": "Ilyes Abd-Lillah · Product Engineer",
+            "og_description": L(f"Product engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, près de dix ans d’expérience. Produits conçus et lancés : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Glowback, Lift et Crypto LED Board.",
+                                f"Product engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, nearly a decade of experience. Products I designed and shipped: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Glowback, Lift and Crypto LED Board."),
+            "og_alt": L("Portrait d’Ilyes Abd-Lillah, product engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Glowback, Lift et Crypto LED Board.",
+                        "Portrait of Ilyes Abd-Lillah, product engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Glowback, Lift and Crypto LED Board."),
         },
         "ui": {
             "skip": L("Aller au contenu", "Skip to content"),
@@ -490,7 +490,7 @@ def jsonld(c):
         "@type": "Person", "@id": f"{SITE}/#person",
         "name": "Ilyes Abd-Lillah", "givenName": "Ilyes", "familyName": "Abd-Lillah",
         "alternateName": ["Ilyomix"],
-        "jobTitle": L("Développeur front-end et design engineer", "Frontend & Design Engineer"),
+        "jobTitle": "Product Engineer",
         "description": c["meta"]["description"],
         "url": f"{SITE}/", "email": EMAIL,
         "image": {"@type": "ImageObject", "url": f"{SITE}/assets/img/ilyes-portrait.webp", "width": 368, "height": 460},
@@ -499,10 +499,10 @@ def jsonld(c):
         "worksFor": {"@type": "Organization", "name": "Positive Solutions", "url": "https://positive-solutions.io"},
         "alumniOf": {"@type": "CollegeOrUniversity", "name": "EPITECH", "url": "https://www.epitech.eu"},
         "knowsLanguage": ["fr", "en", "ar"],
-        "knowsAbout": ["Software engineering", "Design engineering", "Frontend engineering", "Design systems", "User interface design", "Web accessibility",
+        "knowsAbout": ["Product engineering", "Software engineering", "Design engineering", "Frontend engineering", "Design systems", "User interface design", "Web accessibility",
                        "Web performance", "React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS", "Swift", "SwiftUI",
                        "Core Animation", "macOS app development", "Progressive web apps"],
-        "hasOccupation": {"@type": "Occupation", "name": "Software & Design Engineer",
+        "hasOccupation": {"@type": "Occupation", "name": "Product Engineer",
                           "occupationLocation": {"@type": "City", "name": "Toulouse"},
                           "skills": "React, TypeScript, Next.js, Vue.js, SwiftUI, design systems, accessibility, performance"},
         "sameAs": ["https://github.com/Ilyomix", "https://www.linkedin.com/in/ilyes-abd-lillah", "https://www.cadranapp.com"],
@@ -603,7 +603,7 @@ def main():
 
     (ROOT / "llms.txt").write_text(f"""# Ilyes Abd-Lillah
 
-> Software & design engineer based in Toulouse, France (also known as Ilyomix). {YEARS}+ years building fast, accessible product interfaces in React and TypeScript, design systems, and native macOS apps in Swift and SwiftUI. Lead Frontend Engineer on FoodPilot at Positive Solutions.
+> Product engineer based in Toulouse, France (also known as Ilyomix). {YEARS}+ years designing, building and shipping products: fast, accessible web apps in React and TypeScript, design systems, and native apps for the Mac and iPhone in Swift and SwiftUI. Lead Frontend Engineer on FoodPilot at Positive Solutions.
 
 - Site (English): {SITE}/
 - Site (French): {SITE}/fr/
