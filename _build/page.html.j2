@@ -86,7 +86,7 @@
     <div class="toc-list">
     <ol>
       {% for t in toc["items"] %}
-      <li><a href="{{ t.href }}" data-toc-target="{{ t.id }}" style="--accent:{{ t.accent }}"><span class="toc-ico" aria-hidden="true">{% if t.img %}<img src="{{ t.img }}" width="22" height="22" alt="" loading="lazy" decoding="async"{% if t.round %} class="round"{% endif %}>{% else %}{{ toc_icon(t.icon) }}{% endif %}</span><span class="toc-label">{{ t.label }}</span></a></li>
+      <li{% if t.sub %} class="toc-sub"{% endif %}><a href="{{ t.href }}" data-toc-target="{{ t.id }}" style="--accent:{{ t.accent }}"><span class="toc-ico" aria-hidden="true">{% if t.img %}<img src="{{ t.img }}" width="22" height="22" alt="" loading="lazy" decoding="async"{% if t.round %} class="round"{% endif %}>{% else %}{{ toc_icon(t.icon) }}{% endif %}</span><span class="toc-label">{{ t.label }}</span></a></li>
       {% endfor %}
     </ol>
     <span class="toc-dot" aria-hidden="true"></span>
