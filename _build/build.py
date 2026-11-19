@@ -163,7 +163,7 @@ def content(lang):
                 {"id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp"},
                 {"id": "retrotape", "name": "Retrotape", "icon": "/assets/img/retrotape-icon-112.webp"},
                 {"id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg"},
-                {"id": "glowback", "name": "Glowback", "icon": "/assets/glowback-icon.svg"},
+                {"id": "glowback", "name": "Glowback", "icon": "/assets/img/glowback-icon-240.webp"},
                 {"id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange"},
             ],
         },
@@ -285,7 +285,7 @@ def content(lang):
                 ]},
             },
             {
-                "id": "glowback", "name": "Glowback", "icon": "/assets/glowback-icon.svg", "light": "glowback", "glow": "#9b7bff",
+                "id": "glowback", "name": "Glowback", "icon": "/assets/img/glowback-icon-240.webp", "light": "glowback", "glow": "#9b7bff",
                 "tagline": L("Une lumière d’ambiance pour les LED RGB au dos des écrans, sur Windows. Gratuit et open source.",
                              "Ambient light for the RGB LEDs on the back of a monitor, on Windows. Free and open source."),
                 "body": [
