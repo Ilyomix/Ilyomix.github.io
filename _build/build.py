@@ -298,15 +298,15 @@ def content(lang):
                 "body": [
                     L("Glowback capture l’écran trente fois par seconde et donne à chaque LED au dos du moniteur la couleur du bord de l’image juste devant elle : un coucher de soleil à gauche de l’écran, et le mur de gauche devient orange. Il fonctionne avec tous les appareils Éclairage dynamique de Windows et OpenRGB, sans ruban LED ni caméra.",
                       "Glowback captures the screen thirty times per second and gives each LED on the back of the monitor the colour of the edge of the picture right in front of it: a sunset on the left of the screen turns the wall on the left orange. It works with every Windows Dynamic Lighting and OpenRGB device, with no LED strip or camera."),
-                    L("J’ai écrit la capture GPU (DXGI, HDR compris), le pilote HID LampArray qui lit la position de chaque LED dans l’appareil, et une vraie app Windows : installateur, panneau de réglages dans la zone de notification, mises à jour vérifiées dans l’app, six langues. Le tout tient dans un seul fichier Python, sans dépendance.",
-                      "I wrote the GPU capture (DXGI, HDR included), the HID LampArray driver that reads the position of every LED from the device, and a real Windows app: an installer, a settings panel in the notification area, verified in-app updates, six languages. All of it fits in a single Python file with zero dependencies."),
-                    L("Glowback apparaît aussi dans Home Assistant comme une lumière, par MQTT : allumage, luminosité et mode, synchronisés dans les deux sens avec son panneau. De là, Google Assistant et Alexa le pilotent à la voix ; Siri et l’app Maison d’Apple s’y ajoutent avec HomeKit Bridge, pour l’allumage et la luminosité.",
-                      "Glowback also shows up in Home Assistant as a light, over MQTT: on and off, brightness and mode, kept in step with its panel both ways. From there, Google Assistant and Alexa control it by voice; Siri and Apple’s Home app join in through HomeKit Bridge, for on, off and brightness."),
+                    L("J’ai écrit la capture GPU (DXGI, HDR compris), le pilote HID LampArray qui lit la position de chaque LED dans l’appareil, et une vraie app Windows en Win32 et GDI+ : une fenêtre qui montre en direct la lumière derrière l’écran, un panneau rapide près de l’horloge, un installateur, des mises à jour vérifiées dans l’app, six langues. Le tout tient dans un seul fichier Python, sans dépendance.",
+                      "I wrote the GPU capture (DXGI, HDR included), the HID LampArray driver that reads the position of every LED from the device, and a real Windows app in Win32 and GDI+: a window that shows the light behind the screen live, a quick panel by the clock, an installer, verified in-app updates, six languages. All of it fits in a single Python file with zero dependencies."),
+                    L("Glowback apparaît aussi dans Home Assistant comme une lumière, par MQTT : allumage, luminosité et mode, synchronisés dans les deux sens avec l’app. De là, Google Assistant et Alexa le pilotent à la voix ; Siri et l’app Maison d’Apple s’y ajoutent avec HomeKit Bridge, pour l’allumage et la luminosité.",
+                      "Glowback also shows up in Home Assistant as a light, over MQTT: on and off, brightness and mode, kept in step with the app both ways. From there, Google Assistant and Alexa control it by voice; Siri and Apple’s Home app join in through HomeKit Bridge, for on, off and brightness."),
                 ],
                 "specs": [
                     (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
                     (L("Plateforme", "Platform"), L("Windows 10 et 11 · Éclairage dynamique et OpenRGB", "Windows 10 and 11 · Dynamic Lighting and OpenRGB")),
-                    (L("Technologies", "Built with"), "Python · Win32 · DXGI · HID LampArray · MQTT · Inno Setup"),
+                    (L("Technologies", "Built with"), "Python · Win32 · GDI+ · DXGI · HID LampArray · MQTT · Inno Setup"),
                     ("Code", L("Open source sur GitHub, licence MIT", "Open source on GitHub, MIT license")),
                 ],
                 "facts": L("Gratuit · Six langues · Environ 0,5 ms de CPU par image",
@@ -323,13 +323,24 @@ def content(lang):
                     "main": img(f"glowback-hero-{lang}", [640, 960, 1280, 1920], 1920, 960, "(min-width: 1300px) 1180px, 92vw",
                                 L("Un écran dont les LED arrière éclairent le mur avec les couleurs des bords de l’image.",
                                   "A monitor whose rear LEDs light the wall with the colours of the picture’s edges.")),
-                    # the panel as Windows 11 draws it, transparent round its corners: v0.3.3, 695 px wide in English, 704 in French
-                    "panel": img(f"glowback-panel-{lang}", [280, 560, 695 if en else 704], 695 if en else 704, 1124,
-                                 "(max-width: 759px) 280px, (min-width: 1300px) 200px, 16vw",
-                                 L("Le panneau de Glowback dans la zone de notification : état, réglages et liens.",
-                                   "Glowback’s panel in the notification area: status, settings and links.")),
-                    "caption": L("Le panneau de réglages vit dans la zone de notification, à côté de l’horloge.",
-                                 "The settings panel lives in the notification area, next to the clock."),
+                    # the app's window (0.5.0) as Windows 11 draws it, rendered offscreen at 200 % and framed with its
+                    # title bar, transparent round its corners
+                    "pair": [
+                        {**img(f"glowback-app-{lang}", [640, 960, 1280, 1600], 1600, 1263, "(min-width: 1300px) 570px, (min-width: 481px) 46vw, 92vw",
+                               L("La fenêtre de Glowback, page Lumière d’ambiance : l’aperçu en direct de la lumière autour de l’écran, l’interrupteur, le mode et la luminosité.",
+                                 "Glowback’s window on its Ambient light page: a live preview of the light around the screen, the switch, the mode and the brightness.")),
+                         "title": L("L’app", "The app"),
+                         "caption": L("un aperçu en direct de la lumière derrière l’écran, l’interrupteur, le mode et la luminosité.",
+                                      "a live preview of the light behind the screen, the switch, the mode and the brightness.")},
+                        {**img(f"glowback-sync-{lang}", [640, 960, 1280, 1600], 1600, 1263, "(min-width: 1300px) 570px, (min-width: 481px) 46vw, 92vw",
+                               L("La page Quand synchroniser : trois conditions, dont n’importe quelle app en plein écran sur l’écran des LED.",
+                                 "The When to sync page: three conditions, among them any app full screen on the LED screen.")),
+                         "title": L("Quand synchroniser", "When to sync"),
+                         "caption": L("Glowback suit l’écran seulement quand une condition est remplie : une app lancée, au premier plan ou en plein écran, sur l’écran choisi. Sinon, les LED gardent leur propre effet.",
+                                      "Glowback follows the screen only while a condition is met: an app running, in front or full screen, on the screen you pick. Otherwise the LEDs keep their own effect.")},
+                    ],
+                    "caption": L("Fermée, la fenêtre laisse Glowback tourner en arrière-plan : un double-clic sur son icône près de l’horloge la rouvre, un clic ouvre le panneau rapide.",
+                                 "Closed, the window leaves Glowback running in the background: double-click its icon by the clock to bring it back, or click it once for the quick panel."),
                 },
             },
             {
@@ -579,6 +590,7 @@ def main():
     <image:image><image:loc>{SITE}/assets/img/mac-cadran-desktop-2400.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/phone-retrotape-camcorder98-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/glowback-hero-{lang}-1280.webp</image:loc></image:image>
+    <image:image><image:loc>{SITE}/assets/img/glowback-app-{lang}-1280.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/phone-lift-today-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/mac-led-board-2400.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/ilyes-portrait.webp</image:loc></image:image>
@@ -601,7 +613,7 @@ def main():
 
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac. Version 2.0 since 30 October 2026.
 - [Retrotape](https://apps.apple.com/app/id6829425065): a 90s camcorder for iPhone, on the App Store since 6 November 2026: 20 vintage filters applied live in the viewfinder, each with its own camera interface. Free, with a Pro subscription or one-time upgrade. Bilingual, no account, no ads, no tracking. Kotlin, Compose Multiplatform, Swift, Metal.
-- [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows: every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices, and shows up in Home Assistant as a light (MQTT), so Google Assistant, Alexa and Siri can switch it. Python, Win32, DXGI, MQTT, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
+- [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows: every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices, and shows up in Home Assistant as a light (MQTT), so Google Assistant, Alexa and Siri can switch it. Since 0.5.0 it is an app: a window with a live preview of the light, and conditions for when to follow the screen (an app running, in front or full screen, on a chosen screen). Python, Win32, GDI+, DXGI, MQTT, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
 - [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
 - Other projects: Crypto Sensor (crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
