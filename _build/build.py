@@ -314,10 +314,12 @@ def content(lang):
                     {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/glowback"},
                 ],
                 "media": {
-                    "main": img(f"glowback-hero-{lang}", [640, 960, 1280], 1280, 640, "(min-width: 1300px) 1085px, 84vw",
+                    "main": img(f"glowback-hero-{lang}", [640, 960, 1280, 1920], 1920, 960, "(min-width: 1300px) 1180px, 92vw",
                                 L("Un écran dont les LED arrière éclairent le mur avec les couleurs des bords de l’image.",
                                   "A monitor whose rear LEDs light the wall with the colours of the picture’s edges.")),
-                    "phone": img(f"glowback-panel-{lang}", [280, 560, 698], 698, 1056, "(min-width: 1300px) 200px, 17vw",
+                    # the panel as Windows 11 draws it, transparent round its corners: v0.3.3, 695 px wide in English, 704 in French
+                    "panel": img(f"glowback-panel-{lang}", [280, 560, 695 if en else 704], 695 if en else 704, 1124,
+                                 "(max-width: 759px) 280px, (min-width: 1300px) 200px, 16vw",
                                  L("Le panneau de Glowback dans la zone de notification : état, réglages et liens.",
                                    "Glowback’s panel in the notification area: status, settings and links.")),
                     "caption": L("Le panneau de réglages vit dans la zone de notification, à côté de l’horloge.",

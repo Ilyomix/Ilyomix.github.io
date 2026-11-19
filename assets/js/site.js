@@ -62,7 +62,7 @@
     var placeDot = function () {
       var a = tocLinks[tocAt];
       if (!a || !a.offsetParent) return;  // the list is closed (phones)
-      tocDot.style.setProperty('--dot-y', (a.offsetTop + a.offsetHeight / 2 - 3) + 'px');
+      tocDot.style.setProperty('--dot-y', (a.offsetTop + (a.offsetHeight - tocDot.offsetHeight) / 2) + 'px');
     };
     var setAt = function (i) {
       if (i === tocAt) return;
