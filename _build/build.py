@@ -44,19 +44,20 @@ def toc_icon(name):
 
 
 def toc(c):
-    """The page's sections in order, for "On this page": the projects with their app icons and colours, the rest with
-    a line icon and the site's cobalt."""
+    """The page's sections in order, for "On this page": the projects with their app icons and colours, marked as
+    under Work, the rest with a line icon and the site's cobalt."""
     en = c["lang"] == "en"
     L = lambda f, e: e if en else f
     item = lambda id_, label, href=None, **kw: {"id": id_, "href": href or f"#{id_}", "label": label, "img": None,
-                                                "round": False, "icon": None, "accent": "var(--cobalt)", **kw}
+                                                "round": False, "icon": None, "accent": "var(--cobalt)", "sub": False,
+                                                **kw}
     return {
         "label": L("Sur cette page", "On this page"),
         "items": [
             item("hero", L("Accueil", "Intro"), "#top", img="/assets/img/ilyes-avatar.webp", round=True),
             item("stage", L("Le bureau", "The desk"), icon="desk"),
             item("work", L("Projets", "Work"), icon="work"),
-            *(item(p["id"], p["name"], img=p["icon"], accent=p["glow"]) for p in c["projects"]),
+            *(item(p["id"], p["name"], img=p["icon"], accent=p["glow"], sub=True) for p in c["projects"]),
             item("numbers", L("En chiffres", "In numbers"), icon="numbers"),
             item("recommendations", L("Recommandations", "Recommendations"), icon="quote"),
             item("about", L("À propos", "About"), icon="person"),
