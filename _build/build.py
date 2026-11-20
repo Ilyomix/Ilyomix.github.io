@@ -156,10 +156,10 @@ def content(lang):
             "description": L("Product engineer à Toulouse : près de dix ans à concevoir et livrer des produits, du web en React et TypeScript aux apps Mac et iPhone en Swift.",
                              "Product engineer in Toulouse: nearly a decade designing and shipping products, from React and TypeScript on the web to Mac and iPhone apps in Swift."),
             "og_title": "Ilyes Abd-Lillah · Product Engineer",
-            "og_description": L(f"Product engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, près de dix ans d’expérience. Produits conçus et lancés : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Glowback, Lift et Crypto LED Board.",
-                                f"Product engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, nearly a decade of experience. Products I designed and shipped: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Glowback, Lift and Crypto LED Board."),
-            "og_alt": L("Portrait d’Ilyes Abd-Lillah, product engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Glowback, Lift et Crypto LED Board.",
-                        "Portrait of Ilyes Abd-Lillah, product engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Glowback, Lift and Crypto LED Board."),
+            "og_description": L(f"Product engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, près de dix ans d’expérience. Produits conçus et lancés : Cadran ({num_floor(DOWNLOADS, 'fr')} téléchargements), Retrotape, Glowback, Keyboard Clock, Lift et Crypto LED Board.",
+                                f"Product engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, nearly a decade of experience. Products I designed and shipped: Cadran ({num_floor(DOWNLOADS, 'en')} downloads), Retrotape, Glowback, Keyboard Clock, Lift and Crypto LED Board."),
+            "og_alt": L("Portrait d’Ilyes Abd-Lillah, product engineer basé à Toulouse, Lead Frontend Engineer chez FoodPilot, avec ses apps Cadran, Retrotape, Glowback, Keyboard Clock, Lift et Crypto LED Board.",
+                        "Portrait of Ilyes Abd-Lillah, product engineer based in Toulouse, Lead Frontend Engineer at FoodPilot, with his apps Cadran, Retrotape, Glowback, Keyboard Clock, Lift and Crypto LED Board."),
         },
         "ui": {
             "skip": L("Aller au contenu", "Skip to content"),
@@ -188,8 +188,8 @@ def content(lang):
         },
         "stage": {
             "title": L("Conçus, construits, publiés.", "Designed, built, shipped."),
-            "lede": L("Cinq produits personnels, menés de l’idée à la mise en ligne : sur Mac, sur iPhone, sur Windows et sur le web.",
-                      "Five products of my own, taken from idea to release: on the Mac, the iPhone, Windows and the web."),
+            "lede": L("Six produits personnels, menés de l’idée à la mise en ligne : sur Mac, sur iPhone, sur Windows et sur le web.",
+                      "Six products of my own, taken from idea to release: on the Mac, the iPhone, Windows and the web."),
             "alt": L("Un bureau avec un Studio Display qui affiche Crypto LED Board, un MacBook Pro et un MacBook Air qui affichent Cadran, un téléphone qui affiche Lift et un autre qui affiche Retrotape.",
                      "A desk with a Studio Display showing Crypto LED Board, a MacBook Pro and a MacBook Air showing Cadran, a phone showing Lift and another showing Retrotape."),
             "legend_label": L("Les projets", "The projects"),
@@ -204,6 +204,7 @@ def content(lang):
                 {"id": "cadran", "name": "Cadran", "icon": "/assets/img/cadran-icon-112.webp"},
                 {"id": "retrotape", "name": "Retrotape", "icon": "/assets/img/retrotape-icon-112.webp"},
                 {"id": "glowback", "name": "Glowback", "icon": "/assets/img/glowback-icon-240.webp"},
+                {"id": "keyboard-clock", "name": "Keyboard Clock", "icon": "/assets/img/keyboard-clock-icon-240.webp"},
                 {"id": "lift", "name": "Lift", "icon": "/assets/lift-icon.svg"},
                 {"id": "led-board", "name": "Crypto LED Board", "icon": "/assets/crypto-led-board-icon.svg?v=dark-orange"},
             ],
@@ -344,6 +345,57 @@ def content(lang):
                     ],
                     "caption": L("Fermée, la fenêtre laisse Glowback tourner en arrière-plan : un double-clic sur son icône près de l’horloge la rouvre, un clic ouvre le panneau rapide.",
                                  "Closed, the window leaves Glowback running in the background: double-click its icon by the clock to bring it back, or click it once for the quick panel."),
+                },
+            },
+            {
+                "id": "keyboard-clock", "name": "Keyboard Clock", "icon": "/assets/img/keyboard-clock-icon-240.webp", "light": "keyboard-clock", "glow": "#ff6a1a",
+                "tagline": L("L’heure en gros chiffres sur un clavier RGB, sur Windows. Gratuit et open source.",
+                             "The time in big digits on an RGB keyboard, on Windows. Free and open source."),
+                "body": [
+                    L("Keyboard Clock fait d’un clavier RGB une horloge qu’on lit depuis l’autre bout de la pièce dès qu’on s’éloigne du PC : les heures, puis les minutes, en gros chiffres dessinés touche par touche sur les touches F, la rangée des chiffres et les lettres, pendant que les secondes remplissent les neuf touches au-dessus des flèches. On touche le clavier ou la souris, et l’éclairage habituel revient.",
+                      "Keyboard Clock turns an RGB keyboard into a clock you can read from across the room as soon as you step away from the PC: the hours, then the minutes, in big digits drawn key by key over the F-keys, the number row and the letters, while the seconds fill the nine keys above the arrows. Touch anything and the usual lighting comes back."),
+                    L("Il pilote les claviers Logitech G par le SDK LED de G HUB, et ceux de Razer, Corsair, ASUS, SteelSeries, HyperX et d’autres par l’Éclairage dynamique de Windows ou par OpenRGB, tous deux en bêta. Chaque touche est repérée par sa position physique, son usage HID : toutes les dispositions fonctionnent, AZERTY, QWERTY ou QWERTZ, ISO ou ANSI, TKL ou format complet.",
+                      "It drives Logitech G keyboards through G HUB’s LED SDK, and Razer, Corsair, ASUS, SteelSeries, HyperX and other keyboards through Windows Dynamic Lighting or OpenRGB, both in beta. Each key is found by its physical position, its HID usage, so any layout works: AZERTY, QWERTY or QWERTZ, ISO or ANSI, TKL or full size."),
+                    L("J’ai écrit un rendu en couches (fond, chiffres, secondes, effets, mode nuit, gamma) avec des transitions en fondu, glissement, balayage et dissolution ; des chiffres dessinés à la main et un éditeur pour redessiner chacun touche par touche ; un pilote HID LampArray qui lit à quelle touche chaque LED est liée ; un client du SDK OpenRGB qui associe le nom de chaque LED à sa touche. Les touches affichent aussi un minuteur, des cycles Pomodoro et des alarmes, et le fond peut suivre la musique que joue le PC, captée en loopback WASAPI et découpée par une FFT.",
+                      "I wrote a layered renderer (background, digits, seconds, effects, night mode, gamma) with fade, slide, wipe and dissolve transitions; hand-drawn digits and an editor to redraw any of them key by key; a HID LampArray driver that reads which key each LED is bound to; an OpenRGB SDK client that matches each LED’s name to its key. The keys also run a timer, Pomodoro cycles and alarms, and the background can follow the music the PC plays, captured through WASAPI loopback and split by an FFT."),
+                    L("Les chiffres s’allument quand le PC est inactif, dès qu’on le verrouille (Win+L), tout le temps ou sur un raccourci, et restent cachés pendant les jeux en plein écran. C’est une vraie app Windows en Win32 et GDI+ : une fenêtre avec un aperçu en direct du clavier, un panneau rapide près de l’horloge, six langues, un installateur Inno Setup, des mises à jour vérifiées dans l’app, et un paquet Microsoft Store (MSIX) en préparation. Le tout tient dans un seul fichier Python, sans dépendance.",
+                      "The digits come on when the PC is idle, the moment it locks (Win+L), all the time or on a hotkey, and stay hidden during full-screen games. It is a real Windows app in Win32 and GDI+: a window with a live preview of the keyboard, a quick panel by the clock, six languages, an Inno Setup installer, verified in-app updates, and a Microsoft Store package (MSIX) in preparation. All of it fits in a single Python file with zero dependencies."),
+                ],
+                "specs": [
+                    (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
+                    (L("Plateforme", "Platform"), L("Windows 10 et 11 · Logitech G HUB, Éclairage dynamique et OpenRGB", "Windows 10 and 11 · Logitech G HUB, Dynamic Lighting and OpenRGB")),
+                    (L("Technologies", "Built with"), "Python · Win32 · GDI+ · HID LampArray · OpenRGB SDK · WASAPI · Inno Setup · MSIX"),
+                    ("Code", L("Open source sur GitHub, licence MIT", "Open source on GitHub, MIT license")),
+                ],
+                "facts": L("Gratuit · Six langues · Testé sur un Logitech G PRO TKL",
+                           "Free · Six languages · Tested on a Logitech G PRO TKL"),
+                "links": [
+                    {"label": L("Télécharger pour Windows", "Download for Windows"), "href": "https://github.com/Ilyomix/keyboard-clock/releases/latest/download/KeyboardClockSetup.exe"},
+                    {"label": L("Le site", "Website"), "href": "https://ilyomix.github.io/keyboard-clock/" + ("" if en else "fr/")},
+                    {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/keyboard-clock"},
+                ],
+                "media": {
+                    "main": img(f"keyboard-clock-hero-{lang}", [640, 960, 1280, 1920], 1920, 960, "(min-width: 1300px) 1180px, 92vw",
+                                L("Un clavier sombre qui affiche 13 en gros chiffres orange sur ses touches, les secondes allumées au-dessus des flèches, dans un halo orange et cyan.",
+                                  "A dark keyboard showing 13 in big orange digits across its keys, the seconds lit above the arrows, in an orange and cyan glow.")),
+                    # the app's window (1.0.0) as Windows 11 draws it, rendered offscreen at 200 % with its live preview
+                    # held at 13:37, framed with its title bar, transparent round its corners
+                    "pair": [
+                        {**img(f"keyboard-clock-app-{lang}", [640, 960, 1280, 1600], 1600, 1385, "(min-width: 1300px) 570px, (min-width: 481px) 46vw, 92vw",
+                               L("La fenêtre de Keyboard Clock, page Horloge : l’aperçu en direct du clavier qui affiche 13, ce qu’il montre, la durée de chaque écran et la transition.",
+                                 "Keyboard Clock’s window on its Clock page: a live preview of the keyboard showing 13, what it shows, how long each screen stays and the transition.")),
+                         "title": L("L’app", "The app"),
+                         "caption": L("un aperçu en direct du clavier, ce qu’il affiche (l’heure, ou l’heure et la date), la durée de chaque écran et le passage de l’un à l’autre.",
+                                      "a live preview of the keyboard, what it shows (the time, or the time and the date), how long each screen stays and how one gives way to the next.")},
+                        {**img(f"keyboard-clock-font-{lang}", [640, 960, 1280, 1600], 1600, 1385, "(min-width: 1300px) 570px, (min-width: 481px) 46vw, 92vw",
+                               L("La page Police : le chiffre 8 dessiné sur la moitié droite du clavier, le 8 de la moitié gauche en sourdine à côté, et les dix chiffres au choix.",
+                                 "The Font page: the digit 8 drawn on the right half of the keyboard, the left half’s 8 dimmed beside it, and the ten digits to pick from.")),
+                         "title": L("Police", "Font"),
+                         "caption": L("un clic sur une touche l’allume ou l’éteint : chaque chiffre se redessine, sur la moitié gauche comme sur la droite.",
+                                      "click a key to light it or clear it: any digit can be redrawn, on the left half and on the right.")},
+                    ],
+                    "caption": L("Fermée, la fenêtre laisse Keyboard Clock attendre près de l’horloge : un clic sur son icône ouvre le panneau rapide, pour mettre en pause, afficher l’heure tout de suite ou lancer un minuteur.",
+                                 "Closed, the window leaves Keyboard Clock waiting by the clock: click its icon for the quick panel, to pause, show the time right away or start a timer."),
                 },
             },
             {
@@ -488,6 +540,7 @@ def jsonld(c):
     lang = c["lang"]
     en = lang == "en"
     L = lambda f, e: e if en else f
+    tag = {p["id"]: p["tagline"] for p in c["projects"]}  # by id, so adding a project moves nothing
     person = {
         "@type": "Person", "@id": f"{SITE}/#person",
         "name": "Ilyes Abd-Lillah", "givenName": "Ilyes", "familyName": "Abd-Lillah",
@@ -512,33 +565,40 @@ def jsonld(c):
     apps = [
         {"@type": "SoftwareApplication", "@id": f"{SITE}/#cadran", "name": "Cadran", "url": "https://www.cadranapp.com",
          "applicationCategory": "UtilitiesApplication", "operatingSystem": "macOS 14 or later",
-         "description": c["projects"][0]["tagline"], "image": f"{SITE}/assets/img/mac-cadran-desktop-1600.webp",
+         "description": tag["cadran"], "image": f"{SITE}/assets/img/mac-cadran-desktop-1600.webp",
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "SoftwareApplication", "@id": f"{SITE}/#retrotape", "name": "Retrotape", "url": "https://apps.apple.com/app/id6829425065",
          "installUrl": "https://apps.apple.com/app/id6829425065",
          "applicationCategory": "MultimediaApplication", "operatingSystem": "iOS 17 or later",
-         "description": c["projects"][1]["tagline"], "image": f"{SITE}/assets/img/phone-retrotape-camcorder98-{'en' if en else 'fr'}-868.webp",
+         "description": tag["retrotape"], "image": f"{SITE}/assets/img/phone-retrotape-camcorder98-{'en' if en else 'fr'}-868.webp",
          "inLanguage": ["fr", "en"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "SoftwareApplication", "@id": f"{SITE}/#glowback", "name": "Glowback", "url": "https://ilyomix.github.io/glowback/",
          "downloadUrl": "https://github.com/Ilyomix/glowback/releases/latest/download/GlowbackSetup.exe",
          "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows 10, Windows 11",
-         "description": c["projects"][2]["tagline"], "image": f"{SITE}/assets/img/glowback-hero-{'en' if en else 'fr'}-1280.webp",
+         "description": tag["glowback"], "image": f"{SITE}/assets/img/glowback-hero-{'en' if en else 'fr'}-1280.webp",
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/glowback", "inLanguage": ["en", "fr", "es", "de", "it", "pt"],
+         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+         "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
+        {"@type": "SoftwareApplication", "@id": f"{SITE}/#keyboard-clock", "name": "Keyboard Clock", "url": "https://ilyomix.github.io/keyboard-clock/",
+         "downloadUrl": "https://github.com/Ilyomix/keyboard-clock/releases/latest/download/KeyboardClockSetup.exe",
+         "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows 10, Windows 11",
+         "description": tag["keyboard-clock"], "image": f"{SITE}/assets/img/keyboard-clock-hero-{'en' if en else 'fr'}-1280.webp",
+         "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/keyboard-clock", "inLanguage": ["en", "fr", "es", "de", "it", "pt"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "SoftwareApplication", "@id": f"{SITE}/#lift", "name": "Lift", "url": "https://apps.apple.com/app/id6818697874",
          "installUrl": "https://apps.apple.com/app/id6818697874", "sameAs": ["https://ilyomix.github.io/lift/"],
          "applicationCategory": "HealthApplication", "operatingSystem": "iOS 16.2 or later, Web",
-         "description": c["projects"][3]["tagline"], "image": f"{SITE}/assets/img/phone-lift-today-{'en' if en else 'fr'}-868.webp",
+         "description": tag["lift"], "image": f"{SITE}/assets/img/phone-lift-today-{'en' if en else 'fr'}-868.webp",
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/lift", "inLanguage": ["fr", "en"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "WebApplication", "@id": f"{SITE}/#led-board", "name": "Crypto LED Board", "url": "https://crypto-led-board.vercel.app/",
          "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "browserRequirements": "Requires JavaScript",
-         "description": c["projects"][4]["tagline"], "image": f"{SITE}/assets/img/mac-led-board-1600.webp",
+         "description": tag["led-board"], "image": f"{SITE}/assets/img/mac-led-board-1600.webp",
          "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
@@ -595,6 +655,8 @@ def main():
     <image:image><image:loc>{SITE}/assets/img/phone-retrotape-camcorder98-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/glowback-hero-{lang}-1280.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/glowback-app-{lang}-1280.webp</image:loc></image:image>
+    <image:image><image:loc>{SITE}/assets/img/keyboard-clock-hero-{lang}-1280.webp</image:loc></image:image>
+    <image:image><image:loc>{SITE}/assets/img/keyboard-clock-app-{lang}-1280.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/phone-lift-today-{lang}-868.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/mac-led-board-2400.webp</image:loc></image:image>
     <image:image><image:loc>{SITE}/assets/img/ilyes-portrait.webp</image:loc></image:image>
@@ -618,6 +680,7 @@ def main():
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac. Version 2.0 since 30 October 2026.
 - [Retrotape](https://apps.apple.com/app/id6829425065): a 90s camcorder for iPhone, on the App Store since 6 November 2026: 20 vintage filters applied live in the viewfinder, each with its own camera interface. Free, with a Pro subscription or one-time upgrade. Bilingual, no account, no ads, no tracking. Kotlin, Compose Multiplatform, Swift, Metal.
 - [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows: every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices, and shows up in Home Assistant as a light (MQTT), so Google Assistant, Alexa and Siri can switch it. It is an app: a window with a live preview of the screen and of the light, five looks (the screen, its average, a colour, a gradient, or the music the PC plays) and, since 0.6.0, profiles: a night profile and a look per app (running, in front, full screen or playing sound). Python, Win32, GDI+, DXGI, WASAPI, MQTT, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
+- [Keyboard Clock](https://github.com/Ilyomix/keyboard-clock): free, open-source Windows app that draws the time in big digits on an RGB keyboard when you step away from the PC: the hours, then the minutes, drawn key by key over the F-keys, the number row and the letters, with the seconds filling the nine keys above the arrows. Works with Logitech G keyboards (G HUB LED SDK, tested on a G PRO TKL) and, in beta, with Razer, Corsair, ASUS, SteelSeries, HyperX and others through Windows Dynamic Lighting (HID LampArray) or OpenRGB; keys are found by their physical position, so any layout works (AZERTY, QWERTY, QWERTZ, ISO/ANSI, TKL and full size). Layered renderer with transitions, hand-drawn digits and a font editor, timer, Pomodoro and alarms on the keys, music-reactive background (WASAPI loopback, FFT); shows when idle, on lock, always or on a hotkey, hidden during full-screen games. Python, Win32, GDI+, installer, in-app updates, six languages, MIT license. Site: https://ilyomix.github.io/keyboard-clock/
 - [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
 - Other projects: Crypto Sensor (crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).

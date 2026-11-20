@@ -46,6 +46,8 @@
   --l-sky: #4fc3ff;
   --l-red: #ff3f5c;
   --l-teal: #19d3b0;
+  --l-orange: #ff5900;
+  --l-cyan: #00ccff;
   --light-o: 1;
   --blend: screen;
 
@@ -431,6 +433,9 @@ main, .site-header { overflow-x: clip; }
 .lit-glowback i:nth-child(1) { --c: var(--l-cobalt); --x: 26%; --y: 60%; --s: 58vmax; --o: 0.34; }
 .lit-glowback i:nth-child(2) { --c: var(--l-coral); --x: 80%; --y: 58%; --s: 52vmax; --o: 0.26; }
 .lit-glowback i:nth-child(3) { --c: var(--l-blue); --x: 54%; --y: 18%; --s: 34vmax; --o: 0.18; }
+.lit-keyboard-clock i:nth-child(1) { --c: var(--l-orange); --x: 30%; --y: 60%; --s: 58vmax; --o: 0.3; }
+.lit-keyboard-clock i:nth-child(2) { --c: var(--l-cyan); --x: 80%; --y: 64%; --s: 50vmax; --o: 0.24; }
+.lit-keyboard-clock i:nth-child(3) { --c: var(--l-orange); --x: 62%; --y: 18%; --s: 32vmax; --o: 0.14; }
 .lit-led i:nth-child(1) { --c: var(--l-red); --x: 36%; --y: 64%; --s: 56vmax; --o: 0.3; }
 .lit-led i:nth-child(2) { --c: var(--l-teal); --x: 70%; --y: 72%; --s: 50vmax; --o: 0.26; }
 .lit-led i:nth-child(3) { --c: var(--l-coral); --x: 18%; --y: 22%; --s: 30vmax; --o: 0.14; }
@@ -449,11 +454,11 @@ main, .site-header { overflow-x: clip; }
 .phones figure:nth-child(even) { margin-top: clamp(24px, 6vw, 96px); }
 .phones img { width: 100%; filter: var(--device-shadow); }
 .led-set { position: relative; width: min(100%, 1180px); margin: 0 auto; padding-right: 8%; }
-/* Glowback: the banner as a card, then its app window below it */
+/* Glowback and Keyboard Clock: the banner as a card, then the app's window below it */
 .gb-set { width: min(100%, 1180px); margin: 0 auto; }
 .gb-frame { position: relative; }
 .gb-shot { display: block; width: 100%; height: auto; border-radius: clamp(14px, 1.9vw, 26px); box-shadow: 0 0 0 1px var(--glass-rim), 0 40px 70px -36px rgb(0 0 0 / 0.75); }
-/* Glowback's window, two of its pages side by side: transparent round their corners, so only a shadow is added */
+/* The app's window, two of its pages side by side: transparent round their corners, so only a shadow is added */
 .gb-app { width: min(100%, 1180px); margin: 0 auto; align-items: start; }
 .gb-app + .cap { width: min(100%, 1180px); margin-inline: auto; }  /* level with the window shots */
 .led-set .led-phone { position: absolute; right: 0; bottom: -2%; width: 17%; z-index: 2; }
