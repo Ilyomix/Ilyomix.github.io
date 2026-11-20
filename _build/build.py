@@ -295,8 +295,8 @@ def content(lang):
             },
             {
                 "id": "glowback", "name": "Glowback", "icon": "/assets/img/glowback-icon-240.webp", "light": "glowback", "glow": "#9b7bff",
-                "tagline": L("Une lumière d’ambiance pour les LED RGB au dos des écrans, sur Windows. Gratuit et open source.",
-                             "Ambient light for the RGB LEDs on the back of a monitor, on Windows. Free and open source."),
+                "tagline": L("Une lumière d’ambiance pour les LED RGB au dos des écrans, sur Windows. Gratuit sur le Microsoft Store, et open source.",
+                             "Ambient light for the RGB LEDs on the back of a monitor, on Windows. Free on the Microsoft Store, and open source."),
                 "body": [
                     L("Glowback capture l’écran trente fois par seconde et donne à chaque LED au dos du moniteur la couleur du bord de l’image juste devant elle : un coucher de soleil à gauche de l’écran, et le mur de gauche devient orange. Il fonctionne avec tous les appareils Éclairage dynamique de Windows et OpenRGB, sans ruban LED ni caméra.",
                       "Glowback captures the screen thirty times per second and gives each LED on the back of the monitor the colour of the edge of the picture right in front of it: a sunset on the left of the screen turns the wall on the left orange. It works with every Windows Dynamic Lighting and OpenRGB device, with no LED strip or camera."),
@@ -310,12 +310,13 @@ def content(lang):
                 "specs": [
                     (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
                     (L("Plateforme", "Platform"), L("Windows 10 et 11 · Éclairage dynamique et OpenRGB", "Windows 10 and 11 · Dynamic Lighting and OpenRGB")),
-                    (L("Technologies", "Built with"), "Python · Win32 · GDI+ · DXGI · WASAPI · HID LampArray · MQTT · Inno Setup"),
+                    (L("Technologies", "Built with"), "Python · Win32 · GDI+ · DXGI · WASAPI · HID LampArray · MQTT · Inno Setup · MSIX"),
                     ("Code", L("Open source sur GitHub, licence MIT", "Open source on GitHub, MIT license")),
                 ],
-                "facts": L("Gratuit · Six langues · Environ 0,5 ms de CPU par image",
-                           "Free · Six languages · About 0.5 ms of CPU per frame"),
+                "facts": L("Sur le Microsoft Store depuis le 20 novembre 2026 · Gratuit · Six langues · Environ 0,5 ms de CPU par image",
+                           "On the Microsoft Store since 20 November 2026 · Free · Six languages · About 0.5 ms of CPU per frame"),
                 "links": [
+                    {"label": "Microsoft Store", "href": "https://apps.microsoft.com/detail/9P1G8XDDQCN2"},
                     {"label": L("Télécharger pour Windows", "Download for Windows"), "href": "https://github.com/Ilyomix/glowback/releases/latest/download/GlowbackSetup.exe"},
                     {"label": L("Le site", "Website"), "href": "https://ilyomix.github.io/glowback/" + ("" if en else "fr/")},
                     {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/glowback"},
@@ -349,8 +350,8 @@ def content(lang):
             },
             {
                 "id": "keyboard-clock", "name": "Keyboard Clock", "icon": "/assets/img/keyboard-clock-icon-240.webp", "light": "keyboard-clock", "glow": "#ff6a1a",
-                "tagline": L("L’heure en gros chiffres sur un clavier RGB, sur Windows. Gratuit et open source.",
-                             "The time in big digits on an RGB keyboard, on Windows. Free and open source."),
+                "tagline": L("L’heure en gros chiffres sur un clavier RGB, sur Windows. Gratuit sur le Microsoft Store, et open source.",
+                             "The time in big digits on an RGB keyboard, on Windows. Free on the Microsoft Store, and open source."),
                 "body": [
                     L("Keyboard Clock fait d’un clavier RGB une horloge qu’on lit depuis l’autre bout de la pièce dès qu’on s’éloigne du PC : les heures, puis les minutes, en gros chiffres dessinés touche par touche sur les touches F, la rangée des chiffres et les lettres, pendant que les secondes remplissent les neuf touches au-dessus des flèches. On touche le clavier ou la souris, et l’éclairage habituel revient.",
                       "Keyboard Clock turns an RGB keyboard into a clock you can read from across the room as soon as you step away from the PC: the hours, then the minutes, in big digits drawn key by key over the F-keys, the number row and the letters, while the seconds fill the nine keys above the arrows. Touch anything and the usual lighting comes back."),
@@ -358,8 +359,8 @@ def content(lang):
                       "It drives Logitech G keyboards through G HUB’s LED SDK, and Razer, Corsair, ASUS, SteelSeries, HyperX and other keyboards through Windows Dynamic Lighting or OpenRGB, both in beta. Each key is found by its physical position, its HID usage, so any layout works: AZERTY, QWERTY or QWERTZ, ISO or ANSI, TKL or full size."),
                     L("J’ai écrit un rendu en couches (fond, chiffres, secondes, effets, mode nuit, gamma) avec des transitions en fondu, glissement, balayage et dissolution ; des chiffres dessinés à la main et un éditeur pour redessiner chacun touche par touche ; un pilote HID LampArray qui lit à quelle touche chaque LED est liée ; un client du SDK OpenRGB qui associe le nom de chaque LED à sa touche. Les touches affichent aussi un minuteur, des cycles Pomodoro et des alarmes, et le fond peut suivre la musique que joue le PC, captée en loopback WASAPI et découpée par une FFT.",
                       "I wrote a layered renderer (background, digits, seconds, effects, night mode, gamma) with fade, slide, wipe and dissolve transitions; hand-drawn digits and an editor to redraw any of them key by key; a HID LampArray driver that reads which key each LED is bound to; an OpenRGB SDK client that matches each LED’s name to its key. The keys also run a timer, Pomodoro cycles and alarms, and the background can follow the music the PC plays, captured through WASAPI loopback and split by an FFT."),
-                    L("Les chiffres s’allument quand le PC est inactif, dès qu’on le verrouille (Win+L), tout le temps ou sur un raccourci, et restent cachés pendant les jeux en plein écran. C’est une vraie app Windows en Win32 et GDI+ : une fenêtre avec un aperçu en direct du clavier, un panneau rapide près de l’horloge, six langues, un installateur Inno Setup, des mises à jour vérifiées dans l’app, et un paquet Microsoft Store (MSIX) en préparation. Le tout tient dans un seul fichier Python, sans dépendance.",
-                      "The digits come on when the PC is idle, the moment it locks (Win+L), all the time or on a hotkey, and stay hidden during full-screen games. It is a real Windows app in Win32 and GDI+: a window with a live preview of the keyboard, a quick panel by the clock, six languages, an Inno Setup installer, verified in-app updates, and a Microsoft Store package (MSIX) in preparation. All of it fits in a single Python file with zero dependencies."),
+                    L("Les chiffres s’allument quand le PC est inactif, dès qu’on le verrouille (Win+L), tout le temps ou sur un raccourci, et restent cachés pendant les jeux en plein écran. C’est une vraie app Windows en Win32 et GDI+ : une fenêtre avec un aperçu en direct du clavier, un panneau rapide près de l’horloge, six langues, un installateur Inno Setup, des mises à jour vérifiées dans l’app, et une version sur le Microsoft Store. Le tout tient dans un seul fichier Python, sans dépendance.",
+                      "The digits come on when the PC is idle, the moment it locks (Win+L), all the time or on a hotkey, and stay hidden during full-screen games. It is a real Windows app in Win32 and GDI+: a window with a live preview of the keyboard, a quick panel by the clock, six languages, an Inno Setup installer, verified in-app updates, and a version on the Microsoft Store. All of it fits in a single Python file with zero dependencies."),
                 ],
                 "specs": [
                     (L("Rôle", "Role"), L("Design et ingénierie", "Design and engineering")),
@@ -367,9 +368,10 @@ def content(lang):
                     (L("Technologies", "Built with"), "Python · Win32 · GDI+ · HID LampArray · OpenRGB SDK · WASAPI · Inno Setup · MSIX"),
                     ("Code", L("Open source sur GitHub, licence MIT", "Open source on GitHub, MIT license")),
                 ],
-                "facts": L("Gratuit · Six langues · Testé sur un Logitech G PRO TKL",
-                           "Free · Six languages · Tested on a Logitech G PRO TKL"),
+                "facts": L("Sur le Microsoft Store depuis le 20 novembre 2026 · Gratuit · Six langues · Testé sur un Logitech G PRO TKL",
+                           "On the Microsoft Store since 20 November 2026 · Free · Six languages · Tested on a Logitech G PRO TKL"),
                 "links": [
+                    {"label": "Microsoft Store", "href": "https://apps.microsoft.com/detail/9N5M0SCJNPZ3"},
                     {"label": L("Télécharger pour Windows", "Download for Windows"), "href": "https://github.com/Ilyomix/keyboard-clock/releases/latest/download/KeyboardClockSetup.exe"},
                     {"label": L("Le site", "Website"), "href": "https://ilyomix.github.io/keyboard-clock/" + ("" if en else "fr/")},
                     {"label": L("Code source", "Source code"), "href": "https://github.com/Ilyomix/keyboard-clock"},
@@ -576,14 +578,14 @@ def jsonld(c):
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "SoftwareApplication", "@id": f"{SITE}/#glowback", "name": "Glowback", "url": "https://ilyomix.github.io/glowback/",
-         "downloadUrl": "https://github.com/Ilyomix/glowback/releases/latest/download/GlowbackSetup.exe",
+         "installUrl": "https://apps.microsoft.com/detail/9P1G8XDDQCN2", "downloadUrl": "https://github.com/Ilyomix/glowback/releases/latest/download/GlowbackSetup.exe",
          "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows 10, Windows 11",
          "description": tag["glowback"], "image": f"{SITE}/assets/img/glowback-hero-{'en' if en else 'fr'}-1280.webp",
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/glowback", "inLanguage": ["en", "fr", "es", "de", "it", "pt"],
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
          "author": {"@id": f"{SITE}/#person"}, "creator": {"@id": f"{SITE}/#person"}},
         {"@type": "SoftwareApplication", "@id": f"{SITE}/#keyboard-clock", "name": "Keyboard Clock", "url": "https://ilyomix.github.io/keyboard-clock/",
-         "downloadUrl": "https://github.com/Ilyomix/keyboard-clock/releases/latest/download/KeyboardClockSetup.exe",
+         "installUrl": "https://apps.microsoft.com/detail/9N5M0SCJNPZ3", "downloadUrl": "https://github.com/Ilyomix/keyboard-clock/releases/latest/download/KeyboardClockSetup.exe",
          "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows 10, Windows 11",
          "description": tag["keyboard-clock"], "image": f"{SITE}/assets/img/keyboard-clock-hero-{'en' if en else 'fr'}-1280.webp",
          "isAccessibleForFree": True, "codeRepository": "https://github.com/Ilyomix/keyboard-clock", "inLanguage": ["en", "fr", "es", "de", "it", "pt"],
@@ -679,8 +681,8 @@ def main():
 
 - [Cadran](https://www.cadranapp.com): a macOS app that draws live clock faces on the wallpaper layer, behind the icons, on every Space and display. Swift, SwiftUI, Core Animation, Next.js site. Featured on Product Hunt, listed in Awesome Mac. Version 2.0 since 30 October 2026.
 - [Retrotape](https://apps.apple.com/app/id6829425065): a 90s camcorder for iPhone, on the App Store since 6 November 2026: 20 vintage filters applied live in the viewfinder, each with its own camera interface. Free, with a Pro subscription or one-time upgrade. Bilingual, no account, no ads, no tracking. Kotlin, Compose Multiplatform, Swift, Metal.
-- [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows: every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices, and shows up in Home Assistant as a light (MQTT), so Google Assistant, Alexa and Siri can switch it. It is an app: a window with a live preview of the screen and of the light, five looks (the screen, its average, a colour, a gradient, or the music the PC plays) and, since 0.6.0, profiles: a night profile and a look per app (running, in front, full screen or playing sound). Python, Win32, GDI+, DXGI, WASAPI, MQTT, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
-- [Keyboard Clock](https://github.com/Ilyomix/keyboard-clock): free, open-source Windows app that draws the time in big digits on an RGB keyboard when you step away from the PC: the hours, then the minutes, drawn key by key over the F-keys, the number row and the letters, with the seconds filling the nine keys above the arrows. Works with Logitech G keyboards (G HUB LED SDK, tested on a G PRO TKL) and, in beta, with Razer, Corsair, ASUS, SteelSeries, HyperX and others through Windows Dynamic Lighting (HID LampArray) or OpenRGB; keys are found by their physical position, so any layout works (AZERTY, QWERTY, QWERTZ, ISO/ANSI, TKL and full size). Layered renderer with transitions, hand-drawn digits and a font editor, timer, Pomodoro and alarms on the keys, music-reactive background (WASAPI loopback, FFT); shows when idle, on lock, always or on a hotkey, hidden during full-screen games. Python, Win32, GDI+, installer, in-app updates, six languages, MIT license. Site: https://ilyomix.github.io/keyboard-clock/
+- [Glowback](https://github.com/Ilyomix/glowback): free, open-source ambient light for Windows, on the Microsoft Store since 20 November 2026 (https://apps.microsoft.com/detail/9P1G8XDDQCN2): every RGB LED on the back of a monitor follows the picture in front of it, live. Works with Windows Dynamic Lighting (HID LampArray) and OpenRGB devices, and shows up in Home Assistant as a light (MQTT), so Google Assistant, Alexa and Siri can switch it. It is an app: a window with a live preview of the screen and of the light, five looks (the screen, its average, a colour, a gradient, or the music the PC plays) and, since 0.6.0, profiles: a night profile and a look per app (running, in front, full screen or playing sound). Python, Win32, GDI+, DXGI, WASAPI, MQTT, installer, in-app updates, six languages. Site: https://ilyomix.github.io/glowback/
+- [Keyboard Clock](https://github.com/Ilyomix/keyboard-clock): free, open-source Windows app, on the Microsoft Store since 20 November 2026 (https://apps.microsoft.com/detail/9N5M0SCJNPZ3), that draws the time in big digits on an RGB keyboard when you step away from the PC: the hours, then the minutes, drawn key by key over the F-keys, the number row and the letters, with the seconds filling the nine keys above the arrows. Works with Logitech G keyboards (G HUB LED SDK, tested on a G PRO TKL) and, in beta, with Razer, Corsair, ASUS, SteelSeries, HyperX and others through Windows Dynamic Lighting (HID LampArray) or OpenRGB; keys are found by their physical position, so any layout works (AZERTY, QWERTY, QWERTZ, ISO/ANSI, TKL and full size). Layered renderer with transitions, hand-drawn digits and a font editor, timer, Pomodoro and alarms on the keys, music-reactive background (WASAPI loopback, FFT); shows when idle, on lock, always or on a hotkey, hidden during full-screen games. Python, Win32, GDI+, installer, in-app updates, six languages, MIT license. Site: https://ilyomix.github.io/keyboard-clock/
 - [Lift](https://apps.apple.com/app/id6818697874): a research-based hypertrophy program for iPhone and iPad, free on the App Store since 14 October 2026, also an installable web app (https://ilyomix.github.io/lift/). Bilingual, offline, no account. React, TypeScript, Vite, Capacitor, Swift Live Activities. Source: https://github.com/Ilyomix/lift
 - [Crypto LED Board](https://crypto-led-board.vercel.app/): a live crypto dashboard rendered as a pixel-art LED matrix, fed over WebSockets. React, TypeScript, Canvas / WebGL.
 - Other projects: Crypto Sensor (crypto analytics dashboard, Next.js), PeekFi (crypto tracker, React), Liberty Rider × MACIF (showcase site, 2018), Envio (smart home system, Epitech, 2014–2017).
